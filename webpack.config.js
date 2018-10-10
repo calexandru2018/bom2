@@ -46,17 +46,19 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            title: 'Main Page',
+            title: 'Home Page',
             filename: 'index.html',
             template: './src/index.html',
             excludeChunks: ['contact'],
             hash: true,
+            cache: true,
         }),
         new HtmlWebpackPlugin({
-            title: 'Contact',
+            title: 'Contact Page',
             filename: 'contact.html',
             template: './src/contact.html',
             hash: true,
+            cache: true,
         }),
         new MiniCssExtractPlugin({
             filename: 'assets/css/[name].css',
