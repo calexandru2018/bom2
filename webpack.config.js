@@ -5,10 +5,9 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    mode: 'development',
+    // mode: 'development',
     entry: {
         index: './src/js/index.js',
-        contact: './src/js/contact.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist/'),
@@ -21,7 +20,7 @@ module.exports = {
     },
     devServer: {
         contentBase: './dist',
-        hot: true,
+        hot: false,
     },    
     devtool: 'inline-source-map',
     module: {
@@ -49,14 +48,6 @@ module.exports = {
             title: 'Home Page',
             filename: 'index.html',
             template: './src/index.html',
-            excludeChunks: ['contact'],
-            hash: true,
-            cache: true,
-        }),
-        new HtmlWebpackPlugin({
-            title: 'Contact Page',
-            filename: 'contact.html',
-            template: './src/contact.html',
             hash: true,
             cache: true,
         }),
