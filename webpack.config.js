@@ -21,7 +21,7 @@ module.exports = {
         contentBase: './dist',
         // hot: false,
     },    
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     module: {
         rules: [
             {

@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:600,600i|Roboto');
 :root {
-    --primary-color: #3b2019; 
-    --secondary-color: #fac27f; 
-	--terciary-color: #f25481; 
-	--fourth-color: #61412e; 
+    --first-color: #3b2019; 
+    --second-color: #fac27f; 
+	--third-color: #f68271; 
+	--fourth-color: #61412e;
+	--fifth-color: #351f17;
 	font-family: 'Montserrat', sans-serif;
 	font-family: 'Roboto', sans-serif;
 }
@@ -23,18 +24,18 @@ a{
 	box-sizing: border-box;
 	position: absolute;
 	width: 100%;
+	height: 150px;
 	padding: 0;
 	left: 0;
-	z-index: 10;
+	z-index: 5;
 	background: repeating-linear-gradient(
 		90deg,
-		var(--primary-color) 10px,
-		var(--primary-color) 11.4px,
+		var(--first-color) 8px,
+		var(--first-color) 12.4px,
 		var(--fourth-color) 13px,
-		var(--fourth-color) 12px
-		);
-	background-color: var(--primary-color);
-	box-shadow: 0 -8px 5px 10px var(--primary-color);
+		var(--fourth-color) 0);
+	background-color: var(--first-color);
+	box-shadow: 0 -8px 5px 10px var(--first-color);
 }
 
 /* ROADMAP */
@@ -86,36 +87,62 @@ a{
 /* ROADMAP */
 
 /* MOBILE MENU BUTTON */
+.nav-toggle{
+	cursor: pointer;
+}
 .main-header > .nav-toggle{
 	position: absolute;
-    top: 69%;
+    top: 72%;
     left: 5%;
 
 }
 .main-header > .nav-toggle div{
     width: 35px;
     height: 5px;
-    background-color: var(--secondary-color);
+    background-color: var(--second-color);
     margin: 6px 0;
 }
 /* MOBILE MENU BUTTON */
 .top-stripe{
-    top: 0;
+	top: 0;
     width: 100%;
-    height: 11px;
-    background-color: var(--terciary-color);
-    background-image: radial-gradient(#000 0%,transparent 20%),radial-gradient(#000 0%,transparent 20%);
-    background-size: 10px 19px;
-    background-position: 0 17px,55px 32px;
-    z-index: 10;
+    height: 10px;
+    background-color: var(--third-color);
+	background-image: 
+	radial-gradient(
+		var(--fifth-color) 17%,
+		transparent 25%
+	),
+	radial-gradient(
+		var(--fifth-color) 17%,
+		transparent 25%
+	);
+    background-size: 10px 17px;
+    background-position: 0 12px,55px 32.5px;
 }
 .website-title{
 	text-align: right;
 	margin-top: 15px;
     margin-bottom: 15px;
 	margin-right: 0.5em;
-	color: var(--secondary-color);
-	text-transform: uppercase;
+	color: var(--second-color);
+	/* text-transform: uppercase; */
+}
+.logo-landing-page{
+/* 	margin-top: -75%;
+	width: 40%; */
+/* 	margin-top: -146%;
+    width: 28%;
+	margin-left: 75%;
+	z-index: 5; */
+	width: 28%;
+	z-index: 5;
+	position: absolute;
+	right: 0%;
+	top: 65px;
+}
+.nav-mobile-logo{
+	width: 40%
 }
 .parallax-wrapper {
 	height: 100vh;
@@ -127,31 +154,46 @@ a{
 .main-nav{
 	position: fixed;
 	color:white;
-	background-color: black;
+	background-color: var(--fifth-color);
 	top: 0;
 	left: 0;
 	height: 100vh;
 	width: 100%;
 	overflow: hidden;
-	font-size: 7vw;
+	font-size: 1.5rem;
 	display: grid;
-	grid-template-rows: repeat(8, 1fr);
+	grid-template-rows: repeat(9, 1fr);
 	justify-items: center;
-	z-index: 5;
+	align-items: center;
+	z-index: 6;
 	transform: translate(-100%);
 	transition: transform 0.5s ease;
+	text-transform: uppercase;
+}
+.main-nav > div:nth-child(2){
+	grid-row-start: 1;
+    grid-row-end: 3;
 }
 .main-nav.open{
 	transform: translate(0);
 }
 .main-nav .nav-toggle{
 	position: absolute;
-	top: 5%;
+	top: 25px;
     right: 5%;
+	text-align: center;
+	transition: all .2s ease-in-out;
+}
+.main-nav .nav-toggle:hover { 
+	transform: scale(1.2) rotate(180deg);
+}
+.nav-close-icon{
+	background-color: var(--third-color);
+	padding: 0.25em 0.5em;
+	border-radius: 30%;
 }
 .main-nav > div {
-	margin: 1.5em 1em;
-	z-index: 3;
+	margin: 0.5em 1em;
 }
 .main-nav > div > a{
 	background: none;
@@ -159,6 +201,7 @@ a{
 	outline: none;
 	color: beige;
 	max-height: 40px;
+	
 }
 .main-nav > .logo-container-outer > img {
 	position: absolute;
@@ -169,6 +212,15 @@ a{
 	right: 0;
 	display: block;
 	z-index: -1;
+}
+.btn-primary{
+	padding: 0.6em;
+	transition: all .2s ease-in-out;
+	opacity: 0.5;
+}
+.btn-primary:hover{
+	opacity: 1;
+	transform: scale(1.5);
 }
 /* MAIN NAVIGATION */
 .section {
