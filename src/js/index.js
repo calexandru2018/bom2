@@ -1,6 +1,8 @@
 
 import 'normalize.css';
 import '../css/main.css';
+import '../img/bq.jpg';
+import '../img/bq4.jpg';
 
 document.querySelectorAll('.nav-toggle').forEach(el => {
     var mainNav = document.querySelector('.main-nav');

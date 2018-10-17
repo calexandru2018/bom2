@@ -5,7 +5,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    // mode: 'development',
     entry: {
         index: './src/js/index.js',
     },
@@ -38,7 +37,19 @@ module.exports = {
             {
                 test: /\.css$/,
                 use:  ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
-            }
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif)$/,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'assets/img/'
+                      }
+                  }
+                ]
+              }
         ],
     },
     plugins: [
