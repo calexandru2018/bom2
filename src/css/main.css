@@ -21,6 +21,17 @@ a{
 	text-decoration: none;
 	color: white;
 }
+.btn{
+	padding: 0.6em;
+}
+.btn-nav{
+	transition: all .15s ease-in-out;
+	display: inline-block;
+}
+.btn-nav:hover{
+	/* text-shadow: 0px 5px 0px var(--third-color); */
+	transform: scale(1.5);
+}
 .main-header{
 	box-sizing: border-box;
 	position: absolute;
@@ -93,7 +104,7 @@ a{
 .main-header > .nav-toggle{
 	position: absolute;
     top: 76px;
-    left: 15px;
+	left: 15px;
 	transition: left .5s ease-in-out;
 }
 .main-header > .nav-toggle div{
@@ -105,6 +116,9 @@ a{
 }
 .main-header > .nav-toggle:active{
 	left: 150px;
+}
+.btn.nav-toggle{
+	padding: 0;
 }
 /* MOBILE MENU BUTTON */
 .top-stripe{
@@ -211,20 +225,11 @@ a{
 	position: absolute;
 	margin-left: auto;
 	margin-right: auto;
-	top: 1em;
+	top: 0px;
 	left: 0;
 	right: 0;
 	display: block;
 	z-index: -1;
-}
-.btn-primary{
-	padding: 0.6em;
-	transition: all .2s ease-in-out;
-	opacity: 0.5;
-}
-.btn-primary:hover{
-	opacity: 1;
-	transform: scale(1.5);
 }
 /* MAIN NAVIGATION */
 .section {
