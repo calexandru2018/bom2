@@ -1,8 +1,4 @@
 @font-face {
-    font-family: 'antro-normal';
-    src: url('/dist/assets/fonts/Antro_Vectra.otf');
-}
-@font-face {
     font-family: 'antro-bold';
     src: url('/dist/assets/fonts/Antro_Vectra_Bolder.otf');
 }
@@ -202,7 +198,6 @@ a{
 /* MAIN NAVIGATION */
 .main-nav{
 	position: fixed;
-	color:white;
 	background-color: var(--card-dark-light-color);
 	top: 0;
 	left: 0;
@@ -232,22 +227,16 @@ a{
     right: -50px;
 	text-align: left;
 	width: 65px;
-	
-    /* transition: left .9s ease-in-out; */
 }
-/* .main-nav .nav-toggle:hover{ 
-	right: 1px;
-} */
 .nav-close-icon{
 	background-color: var(--third-color);
 	padding: .85em 1.1em;
 	text-align: left;
     border-top-left-radius: 30%;
     border-bottom-left-radius: 30%;
-	/* box-shadow: 0px 0px 10px var(--second-color); */
 }
 i{
-	border: solid var(--card-dark-light-color);
+	border: solid white;
     border-width: 0 4px 4px 0;
     display: inline-block;
 	padding: 3px;
@@ -257,7 +246,6 @@ i{
 }
 .right{
 	transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
 }
 .main-nav > div {
 	margin: 0.5em 1em;
@@ -266,9 +254,8 @@ i{
 	background: none;
 	border: none;
 	outline: none;
-	color: beige;
 	max-height: 40px;
-	
+	color: var(--card-light-dark-color);
 }
 .main-nav > .logo-container-outer > img {
 	position: absolute;
