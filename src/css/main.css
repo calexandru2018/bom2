@@ -40,6 +40,9 @@ a{
 .show-more{
 	display: none;
 }
+.justify-content-center{
+	justify-content: center !important;
+}
 .card-background-light{
 	box-shadow: inset 0 0 40px var(--card-light-light-color);
 	color: var(--card-dark-dark-color) !important;
@@ -79,8 +82,64 @@ a{
 	background-color: var(--card-dark-dark-color);
 	box-shadow: 0 -8px 5px 10px var(--card-dark-dark-color);
 }
+.top-stripe{
+	top: 0;
+    width: 100%;
+    height: 10px;
+    background-color: var(--third-color);
+	background-image: 
+	radial-gradient(
+		var(--card-dark-light-color) 17%,
+		transparent 25%
+	),
+	radial-gradient(
+		var(--card-dark-light-color) 17%,
+		transparent 25%
+	);
+    background-size: 10px 17px;
+    background-position: 0 12px,55px 32.5px;
+}
+.website-title{
+	text-align: right;
+	margin-top: 15px;
+    margin-bottom: 15px;
+	margin-right: 0.5em;
+	color: var(--second-color);
+}
+.logo-landing-page{
+	width: 105px;
+	z-index: 5;
+	position: absolute;
+	left: -2px;
+	top: 33px;
+}
+.nav-mobile-logo{
+	width: 40%
+}
+.parallax-wrapper {
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+	perspective: 2;
+}
+.footer{
+	background-color: black;
+}
+/* 
+__________
 
-/* ROADMAP */
+GENERAL END
+__________
+
+*/
+
+/* 
+__________
+
+ROADMAP START
+__________
+
+*/
 .roadmap{
 	padding: 0.5rem 1rem;
 	background-color: white;
@@ -125,9 +184,21 @@ a{
 	border-radius: 40px;
 	text-shadow: 2px 1px 3px black;
 }
-/* ROADMAP */
+/* 
+__________
 
-/* MOBILE MENU BUTTON */
+ROADMAP END
+__________
+
+*/
+
+/* 
+__________
+
+MOBILE MENU BUTTON START
+__________
+
+*/
 .nav-toggle{
 	cursor: pointer;
 }
@@ -147,48 +218,21 @@ a{
 .btn.nav-toggle{
 	padding: 0;
 }
-/* MOBILE MENU BUTTON */
-.top-stripe{
-	top: 0;
-    width: 100%;
-    height: 10px;
-    background-color: var(--third-color);
-	background-image: 
-	radial-gradient(
-		var(--card-dark-light-color) 17%,
-		transparent 25%
-	),
-	radial-gradient(
-		var(--card-dark-light-color) 17%,
-		transparent 25%
-	);
-    background-size: 10px 17px;
-    background-position: 0 12px,55px 32.5px;
-}
-.website-title{
-	text-align: right;
-	margin-top: 15px;
-    margin-bottom: 15px;
-	margin-right: 0.5em;
-	color: var(--second-color);
-}
-.logo-landing-page{
-	width: 105px;
-	z-index: 5;
-	position: absolute;
-	left: -2px;
-	top: 33px;
-}
-.nav-mobile-logo{
-	width: 40%
-}
-.parallax-wrapper {
-	height: 100vh;
-	overflow-x: hidden;
-	overflow-y: auto;
-	perspective: 2;
-}
-/* MAIN NAVIGATION */
+/* 
+__________
+
+MOBILE MENU BUTTON END
+__________
+
+*/
+
+/*
+__________
+
+MAIN NAVIGATION START
+__________
+
+*/
 .main-nav{
 	position: fixed;
 	background-color: var(--card-dark-light-color);
@@ -260,15 +304,28 @@ i{
 	display: block;
 	z-index: -1;
 }
-/* MAIN NAVIGATION */
+/*
+__________
+
+MAIN NAVIGATION END
+__________
+
+*/
+
+/*
+__________
+
+MAIN CONTENT START
+__________
+
+*/
 .section {
 	position: relative;
 	height: 100vh;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	/* justify-content: center; */
 	color: white;
-	/* text-shadow: 0 0 5px #000; */
 }
 .parallax::after {
 	content: " ";
@@ -330,19 +387,27 @@ i{
     background: url('/dist/assets/img/bq3.jpg') no-repeat center;
     background: cover;
 }
-.footer{
-	background-color: black;
-}
+/*
+__________
 
-/* PARALLAX FLIPPING CARD */
+MAIN CONTENT END
+__________
 
+*/
+
+/*
+__________
+
+PARALLAX FLIPPING CARD END
+__________
+
+*/
 .flip-card-grid{
-/* 	display: flex;
+	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: center; */
-	display: grid;
-	grid-template-columns: repeat(1, 3fr);
+/* 	display: grid;
+	grid-template-columns: repeat(1, 3fr); */
 }
 .col{
 	width: 100%;
@@ -350,12 +415,10 @@ i{
 	cursor: pointer;
 	perspective: 700;
 }
-
 .container{
 	transform-style: preserve-3d;
-	perspective: 700;
+	/* perspective: 700; */
 }
-
 .front,
 .back{
 	background-size: cover;
@@ -373,7 +436,6 @@ i{
 	background: #cedce7;
 	background: linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
 }
-  
 .front:after{
 	position: absolute;
 	top: 0;
@@ -443,6 +505,24 @@ i{
 	margin: 0 auto;
 	bottom: -.75rem;
 }
+/* @media screen and (max-width: 64rem){
+    .col{
+      width: calc(33.333333% - 2rem);
+    }
+  }
+  
+  @media screen and (max-width: 48rem){
+    .col{
+      width: calc(50% - 2rem);
+    }
+  }
+  
+  @media screen and (max-width: 32rem){
+    .col{
+      width: 100%;
+      margin: 0 0 2rem 0;
+    }
+  } */
 
 /* PARALLAX FLIPPING CARD */
 
