@@ -524,7 +524,21 @@ __________
     }
   } */
 
-/* PARALLAX FLIPPING CARD */
+/*
+__________
+
+PARALLAX FLIPPING CARD END
+__________
+
+*/
+
+/*
+__________
+
+MEDIA QUERIES START
+__________
+
+*/
 
 /* @media (min-width: 576px) { ... }
 
@@ -536,3 +550,11 @@ __________
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... } */
+
+/*
+__________
+
+MEDIA QUERIES END
+__________
+
+*/
