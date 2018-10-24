@@ -132,19 +132,23 @@ a{
 	display: none; /* Hidden by default */
 	position: fixed; /* Fixed/sticky position */
 	bottom: 10px; /* Place the button at the bottom of the page */
-	right: 10px; /* Place the button 30px from the right */
+	right: 5%; /* Place the button 30px from the right */
 	z-index: 99; /* Make sure it does not overlap */
 	border: none; /* Remove borders */
 	outline: none; /* Remove outline */
-	background-color: var(--card-dark-light-color); /* Set a background color */
-	color: white; /* Text color */
+	/* color: white; */ /* Text color */
 	cursor: pointer; /* Add a mouse pointer on hover */
 	padding: 10px; /* Some padding */
 	border-radius: 10px; /* Rounded corners */
 	font-size: 1em; /* Increase font size */
+	background-color: #f8a67a;
+	transition: all 0.2 eassmooe-in-out;
+}
+#scroll-to-top > i{
+	margin-bottom: -5px !important;
 }
 #scroll-to-top:hover {
-	background-color: #555; /* Add a dark-grey background on hover */
+	transform: scale(1.4);
 }   
 /* 
 __________
@@ -298,12 +302,15 @@ i{
     border-width: 0 4px 4px 0;
     display: inline-block;
 	padding: 3px;
-	margin-left: -10px;
+	/* margin-left: -10px; */
     width: 16px;
     height: 17px;
 }
-.right{
+.arrow-right{
 	transform: rotate(135deg);
+}
+.arrow-up{
+	transform: rotate(-135deg);
 }
 .main-nav > div {
 	margin: 0.5em 1em;

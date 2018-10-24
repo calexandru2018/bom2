@@ -37,7 +37,7 @@ scrollButton.addEventListener('click', () => {
 }); */
 parallaxScroll.onscroll =  () => {
     if (document.body.scrollTop > pixelScrollLimit || parallaxScroll.scrollTop > pixelScrollLimit) {
-        scrollButton.style.display = 'block';
+        scrollButton.style.display = 'grid';
     } else {
         scrollButton.style.display = 'none';
     };
