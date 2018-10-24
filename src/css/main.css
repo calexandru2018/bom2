@@ -142,13 +142,14 @@ a{
 	border-radius: 10px; /* Rounded corners */
 	font-size: 1em; /* Increase font size */
 	background-color: #f8a67a;
-	transition: all 0.2 eassmooe-in-out;
+	transition: all .2s ease-in-out;
 }
 #scroll-to-top > i{
 	margin-bottom: -5px !important;
 }
 #scroll-to-top:hover {
-	transform: scale(1.4);
+	transform: scale(1.2);
+	margin-bottom: 20px;
 }   
 /* 
 __________

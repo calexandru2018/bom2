@@ -22,27 +22,22 @@ document.querySelectorAll('.nav-toggle').forEach(el => {
         }
     });
 });
-scrollButton.addEventListener('click', () => {
-    document.body.scrollTop = 0; // For Safari
-    parallaxScroll.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-});
-
-/* parallaxScroll.addEventListener('scroll', function(e) {
-    // console.log('Top: ' + parallaxScroll.scrollTop);
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("myBtn").style.display = "block";
-    } else {
-        document.getElementById("myBtn").style.display = "none";
-    }
-}); */
-parallaxScroll.onscroll =  () => {
+parallaxScroll.addEventListener('scroll', () => {
     if (document.body.scrollTop > pixelScrollLimit || parallaxScroll.scrollTop > pixelScrollLimit) {
         scrollButton.style.display = 'grid';
     } else {
         scrollButton.style.display = 'none';
     };
-}
-
+});
+scrollButton.addEventListener('click', () => {
+    // document.body.scrollTop = 0; // For Safari
+    parallaxScroll.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+    });
+    // parallaxScroll.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+});
 /* function fadeIn(el, time) {
   el.style.opacity = 0;
 
