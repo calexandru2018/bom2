@@ -164,13 +164,14 @@ a{
 	outline: none;
 	padding: 0.4em;
 	background-color: white !important;
+	color: dimgray;
 }
 .contact-form .btn-send{
 	color: var(--card-dark-light-color);
 	background-color: var(--card-light-light-color);
 	/* border: solid 1px var(--card-light-light-color); */
 	border: none;
-    width: 25%;
+    width: 5em;
     outline: 20px;
     border-radius: 2px;
 	transition: all 0.3s ease-in-out;
