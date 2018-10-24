@@ -40,7 +40,7 @@ scrollButton.addEventListener('click', () => {
 });
 window.onload = (() => {
     parallaxScroll.scroll({
-        top: 1500,
+        top: 6700,
         // behavior: "smooth"
     });
 });

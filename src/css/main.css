@@ -163,21 +163,21 @@ a{
     border-radius: 2px;
 	outline: none;
 	padding: 0.4em;
+	background-color: white !important;
 }
 .contact-form .btn-send{
-	color: white;
+	color: var(--card-dark-light-color);
+	background-color: var(--card-light-light-color);
+	/* border: solid 1px var(--card-light-light-color); */
+	border: none;
     width: 25%;
-    border: solid 1px var(--third-color);
     outline: 20px;
     border-radius: 2px;
-	background-color: var(--third-color);
-	transition: all 0.2s ease-in-out;
+	transition: all 0.3s ease-in-out;
 }
 .btn-send:hover{
-	background-color: var(--card-light-dark-color);
-	color: var(--card-dark-dark-color);
-	font-weight: bold;
-	border: 1px solid var(--card-light-light-color);
+	box-shadow: inset 0px 0px 10px var(--card-dark-dark-color);
+	color: white;
 }
 /* 
 __________
@@ -198,7 +198,7 @@ __________
 	padding: 0.5rem 1rem;
 	background-color: white;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: repeat(5, 1fr);
 	text-align: center;
 }
 .destination{
