@@ -38,12 +38,12 @@ scrollButton.addEventListener('click', () => {
         behavior: "smooth"
     });
 });
-/* window.onload = (() => {
+window.onload = (() => {
     parallaxScroll.scroll({
-        top: 5500,
+        top: 1500,
         // behavior: "smooth"
     });
-}); */
+});
 /* function fadeIn(el, time) {
   el.style.opacity = 0;
 
