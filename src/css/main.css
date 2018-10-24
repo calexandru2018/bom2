@@ -151,6 +151,34 @@ a{
 	transform: scale(1.2);
 	margin-bottom: 20px;
 }   
+.contact-form{
+	display: grid;
+}
+.contact-form label{
+	margin-bottom: 0.2em;
+}
+.contact-form .form-input{
+	margin-bottom: 1em;
+	border: none;
+    border-radius: 2px;
+	outline: none;
+	padding: 0.4em;
+}
+.contact-form .btn-send{
+	color: white;
+    width: 25%;
+    border: solid 1px var(--third-color);
+    outline: 20px;
+    border-radius: 2px;
+	background-color: var(--third-color);
+	transition: all 0.2s ease-in-out;
+}
+.btn-send:hover{
+	background-color: var(--card-light-dark-color);
+	color: var(--card-dark-dark-color);
+	font-weight: bold;
+	border: 1px solid var(--card-light-light-color);
+}
 /* 
 __________
 

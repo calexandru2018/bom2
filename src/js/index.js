@@ -31,12 +31,18 @@ parallaxScroll.addEventListener('scroll', () => {
 });
 scrollButton.addEventListener('click', () => {
     // document.body.scrollTop = 0; // For Safari
+    // parallaxScroll.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     parallaxScroll.scroll({
         top: 0,
         left: 0,
         behavior: "smooth"
     });
-    // parallaxScroll.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+});
+window.onload = (() => {
+    parallaxScroll.scroll({
+        top: 5500,
+        // behavior: "smooth"
+    });
 });
 /* function fadeIn(el, time) {
   el.style.opacity = 0;
