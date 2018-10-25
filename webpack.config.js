@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     entry: {
         index: './src/js/index.js',
+        alternate: './src/js/alternate.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist/'),
@@ -73,6 +74,7 @@ module.exports = {
             template: './src/index.html',
             hash: true,
             cache: true,
+            excludeChunks: ['alternate']
         }),
         new HtmlWebpackPlugin({
             title: 'Abrimos Brevemente',
