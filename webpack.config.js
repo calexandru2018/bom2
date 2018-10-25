@@ -74,6 +74,14 @@ module.exports = {
             hash: true,
             cache: true,
         }),
+        new HtmlWebpackPlugin({
+            title: 'Abrimos Brevemente',
+            filename: 'abrimos-breve.html',
+            template: './src/abrimos-breve.html',
+            hash: true,
+            cache: true,
+            excludeChunks: ['index']
+        }),
         new MiniCssExtractPlugin({
             filename: 'assets/css/[name].css',
         }),
