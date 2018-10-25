@@ -1,3 +1,56 @@
-h1{
-    background-color: blanchedalmond;
+@font-face {
+    font-family: 'antro-bold';
+    src: url('/dist/assets/fonts/Antro_Vectra_Bolder.otf');
+}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600,600i|Roboto');
+:root {
+    --card-dark-dark-color: #3b2019; 
+	--card-dark-light-color: #351f17;
+	--card-light-light-color: #fbc382;
+	--card-light-dark-color: #f8a67a;
+    --second-color: #fac27f; 
+	--third-color: #f68271; 
+    --fourth-color: #61412e;
+}
+html, body{
+    width: 100vw;
+    height: 100vh;
+    background: repeating-linear-gradient(
+		90deg,
+		var(--card-dark-dark-color) 4px,
+		var(--card-dark-dark-color) 8px,
+		var(--card-dark-light-color) 6px,
+		var(--card-dark-light-color) 11px
+	);
+}
+.hand-written-text{
+    font-family: 'antro-bold', 'Montserrat','Roboto';
+    font-size: 1.1em;
+    position: absolute;
+    width: 300px;
+    left: 50%;
+    margin-left: -155px;    
+    height: 300px;
+    top: 50%;
+    margin-top: -85%;
+    text-align: center;
+    color: var(--card-light-light-color) !important;
+}
+.logo-landing-page{
+    background: url('/dist/assets/img/logo.png') no-repeat center;
+    background-size: contain;
+    width: auto;
+    height: 100vh;
+}
+.information{
+    font-family: 'Montserrat','Roboto';
+    position: absolute;
+    width: 300px;
+    left: 50%;
+    margin-left: -155px;    
+    height: 300px;
+    bottom: -50%;
+    margin-bottom: 40%;
+    text-align: center;
+    color: var(--card-light-light-color) !important;
 }
