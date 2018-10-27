@@ -112,10 +112,9 @@ html, body{
 }
 /* Tooltip text */
 .tooltip .tooltiptext {
-
     visibility: hidden;
     opacity: 0;
-    width: 50%;
+    width: 80vw;
     background-color: #fff;
     color: #555;
     text-align: justify;
@@ -208,6 +207,9 @@ html, body{
         font-size: 1.3em;
         max-width: 640px;
     }
+    #mc-embedded-subscribe-form input[type=email]{
+        margin: 1rem 0;
+    }
     .fb-logo, .ig-logo{
         width: 75px;
     }
@@ -221,6 +223,9 @@ html, body{
     .logo-landing-page {
         height: 45vh;
     }
+    .tooltip .tooltiptext {
+        max-width: 430px;
+    }    
     .bottom-text {
         font-size: 3.5em;
         margin-top: -3.8rem;
@@ -261,6 +266,9 @@ html, body{
     }
     #mc_embed_signup_scroll > a {
         text-align: center;
+    }
+    #mc-embedded-subscribe-form input[type=email] {
+        margin: 1.5rem 0;
     }
     #mc-embedded-subscribe-form input[type=submit]{
         font-size: .8em;
