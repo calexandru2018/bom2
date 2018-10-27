@@ -40,6 +40,9 @@ html, body{
     font-size: 1.1em;
     text-align: center;
 }
+.top-text *{
+    margin-bottom: 0;
+}
 .logo-landing-page{
     background: url('/dist/assets/img/logo.png') no-repeat center;
     background-size: contain;
@@ -50,7 +53,7 @@ html, body{
     font-family: antro-bold;
     text-align: center;
     font-size: 2em;
-    margin-top: -1.5rem;
+    margin-top: -2.8rem;
 }
 #mc_embed_signup_scroll{
     display: grid;
@@ -100,34 +103,11 @@ html, body{
     padding-bottom:0px;
     font-size: 0.8em;
 }
-
-@media (min-width: 576px) {
-
-}
-
-/* Medium devices tablets, 768px and up */
-@media (min-width: 768px) {
-
-}
-
-/* Large devices desktops, 992px and up */
-@media (min-width: 992px) {
-    
-}
-
-/* Extra large devices large desktops, 1200px and up */
-@media (min-width: 1200px) {
-    
-}
-
-
-/* Tooltip container */
 .tooltip {
     position: relative;
     display: inline-block;
     font-size: 0.8em;
 }
-
 /* Tooltip text */
 .tooltip .tooltiptext {
     visibility: hidden;
@@ -147,7 +127,6 @@ html, body{
     opacity: 0;
     transition: opacity 0.3s;
 }
-/* Tooltip arrow */
 .tooltip .tooltiptext::after {
     content: "";
     position: absolute;
@@ -158,13 +137,10 @@ html, body{
     border-style: solid;
     border-color: transparent transparent #fff transparent;
 }
-
-/* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
 }
-
 .stripe{
     top: 0;
     position: absolute;
@@ -190,4 +166,43 @@ html, body{
 }
 .stripe-right{
     right: -95%;
+}
+.social-media{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 1em 0;
+    justify-items: center;
+}
+.fb-logo, .ig-logo{
+    width: 50px;
+    height: 50px;
+    background-size: contain !important;
+}
+.fb-logo{
+    background: url('/dist/assets/img/fb.png') no-repeat center;
+    height: 45px;
+    align-self: center;
+    border-radius: 5px;
+}
+.ig-logo{
+    background: url('/dist/assets/img/ig.png') no-repeat center;
+}
+
+@media (min-width: 576px) {
+
+}
+
+/* Medium devices tablets, 768px and up */
+@media (min-width: 768px) {
+
+}
+
+/* Large devices desktops, 992px and up */
+@media (min-width: 992px) {
+    
+}
+
+/* Extra large devices large desktops, 1200px and up */
+@media (min-width: 1200px) {
+    
 }
