@@ -241,8 +241,7 @@ html, body{
         font-size: 1em;
     }
     .logo-landing-page {
-        height: 50vh;
-        margin-top: -35px;
+        margin-top: -8px;
     }
     .bottom-text {
         font-size: 4.5em;
@@ -274,11 +273,12 @@ html, body{
         font-size: .8em;
     }
     .logo-landing-page {
-        margin-top: -65px;
+        height: 40vh;
+        margin-top: -8px;
     }
     .bottom-text {
         font-size: 5em;
-        margin-top: -8.8rem;
+        margin-top: -9rem;
     }
 }
 
