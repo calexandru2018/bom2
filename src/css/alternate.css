@@ -35,6 +35,7 @@ html, body{
     padding: 0 .5rem;
     height: 100%;
     box-shadow: 0 0 0 1100px;
+    justify-items: center;
 }
 .top-text{
     font-size: 1.1em;
@@ -46,8 +47,9 @@ html, body{
 .logo-landing-page{
     background: url('/dist/assets/img/logo.png') no-repeat center;
     background-size: contain;
-    width: auto;
+    width: 100%;
     height: 35vh;
+    margin-top: -10px;
 }
 .bottom-text{
     font-family: antro-bold;
@@ -104,15 +106,16 @@ html, body{
     font-size: 0.8em;
 }
 .tooltip {
-    position: relative;
+    /* position: relative; */
     display: inline-block;
     font-size: 0.8em;
 }
 /* Tooltip text */
 .tooltip .tooltiptext {
+
     visibility: hidden;
     opacity: 0;
-    width: 100%;
+    width: 50%;
     background-color: #fff;
     color: #555;
     text-align: justify;
@@ -127,7 +130,7 @@ html, body{
     opacity: 0;
     transition: opacity 0.3s;
 }
-.tooltip .tooltiptext::after {
+/* .tooltip .tooltiptext::after {
     content: "";
     position: absolute;
     bottom: 100%;
@@ -136,7 +139,7 @@ html, body{
     border-width: 5px;
     border-style: solid;
     border-color: transparent transparent #fff transparent;
-}
+} */
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
@@ -173,6 +176,9 @@ html, body{
     margin: 1em 0;
     justify-items: center;
 }
+.social-media a{
+    margin: 0 4rem;
+}
 .fb-logo, .ig-logo{
     width: 50px;
     height: 50px;
@@ -189,20 +195,86 @@ html, body{
 }
 
 @media (min-width: 576px) {
-
+    .grid-wrapper{
+        margin: 0px 1.5rem;
+    }
+    .top-text {
+        font-size: 1.5em;
+    }
+    .social-media{
+        margin: 3rem 0rem;
+    }
+    #mc_embed_signup{
+        font-size: 1.3em;
+        max-width: 640px;
+    }
+    .fb-logo, .ig-logo{
+        width: 75px;
+    }
+    .fb-logo{
+        height: 70px;
+    }
+    .ig-logo{
+        height: 75px;
+        margin-top: -1px;
+    }
+    .logo-landing-page {
+        height: 45vh;
+    }
+    .bottom-text {
+        font-size: 3.5em;
+        margin-top: -3.8rem;
+    }
 }
 
 /* Medium devices tablets, 768px and up */
 @media (min-width: 768px) {
-
+    .top-text{
+        margin: 1rem 0rem;
+    }
+    #mc_embed_signup_scroll{
+        font-size: 1em;
+    }
+    .logo-landing-page {
+        height: 50vh;
+        margin-top: -35px;
+    }
+    .bottom-text {
+        font-size: 4.5em;
+        margin-top: -6.8rem;
+    }
 }
 
 /* Large devices desktops, 992px and up */
 @media (min-width: 992px) {
-    
+    .grid-wrapper {
+        margin: 0 2rem;
+    }
+    .top-text {
+        font-size: 2.2em
+    }
+    .social-media{
+        margin: 2rem 0;
+    }
+    #mc_embed_signup_scroll {
+        font-size: 1.2em;
+    }
+    #mc_embed_signup_scroll > a {
+        text-align: center;
+    }
+    #mc-embedded-subscribe-form input[type=submit]{
+        font-size: .8em;
+    }
+    .logo-landing-page {
+        margin-top: -65px;
+    }
+    .bottom-text {
+        font-size: 5em;
+        margin-top: -8.8rem;
+    }
 }
 
 /* Extra large devices large desktops, 1200px and up */
 @media (min-width: 1200px) {
-    
+
 }
