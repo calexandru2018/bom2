@@ -11,22 +11,19 @@ import '../img/logo.png';
 var parallaxScroll = document.querySelector('.parallax-wrapper');
 var pixelScrollLimit = 450; 
 var scrollButton = document.getElementById('scroll-to-top');
+var showLocator = document.getElementById('show-locator');
 
 document.querySelectorAll('.nav-toggle').forEach(el => {
     var mainNav = document.querySelector('.main-nav');
     el.addEventListener('click', () => {
-        if(mainNav.classList.contains('open') == false){
-            mainNav.classList.add('open');
-        }else{
-            mainNav.classList.remove('open');
-        }
+        mainNav.classList.toggle('open');
     });
 });
 parallaxScroll.addEventListener('scroll', () => {
     if (document.body.scrollTop > pixelScrollLimit || parallaxScroll.scrollTop > pixelScrollLimit) {
-        scrollButton.style.display = 'grid';
+        scrollButton.style.opacity = 1;
     } else {
-        scrollButton.style.display = 'none';
+        scrollButton.style.opacity = 0;
     };
 });
 scrollButton.addEventListener('click', () => {
@@ -38,6 +35,10 @@ scrollButton.addEventListener('click', () => {
         behavior: "smooth"
     });
 });
+showLocator.addEventListener('click', () => {
+    document.querySelector('.roadmap').classList.toggle('show-locator-toggle');
+});
+
 /* window.onload = (() => {
     parallaxScroll.scroll({
         top: 6700,
