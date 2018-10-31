@@ -18,7 +18,7 @@ var scrollToProductsBtn = document.getElementById('scroll-to-products');
 /* Nav buttons */
 /* var scrollToHomeBtn = document.getElementById('scroll-home-btn'); */
 var scrollToConceptBtn = document.getElementById('scroll-concept-btn');
-// var scrollToProductBtn = document.getElementById('scroll-home-btn');
+var scrollToProductBtnNav = document.getElementById('scroll-products-btn');
 var scrollToStoryBtn = document.getElementById('scroll-story-btn');
 var scrollToHashtagBtn = document.getElementById('scroll-hashtag-btn');
 var scrollToContactsBtn = document.getElementById('scroll-contacts-btn');
@@ -58,10 +58,14 @@ scrollToProductsBtn.addEventListener('click', () => {
         behavior: "smooth"
     }); 
 });
-/* scrollToHomeBtn.addEventListener('click', (el) => {
+scrollToConceptBtn.addEventListener('click', (el) => {
     var element = el.srcElement.dataset.link;  
     scrollTo(document.getElementById(element));  
-}); */
+});
+scrollToProductBtnNav.addEventListener('click', (el) => {
+    var element = el.srcElement.dataset.link;  
+    scrollTo(document.getElementById(element));  
+});
 scrollToConceptBtn.addEventListener('click', (el) => {
     var element = el.srcElement.dataset.link;  
     scrollTo(document.getElementById(element));  
