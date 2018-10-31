@@ -10,8 +10,19 @@ import '../img/logo.png';
 
 var parallaxScroll = document.querySelector('.parallax-wrapper');
 var pixelScrollLimit = 450; 
-var scrollButton = document.getElementById('scroll-to-top');
-var showLocator = document.getElementById('show-locator');
+var scrollToTopButton = document.getElementById('scroll-to-top');
+var showLocatorBtn = document.getElementById('show-locator');
+var scrollToProductsBtn = document.getElementById('scroll-to-products');
+
+/* Nav buttons */
+var scrollToHomeBtn = document.getElementById('scroll-to-home');
+var scrollToConceptBtn = document.getElementById('scroll-to-concept');
+// var scrollToProductBtn = document.getElementById('scroll-to-home');
+var scrollToStoryBtn = document.getElementById('scroll-to-story');
+var scrollToHashtagBtn = document.getElementById('scroll-to-hashtag');
+var scrollToContactsBtn = document.getElementById('scroll-to-contacts');
+var scrollToEventsBtn = document.getElementById('scroll-to-events');
+/* Nav buttons */
 
 document.querySelectorAll('.nav-toggle').forEach(el => {
     var mainNav = document.querySelector('.main-nav');
@@ -21,12 +32,12 @@ document.querySelectorAll('.nav-toggle').forEach(el => {
 });
 parallaxScroll.addEventListener('scroll', () => {
     if (document.body.scrollTop > pixelScrollLimit || parallaxScroll.scrollTop > pixelScrollLimit) {
-        scrollButton.style.opacity = 1;
+        scrollToTopButton.style.opacity = 1;
     } else {
-        scrollButton.style.opacity = 0;
+        scrollToTopButton.style.opacity = 0;
     };
 });
-scrollButton.addEventListener('click', () => {
+scrollToTopButton.addEventListener('click', () => {
     // document.body.scrollTop = 0; // For Safari
     // parallaxScroll.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     parallaxScroll.scroll({
@@ -35,28 +46,20 @@ scrollButton.addEventListener('click', () => {
         behavior: "smooth"
     });
 });
-showLocator.addEventListener('click', () => {
+showLocatorBtn.addEventListener('click', () => {
     document.querySelector('.roadmap').classList.toggle('show-locator-toggle');
 });
-
+scrollToProductsBtn.addEventListener('click', () => {
+    var top = document.getElementById('products').getBoundingClientRect();
+    parallaxScroll.scroll({
+        top: top.top,
+        left: 0,
+        behavior: "smooth"
+    });
+});
 /* window.onload = (() => {
     parallaxScroll.scroll({
         top: 6700,
         // behavior: "smooth"
     });
 }); */
-/* function fadeIn(el, time) {
-  el.style.opacity = 0;
-
-  var last = +new Date();
-  var tick = function() {
-    el.style.opacity = +el.style.opacity + (new Date() - last) / time;
-    last = +new Date();
-
-    if (+el.style.opacity < 1) {
-      (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
-    }
-  };
-
-  tick();
-} */

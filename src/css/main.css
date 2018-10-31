@@ -464,14 +464,21 @@ __________
 .bg1 > div{
 	display: flex;
 	flex-direction: column;
-	margin-top: -38vh;
+	margin-top: -60vh;
 	color: var(--fourth-color);
 	font-family: 'antro-bold', 'Montserrat','Roboto' ;
 	text-align: center;
-	font-size: 2.5vh;
+	font-size:  1.3em;
 }
 .bg1 > div > * {
 	margin: 0;
+}
+/* .bg1 > div > h1 {
+	font-size: 2.5em;
+} */
+.bg1 > div > p {
+	font-family: 'Montserrat','Roboto' ;
+	margin: 2rem 1rem;
 }
 .bg1::after {
     left: -1%;
