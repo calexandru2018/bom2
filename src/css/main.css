@@ -211,10 +211,17 @@ __________
 	display: grid;
 	/* The columns will be used for wider displays */
 	/* grid-template-columns: repeat(5, 1fr); */
-	grid-auto-rows: 1fr;
+	grid-template-rows: 1fr min-content;
 	text-align: center;
 	margin-top: -250px;
 	transition: margin 0.5s ease;
+	max-height: 310px;/* 
+	overflow-y: scroll; */
+}
+.road-map-locator{
+	display: grid;
+	grid-auto-rows: 1fr;
+	overflow-y: scroll;
 }
 .destination{
 	display: grid;
@@ -242,7 +249,7 @@ __________
 	display: block;
 	border: 0;
 	background-color: white;
-	margin: auto 1em;
+	margin: 2em 1em;
 	padding: 0;
 	margin-bottom: 0;
 	/* The commented code is used for wider screens */
