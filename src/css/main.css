@@ -675,9 +675,26 @@ __________
 	}
 	.main-header>.nav-toggle {
 		margin-left: -65px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.logo-landing-page {
+		width: 125px;
+		margin-top: -44px;
 	}
 	.bg1 > div {
 		font-size: 1.7em;
+	}
+	.bg1 > div > h1 {
+		font-size: 2.3em;
+	}
+	#scroll-to-top{
+		bottom: 25px;
+		right: 10%;
+		padding: 20px;
+	}
+	#scroll-to-top:hover{
+		bottom: 35px;
 	}
 }
 
