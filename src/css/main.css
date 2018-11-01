@@ -356,7 +356,7 @@ __________
 	align-items: center;
 	z-index: 6;
 	transform: translate(-100%);
-	transition: transform 0.5s ease;
+	transition: transform 0.2s ease;
 	text-transform: uppercase;
 }
 .main-nav > div:nth-child(2){
@@ -728,7 +728,7 @@ __________
 	.parallax-wrapper{
 		width: 75vw;
 		margin-left: 25vw;
-		transition: all 0.5s;
+		transition: all 0.2s ease;
 	}
 	.main-header > .nav-toggle {
 		/* Margin-left only for the nav on the main page, not in navigation */
@@ -736,10 +736,12 @@ __________
 	}
 	.main-nav{
 		width: 25vw;
+		/* max-width: 300px; */
 		transform: translateX(0);
 		font-size: 1.2em;
 		grid-template-rows: repeat(6, 1fr);
 		border-right: 1px solid;
+		transition: transform 0.2s ease;
 	}
 	.main-nav > div {
 		margin: 0;
@@ -762,7 +764,7 @@ __________
 	.expand-main{
 		width: 100vw;
 		margin-left: 0;
-		transition: all 0.5s;
+		transition: all 0.2s ease;
 	}
 	.fullscreen-navigation-toggle{
 		margin-left: -70px !important;
