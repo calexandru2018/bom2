@@ -23,6 +23,7 @@ var scrollToStoryBtn = document.getElementById('scroll-story-btn');
 var scrollToHashtagBtn = document.getElementById('scroll-hashtag-btn');
 var scrollToContactsBtn = document.getElementById('scroll-contacts-btn');
 var scrollToEventsBtn = document.getElementById('scroll-events-btn');
+var navButtons = document.querySelectorAll('.btn-nav');
 /* Nav buttons */
 
 document.querySelectorAll('.nav-toggle').forEach(el => {
@@ -58,35 +59,12 @@ scrollToProductsBtn.addEventListener('click', () => {
         behavior: "smooth"
     }); 
 });
-scrollToConceptBtn.addEventListener('click', (el) => {
-    var element = el.srcElement.dataset.link;  
-    scrollTo(document.getElementById(element));  
+navButtons.forEach((el) => {
+    el.addEventListener('click', () => {
+        var respectiveDOM = document.getElementById(el.getAttribute('data-link'));
+        scrollTo(respectiveDOM);
+    });
 });
-scrollToProductBtnNav.addEventListener('click', (el) => {
-    var element = el.srcElement.dataset.link;  
-    scrollTo(document.getElementById(element));  
-});
-scrollToConceptBtn.addEventListener('click', (el) => {
-    var element = el.srcElement.dataset.link;  
-    scrollTo(document.getElementById(element));  
-});
-scrollToStoryBtn.addEventListener('click', (el) => {
-    var element = el.srcElement.dataset.link;  
-    scrollTo(document.getElementById(element));  
-});
-scrollToHashtagBtn.addEventListener('click', (el) => {
-    var element = el.srcElement.dataset.link;  
-    scrollTo(document.getElementById(element));  
-});
-scrollToContactsBtn.addEventListener('click', (el) => {
-    var element = el.srcElement.dataset.link;  
-    scrollTo(document.getElementById(element));  
-});
-scrollToEventsBtn.addEventListener('click', (el) => {
-    var element = el.srcElement.dataset.link;  
-    scrollTo(document.getElementById(element));  
-});
-
 function scrollTo(el){
     var top = el.getBoundingClientRect();
     var parent = window.pageYOffset || parallaxScroll.scrollTop || document.body.scrollTop;
