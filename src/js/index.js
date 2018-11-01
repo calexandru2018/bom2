@@ -8,27 +8,30 @@ import '../img/bq2.jpg';
 import '../img/bq3.jpg';
 import '../img/logo.png';
 
-var parallaxScroll = document.querySelector('.parallax-wrapper');
 var pixelScrollLimit = 450; 
+var w = window.innerWidth;
+var parallaxScroll = document.querySelector('.parallax-wrapper');
 var mainNavigation = document.querySelector('.main-nav');
+var navButtons = document.querySelectorAll('.btn-nav');
 var scrollToTopButton = document.getElementById('scroll-to-top');
+var mainToggleBtn = document.getElementById('main-toggle-button');
 var showLocatorBtn = document.getElementById('show-locator');
 var scrollToProductsBtn = document.getElementById('scroll-to-products');
 
-/* Nav buttons */
-/* var scrollToHomeBtn = document.getElementById('scroll-home-btn'); */
-var scrollToConceptBtn = document.getElementById('scroll-concept-btn');
-var scrollToProductBtnNav = document.getElementById('scroll-products-btn');
-var scrollToStoryBtn = document.getElementById('scroll-story-btn');
-var scrollToHashtagBtn = document.getElementById('scroll-hashtag-btn');
-var scrollToContactsBtn = document.getElementById('scroll-contacts-btn');
-var scrollToEventsBtn = document.getElementById('scroll-events-btn');
-var navButtons = document.querySelectorAll('.btn-nav');
-/* Nav buttons */
-
+window.addEventListener('resize', () => {
+    w = window.innerWidth;
+});
 document.querySelectorAll('.nav-toggle').forEach(el => {
     el.addEventListener('click', () => {
-        mainNavigation.classList.toggle('open');
+        if(w >= 992){
+            mainNavigation.classList.toggle('close-navigation');
+            parallaxScroll.classList.toggle('expand-main');
+            mainToggleBtn.classList.toggle('fullscreen-navigation-toggle');
+        }else{
+            mainNavigation.classList.toggle('open');
+        }
+        console.log(`Width is ${w}`);
+        
     });
 });
 parallaxScroll.addEventListener('scroll', () => {
@@ -51,21 +54,15 @@ showLocatorBtn.addEventListener('click', () => {
     document.querySelector('.roadmap').classList.toggle('show-locator-toggle');
 });
 scrollToProductsBtn.addEventListener('click', () => {
-    var top = document.getElementById('products').getBoundingClientRect();
-    var parent = window.pageYOffset || parallaxScroll.scrollTop || document.body.scrollTop;    
-    parallaxScroll.scroll({
-        top: top.top + parent,
-        left: 0,
-        behavior: "smooth"
-    }); 
+    scrollTo(document.getElementById('products'), false);
 });
 navButtons.forEach((el) => {
     el.addEventListener('click', () => {
         var respectiveDOM = document.getElementById(el.getAttribute('data-link'));
-        scrollTo(respectiveDOM);
+        scrollTo(respectiveDOM, true);
     });
 });
-function scrollTo(el){
+function scrollTo(el, navigationBtnPressed){
     var top = el.getBoundingClientRect();
     var parent = window.pageYOffset || parallaxScroll.scrollTop || document.body.scrollTop;
     parallaxScroll.scroll({
@@ -73,7 +70,8 @@ function scrollTo(el){
         left: 0,
         behavior: "smooth"
     });
-    mainNavigation.classList.toggle('open'); 
+    if(navigationBtnPressed)
+        mainNavigation.classList.toggle('open'); 
 }
 /* window.onload = (() => {
     parallaxScroll.scroll({

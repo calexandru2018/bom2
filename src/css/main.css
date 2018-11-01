@@ -32,6 +32,7 @@ a{
 .btn-nav{
 	transition: all .15s ease-in-out;
 	display: inline-block;
+	cursor: pointer;
 }
 .btn-nav:hover{
 	/* text-shadow: 0px 5px 0px var(--third-color); */
@@ -348,9 +349,9 @@ __________
 	height: 100vh;
 	width: 100%;
 	overflow: hidden;
-	font-size: 1.5rem;
+	font-size: 1.5em;
 	display: grid;
-	grid-template-rows: repeat(9, 1fr);
+	grid-auto-rows: 1fr;
 	justify-items: center;
 	align-items: center;
 	z-index: 6;
@@ -384,7 +385,6 @@ i{
     border-width: 0 4px 4px 0;
     display: inline-block;
 	padding: 3px;
-	/* margin-left: -10px; */
     width: 16px;
     height: 17px;
 }
@@ -404,7 +404,7 @@ i{
 	max-height: 40px;
 	color: var(--second-color);
 }
-.main-nav > .logo-container-outer > img {
+.main-nav > .logo-container-outer .nav-mobile-logo {
 	position: absolute;
 	margin-left: auto;
 	margin-right: auto;
@@ -434,7 +434,6 @@ __________
 	height: 100vh;
 	display: flex;
 	align-items: center;
-	/* justify-content: center; */
 	color: white;
 }
 .parallax::after {
@@ -476,9 +475,6 @@ __________
 .bg1 > div > * {
 	margin: 0;
 }
-/* .bg1 > div > h1 {
-	font-size: 2.5em;
-} */
 .bg1 > div > p {
 	font-family: 'Montserrat','Roboto' ;
 	margin: 2rem 1rem;
@@ -633,25 +629,6 @@ __________
 	margin: 0 auto;
 	bottom: -.75rem;
 }
-/* @media screen and (max-width: 64rem){
-    .col{
-      width: calc(33.333333% - 2rem);
-    }
-  }
-  
-  @media screen and (max-width: 48rem){
-    .col{
-      width: calc(50% - 2rem);
-    }
-  }
-  
-  @media screen and (max-width: 32rem){
-    .col{
-      width: 100%;
-      margin: 0 0 2rem 0;
-    }
-  } */
-
 /*
 __________
 
@@ -667,11 +644,10 @@ MEDIA QUERIES START
 __________
 
 */
-
 @media (min-width: 576px) { 
 	.roadmap {
 		margin-top: -245px;
-		font-size: 1.3rem;
+		font-size: 1.3em;
 	}
 	.main-header>.nav-toggle {
 		margin-left: -65px;
@@ -679,7 +655,7 @@ __________
 		margin-bottom: 10px;
 	}
 	.logo-landing-page {
-		width: 125px;
+		width: 135px;
 		margin-top: -44px;
 	}
 	.bg1 > div {
@@ -690,22 +666,112 @@ __________
 	}
 	#scroll-to-top{
 		bottom: 25px;
-		right: 10%;
+		right: 35px;
 		padding: 20px;
 	}
 	#scroll-to-top:hover{
-		bottom: 35px;
+		bottom: 15px;
+	}
+	.logo-container-outer{
+		margin: 0 !important;
+	}
+	.logo-container-outer .nav-mobile-logo{
+		position: relative !important;
+		width: 50%;
+	}
+	.main-nav {
+		font-size: 2.5em;
+	}
+	.main-nav .nav-toggle {
+		right: -65px;
+	}
+	.nav-close-icon {
+		padding: 0.55em 0.45em;
+	}
+	.nav-close-icon .arrow-right{
+		padding: 8px 8px;
 	}
 }
-
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) { }
-
+@media (min-width: 768px) { 
+	.logo-landing-page {
+		width: 160px;
+		margin-top: -56px;
+	}
+	.main-nav{
+		grid-auto-rows: min-content;
+		/* max-width: 751px; */
+	}
+	.main-header>.nav-toggle div {
+		width: 40px;
+		height: 6px;
+	}
+	.main-header>.nav-toggle {
+		margin-left: -70px;
+	}
+	.bg1 > div {
+		font-size: 2em;
+	}
+	.bg1 > div > h1 {
+		font-size: 2.5em;
+	}
+	.col {
+		width: 47%;
+		margin: 0.7rem;
+	}
+	#contacts > div{
+		font-size: 1.5vh
+	}
+}
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {  }
-
+@media (min-width: 992px) {
+	.parallax-wrapper{
+		width: 75vw;
+		margin-left: 25vw;
+		transition: all 0.5s;
+	}
+	.main-header > .nav-toggle {
+		/* Margin-left only for the nav on the main page, not in navigation */
+		margin-left: -320px;
+	}
+	.main-nav{
+		width: 25vw;
+		transform: translateX(0);
+		font-size: 1.2em;
+		grid-template-rows: repeat(6, 1fr);
+		border-right: 1px solid;
+	}
+	.main-nav > div {
+		margin: 0;
+	}
+	.main-nav > .nav-toggle {
+		display: none;
+	}
+	.logo-container-outer{
+		display: none;
+	}
+	.btn-nav:hover{
+		/* text-shadow: 0px 5px 0px var(--third-color); */
+		transform: scale(1);
+		box-shadow: 0px 1px 0px 0px;
+		border-bottom-left-radius: 15px;
+	}
+	.close-navigation{
+		transform: translateX(-100%);
+	}
+	.expand-main{
+		width: 100vw;
+		margin-left: 0;
+		transition: all 0.5s;
+	}
+	.fullscreen-navigation-toggle{
+		margin-left: -70px !important;
+	}
+}
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  }
+@media (min-width: 1200px) { 
+
+}
 
 /*
 __________
