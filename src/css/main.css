@@ -649,10 +649,10 @@ __________
 		margin-top: -245px;
 		font-size: 1.3em;
 	}
-	.main-header>.nav-toggle {
+	.main-header > .nav-toggle {
 		margin-left: -65px;
-		margin-top: 10px;
-		margin-bottom: 10px;
+		padding-top: 10px;
+		padding-bottom: 10px;
 	}
 	.logo-landing-page {
 		width: 135px;
