@@ -772,9 +772,10 @@ __________
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
-
+	.bg1:after {
+		background-position-y: 45%;
+	}
 }
-
 /*
 __________
 
