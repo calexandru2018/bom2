@@ -726,8 +726,8 @@ __________
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
 	.parallax-wrapper{
-		width: 75vw;
-		margin-left: 25vw;
+		width: auto;
+		margin-left: 250px;
 		transition: all 0.2s ease;
 	}
 	.main-header > .nav-toggle {
@@ -735,7 +735,8 @@ __________
 		margin-left: -320px;
 	}
 	.main-nav{
-		width: 25vw;
+		/* width: 25vw; */
+		width: 250px;
 		/* max-width: 300px; */
 		transform: translateX(0);
 		font-size: 1.2em;
@@ -753,7 +754,6 @@ __________
 		display: none;
 	}
 	.btn-nav:hover{
-		/* text-shadow: 0px 5px 0px var(--third-color); */
 		transform: scale(1);
 		box-shadow: 0px 1px 0px 0px;
 		border-bottom-left-radius: 15px;
