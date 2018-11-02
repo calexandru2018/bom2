@@ -40,7 +40,7 @@ module.exports = {
                 use:  ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
             },
             {
-                test: /\.(png|jpg|jpeg|gif)$/,
+                test: /\.(png|jpg|jpeg|gif|svg)$/,
                 use: [
                   {
                     loader: 'file-loader',
@@ -52,7 +52,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(woff(2)?|ttf|eot|otf|svg)$/,
+                test: /\.(woff(2)?|ttf|eot|otf)$/,
                 use: [
                   {
                     loader: 'file-loader',

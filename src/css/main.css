@@ -35,7 +35,6 @@ a{
 	cursor: pointer;
 }
 .btn-nav:hover{
-	/* text-shadow: 0px 5px 0px var(--third-color); */
 	transform: scale(1.5);
 }
 .show-more{
@@ -125,8 +124,6 @@ a{
 	z-index: 5;
 	position: absolute;
 	margin-top: -35px;
-/* 	left: -2px;
-	top: 33px; */
 }
 .nav-mobile-logo{
 	width: 40%
@@ -138,7 +135,29 @@ a{
 	perspective: 2;
 }
 .footer{
-	background-color: black;
+	background-color: papayawhip;;
+    height: 255px !important;
+}
+.social-media-wrapper{
+	display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+	justify-items: center;
+/* 	color: #351f17;
+	font-size: 2em; */
+}
+.fab{
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+}
+.fab:hover {
+    opacity: 0.7;
+}
+.fa-facebook-square{
+    background: #3B5998;
+    color: white;
 }
 #scroll-to-top {
 	display: grid; /* Hidden by default */
@@ -157,7 +176,7 @@ a{
 	background-color: #f8a67a;
 	transition: all .3s ease-in-out;
 }
-#scroll-to-top > i{
+#scroll-to-top > .custom-i{
 	margin-bottom: -5px !important;
 }
 #scroll-to-top:hover {
@@ -182,7 +201,6 @@ a{
 .contact-form .btn-send{
 	color: var(--card-dark-light-color);
 	background-color: var(--card-light-light-color);
-	/* border: solid 1px var(--card-light-light-color); */
 	border: none;
     width: fit-content;
     outline: 20px;
@@ -380,7 +398,7 @@ __________
     border-top-left-radius: 30%;
     border-bottom-left-radius: 30%;
 }
-i{
+.custom-i{
 	border: solid white;
     border-width: 0 4px 4px 0;
     display: inline-block;
@@ -449,8 +467,8 @@ __________
 }
 .static {
 	font-size: 2.5vh;
-	min-height: 50% !important;
-	height: auto !important;
+	min-height: 50%;
+	height: auto;
 	display: grid;
 	grid-auto-rows: min-content;
 	/* grid-template-rows: repeat(2, 1fr); */
@@ -519,6 +537,7 @@ __________
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: space-evenly;
 }
 .col{
 	width: 100%;
@@ -702,11 +721,11 @@ __________
 		grid-auto-rows: min-content;
 		/* max-width: 751px; */
 	}
-	.main-header>.nav-toggle div {
+	.main-header > .nav-toggle div {
 		width: 40px;
 		height: 6px;
 	}
-	.main-header>.nav-toggle {
+	.main-header > .nav-toggle {
 		margin-left: -70px;
 	}
 	.bg1 > div {
@@ -719,8 +738,9 @@ __________
 		width: 47%;
 		margin: 0.7rem;
 	}
-	#contacts > div{
-		font-size: 1.5vh
+	#contacts > .contact-wrapper .contact-form-wrapper{
+		font-size: 1.5vh;
+		margin-top: 50px;
 	}
 }
 /* Large devices (desktops, 992px and up) */
@@ -731,13 +751,10 @@ __________
 		transition: all 0.2s ease;
 	}
 	.main-header > .nav-toggle {
-		/* Margin-left only for the nav on the main page, not in navigation */
 		margin-left: -320px;
 	}
 	.main-nav{
-		/* width: 25vw; */
 		width: 250px;
-		/* max-width: 300px; */
 		transform: translateX(0);
 		font-size: 1.2em;
 		grid-template-rows: repeat(6, 1fr);
@@ -769,9 +786,20 @@ __________
 	.fullscreen-navigation-toggle{
 		margin-left: -70px !important;
 	}
+	.contact-wrapper{
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 3rem;
+	}
+	.contact-form-wrapper{
+		margin-top: 0px !important;
+	}
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
+	.col{
+		max-width: 750px;
+	}
 	.bg1:after {
 		background-position-y: 45%;
 	}

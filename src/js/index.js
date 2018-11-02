@@ -42,8 +42,6 @@ parallaxScroll.addEventListener('scroll', () => {
     };
 });
 scrollToTopButton.addEventListener('click', () => {
-    // document.body.scrollTop = 0; // For Safari
-    // parallaxScroll.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     parallaxScroll.scroll({
         top: 0,
         left: 0,
@@ -54,15 +52,15 @@ showLocatorBtn.addEventListener('click', () => {
     document.querySelector('.roadmap').classList.toggle('show-locator-toggle');
 });
 scrollToProductsBtn.addEventListener('click', () => {
-    scrollTo(document.getElementById('products'), false);
+    scrollTo(document.getElementById('products'), false, ((w >= 992) ? true : false));
 });
 navButtons.forEach((el) => {
     el.addEventListener('click', () => {
         var respectiveDOM = document.getElementById(el.getAttribute('data-link'));
-        scrollTo(respectiveDOM, true);
+        scrollTo(respectiveDOM, true, ((w >= 992) ? true : false));
     });
 });
-function scrollTo(el, navigationBtnPressed){
+function scrollTo(el, navigationBtnPressed, isDesktop){
     var top = el.getBoundingClientRect();
     var parent = window.pageYOffset || parallaxScroll.scrollTop || document.body.scrollTop;
     parallaxScroll.scroll({
@@ -70,12 +68,6 @@ function scrollTo(el, navigationBtnPressed){
         left: 0,
         behavior: "smooth"
     });
-    if(navigationBtnPressed)
+    if(navigationBtnPressed && !isDesktop)
         mainNavigation.classList.toggle('open'); 
 }
-/* window.onload = (() => {
-    parallaxScroll.scroll({
-        top: 6700,
-        // behavior: "smooth"
-    });
-}); */

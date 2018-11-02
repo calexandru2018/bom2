@@ -5,12 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/brands.css" integrity="sha384-BCEeiNUiLzxxoeYaIu7jJqq0aVVz2O2Ig4WbWEmRQ2Dx/AAxNV1wMDBXyyrxw1Zd" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css" integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ" crossorigin="anonymous">
 </head>
 <body>
     <!-- <div class="page-wrapper"> -->
         <nav class="main-nav card-background-dark" role="navigation">
             <div class="btn nav-toggle">
-                <span class="nav-close-icon"><i class="arrow-right"></i></span>
+                <span class="nav-close-icon"><i class="custom-i arrow-right"></i></span>
             </div>
             <div class="logo-container-outer">
                 <img src="./assets/img/logo.png" class="nav-mobile-logo" alt="">
@@ -268,8 +270,17 @@
             </section>
             <!-- Contactos -->
             <section class="section static card-background-dark" id="contacts">
-                    <h1>Contactos</h1>
-                    <div>
+                <h1>Contactos</h1>
+                <div class="contact-wrapper">
+                    <div class="contact-text">
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae, sapiente, vel quod, eligendi tenetur consequuntur fugiat deserunt nesciunt voluptatem nisi ipsam amet eum excepturi ad deleniti. Eveniet natus ea vitae!
+                        </p>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae, sapiente, vel quod, eligendi tenetur consequuntur fugiat deserunt nesciunt voluptatem nisi ipsam amet eum excepturi ad deleniti. Eveniet natus ea vitae!
+                        </p>
+                    </div>
+                    <div class="contact-form-wrapper">
                         <form class="contact-form">                   
                             <label for="form-name">Nome</label>
                             <input name="form-name" type="text" class="form-input">
@@ -287,14 +298,19 @@
                             <button type="button" id="form-send" class="btn btn-send">Enviar</button>
                         </form>
                     </div>
+                </div>
             </section>
             <section class="section parallax bg4">
             </section>
             <footer class="section static footer">
-                <h1>Rodape</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit voluptatibus aliquam, laudantium sint officiis, consequatur maxime quidem itaque voluptate ut asperiores cum possimus, dolorum voluptas recusandae tenetur at. Eligendi, quisquam!
-                </p>
+                <div class="social-media-wrapper">
+                    <a href="#" class="fab fa-twitter-square"></a>
+                    <a href="#" class="fab fa-facebook-square"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+<!--                     <img src="./assets/img/facebook-brands.svg" class="fb-icon" alt="">
+                    <img src="./assets/img/instagram-brands.svg" class="ig-icon" alt="">
+                    <img src="./assets/img/twitter-square-brands.svg" class="tw-icon" alt=""> -->
+                </div>
             </footer>
         </main>
         <button id="scroll-to-top" title="Ir para o topo">
