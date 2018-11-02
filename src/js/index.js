@@ -63,11 +63,13 @@ navButtons.forEach((el) => {
 function scrollTo(el, navigationBtnPressed, isDesktop){
     var top = el.getBoundingClientRect();
     var parent = window.pageYOffset || parallaxScroll.scrollTop || document.body.scrollTop;
-    parallaxScroll.scroll({
-        top: top.top + parent,
+    var scrollAmmount= ((el.id == 'homepage') ? 0 : top.top + parent);
+    console.log(el.id);
+     parallaxScroll.scroll({
+        top: scrollAmmount,
         left: 0,
         behavior: "smooth"
-    });
+    }); 
     if(navigationBtnPressed && !isDesktop)
         mainNavigation.classList.toggle('open'); 
 }
