@@ -801,7 +801,7 @@ __________
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
 	.scroll-home-btn{
-		display: inline-block;
+		display: inline-block !important;
 	}
 	.parallax-wrapper{
 		width: auto;

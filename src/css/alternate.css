@@ -30,7 +30,7 @@ html, body{
 }
 .grid-wrapper{
     display: grid;
-    grid-auto-rows: min-content;
+    grid-template-rows: none;
     margin: 0 1rem;
     padding: 0 .5rem;
     height: 100%;
@@ -48,14 +48,17 @@ html, body{
     background: url('/dist/assets/img/logo.png') no-repeat center;
     background-size: contain;
     width: 100%;
-    height: 35vh;
-    margin-top: -10px;
+    height: 35vh;/* 
+    margin-top: -10px; */
 }
 .bottom-text{
     font-family: antro-bold;
     text-align: center;
-    font-size: 2em;
-    margin-top: -2.8rem;
+    font-size: 1.8em;/* 
+    margin-top: -1.8rem; */
+}
+.bottom-text p{
+    margin: 0;
 }
 #mc_embed_signup_scroll{
     display: grid;
@@ -106,7 +109,6 @@ html, body{
     font-size: 0.8em;
 }
 .tooltip {
-    /* position: relative; */
     display: inline-block;
     font-size: 0.8em;
 }
@@ -129,16 +131,6 @@ html, body{
     opacity: 0;
     transition: opacity 0.3s;
 }
-/* .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 20%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent #fff transparent;
-} */
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
@@ -192,7 +184,18 @@ html, body{
 .ig-logo{
     background: url('/dist/assets/img/ig.png') no-repeat center;
 }
-
+.mail-to{
+    font-size: 0.7em;
+    margin-bottom: 0.5rem;
+}
+.mail-to a{
+    text-decoration: none;
+    color: var(--card-light-light-color) ;
+    transition: all 0.2s ease-in-out;
+}
+.mail-to a:hover{
+    color: white;
+}
 @media (min-width: 576px) {
     .grid-wrapper{
         margin: 0px 1.5rem;
@@ -220,15 +223,14 @@ html, body{
         height: 75px;
         margin-top: -1px;
     }
-    .logo-landing-page {
-        height: 45vh;
-    }
     .tooltip .tooltiptext {
         max-width: 430px;
     }    
     .bottom-text {
-        font-size: 3.5em;
-        margin-top: -3.8rem;
+        font-size: 3em;
+    }
+    .mail-to{
+        font-size: 1em;
     }
 }
 
@@ -240,19 +242,18 @@ html, body{
     #mc_embed_signup_scroll{
         font-size: 1em;
     }
-    .logo-landing-page {
-        margin-top: -8px;
-    }
     .bottom-text {
-        font-size: 4.5em;
-        margin-top: -6.8rem;
+        font-size: 3.7em;
+    }
+    .mail-to{
+        margin-bottom: 1rem;
     }
 }
 
 /* Large devices desktops, 992px and up */
 @media (min-width: 992px) {
     .grid-wrapper {
-        margin: 0 2rem;
+        margin: 0 1.5rem;
     }
     .top-text {
         font-size: 2.2em
@@ -272,17 +273,23 @@ html, body{
     #mc-embedded-subscribe-form input[type=submit]{
         font-size: .8em;
     }
-    .logo-landing-page {
-        height: 40vh;
-        margin-top: -8px;
-    }
     .bottom-text {
-        font-size: 5em;
-        margin-top: -9rem;
+        font-size: 3.5em;
+    }
+    .mail-to{
+        margin-bottom: 1.5rem;
     }
 }
 
 /* Extra large devices large desktops, 1200px and up */
 @media (min-width: 1200px) {
-
+    .logo-landing-page {
+        height: 30vh;
+    }
+    .bottom-text {
+        font-size: 3.7em;
+    }
+    .mail-to {
+        font-size: 1.2em;
+    }
 }
