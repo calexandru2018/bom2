@@ -8,6 +8,7 @@ module.exports = {
     entry: {
         index: './src/js/index.js',
         alternate: './src/js/alternate.js',
+        dashboard: './src/js/dashboard.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist/'),
@@ -74,7 +75,7 @@ module.exports = {
             template: './src/index.html',
             hash: true,
             cache: true,
-            excludeChunks: ['alternate']
+            excludeChunks: ['alternate', 'dashboard']
         }),
         new HtmlWebpackPlugin({
             title: 'Abrimos Brevemente',
@@ -82,7 +83,15 @@ module.exports = {
             template: './src/abrimos-breve.html',
             hash: true,
             cache: true,
-            excludeChunks: ['index']
+            excludeChunks: ['index', 'dashboard']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Dashboard',
+            filename: 'dashboard.html',
+            template: './src/dashboard.html',
+            hash: true,
+            cache: true,
+            excludeChunks: ['index', 'alternate']
         }),
         new MiniCssExtractPlugin({
             filename: 'assets/css/[name].css',
