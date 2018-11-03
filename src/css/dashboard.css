@@ -1,0 +1,81 @@
+:root {
+    --card-dark-dark-color: #3b2019; 
+	--card-dark-light-color: #351f17;
+	--card-light-light-color: #fbc382;
+	--card-light-dark-color: #f8a67a;
+    --second-color: #fac27f; 
+	--third-color: #f68271; 
+	--fourth-color: #61412e;
+}
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+body,html{
+	margin:0;
+	padding:0; 
+}
+a{
+	text-decoration: none;
+}
+.columns-2-of-4{
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+.columns-4-of-4{
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+.self-center{
+    justify-self: center;
+}
+.btn, .btn-auto{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+.btn-auto{
+    padding: 0.4em;
+}
+.btn{
+    width: 7em;
+    padding: .8rem;
+}
+.btn-primary{
+    background-color: #5f9ea0;
+    color: white;
+}
+.btn-primary:hover{
+    opacity: 0.7;
+}
+.dashboard{
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 1.5rem;
+    margin: 2rem 0;
+}
+.user-info{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-gap: 1rem;
+}
+.user-info > img{
+    justify-self: center;
+    border-radius: 50px;
+}
+.user-info .user-settings{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+.user-name{
+    display: grid;
+    justify-items: center;
+}
+.places, .flavours, .products{
+    display: grid;
+}
+.sub-choice{
+    display: none;
+    margin: 1.5rem 0;
+}
