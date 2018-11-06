@@ -5,14 +5,15 @@
 	--card-light-dark-color: #f8a67a;
     --second-color: #fac27f; 
 	--third-color: #f68271; 
-	--fourth-color: #61412e;
+    --fourth-color: #61412e;
+    font-family: 'Verdana', 'Sans-serif';  
 }
 *, *:before, *:after {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 body,html{
 	margin:0;
-	padding:0; 
+    padding:0; 
 }
 a{
 	text-decoration: none;
