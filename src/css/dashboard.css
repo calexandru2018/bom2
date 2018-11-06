@@ -17,6 +17,15 @@ body,html{
 a{
 	text-decoration: none;
 }
+.hide{
+    display: none !important;
+}
+.show{
+    display: inline-block !important;
+}
+.display-grid{
+    display: grid !important;
+}
 .columns-2-of-4{
     grid-column-start: 2;
     grid-column-end: 4;
@@ -42,11 +51,40 @@ a{
     padding: .8rem;
 }
 .btn-primary{
-    background-color: #5f9ea0;
+    background-color: cornflowerblue;
     color: white;
+    transition: all 0.2s ease-in-out;
 }
 .btn-primary:hover{
     opacity: 0.7;
+}
+.btn-secondary{
+    background-color: coral;
+    color: white;
+    margin: 1rem 0;
+    transition: all 0.1s ease-in-out;
+}
+.btn-secondary:hover{
+    opacity: 0.7;
+}
+.btn-form-insert{
+    grid-column-start: 2;
+    width: fit-content;
+    justify-self: right;
+}
+.table {
+    /* display: grid; */
+    display: none;
+    margin: 1rem 0;
+    grid-template-columns: 1fr 4fr 3fr 3fr 4fr;
+}
+
+.table > span {
+    /* padding: 8px 4px; */
+    border-bottom: 1px solid silver;
+}
+.table > .table-header {
+    font-weight: bold;
 }
 .dashboard{
     display: grid;
@@ -77,5 +115,13 @@ a{
 }
 .sub-choice{
     display: none;
-    margin: 1.5rem 0;
+    grid-auto-rows: min-content;
+    margin: 1.5rem 1rem;
+}
+.sub-choice form{
+    /* display: grid; */
+    display: none;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 0.5rem 1rem;
+    margin: 1.5rem 0 0;
 }

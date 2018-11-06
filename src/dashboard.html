@@ -23,24 +23,25 @@
             <div class="places columns-4-of-4">
                 <button class="btn btn-primary self-center" id="places-menu-btn">Destinos</button>
                 <div class="sub-choice">
-                   <button class="btn btn-secondary" id="places-show-btn">Ver Destinos</button>
+                   <button class="btn btn-secondary self-center" id="places-show-btn">Ver Destinos</button>
                     <div class="table">
-                        <div class="table-header">
-                            <div class="header-item">ID</div>
-                            <div class="header-item">Destino</div>
-                            <div class="header-item">Adicionado</div>
-                            <div class="header-item">Editado</div>
-                            <div class="header-item">Accoes</div>
-                        </div>
-                        <div class="table-body-row">
-                            <div class="body-item">1</div>
-                            <div class="body-item">Lagos</div>
-                            <div class="body-item">Ontem</div>
-                            <div class="body-item">Hoje</div>
-                            <div class="body-item"><button>Apagar</button></div>
-                        </div>
+                        <span class="table-header">ID</span>
+                        <span class="table-header">Destino</span>
+                        <span class="table-header">Add</span>
+                        <span class="table-header">Edit</span>
+                        <span class="table-header">Accoes</span>
+                        <span>1</span>
+                        <span>Lagos</span>
+                        <span>Ontem</span>
+                        <span>Hoje</span>
+                        <span><button>Editar</button><button>Apagar</button></span>
+                        <span>2</span>
+                        <span>Albufeira</span>
+                        <span>Ontem</span>
+                        <span>Hoje</span>
+                        <span><button>Editar</button><button>Apagar</button></span>
                     </div>
-                    <button class="btn btn-secondary" id="places-showform-btn">Adicionar Proximo Destino</button>  
+                    <button class="btn btn-secondary self-center" id="places-showform-btn">Novo</button>  
                     <form>
                         <label for="">Nome</label>
                         <input type="text" name="name">
@@ -49,69 +50,76 @@
                         <label for="">Longitude</label>
                         <input type="text" name="longitude">
 
-                        <button id="places-add-btn">Adicionar</button> 
+                        <button class="btn-form-insert" id="places-add-btn">Adicionar</button> 
                     </form>
                 </div>                         
             </div>
             <div class="flavours columns-4-of-4">
                 <button class="btn btn-primary self-center" id="flavours-menu-btn">Sabores</button>  
                 <div class="sub-choice">           
-                    <button class="btn btn-secondary" id="flavours-show-btn">Ver Sabores</button>
+                    <button class="btn btn-secondary self-center" id="flavours-show-btn">Ver Sabores</button>
                     <div class="table">
-                        <div class="table-header">
-                            <div class="header-item">ID</div>
-                            <div class="header-item">Destino</div>
-                            <div class="header-item">Adicionado</div>
-                            <div class="header-item">Editado</div>
-                            <div class="header-item">Accoes</div>
-                        </div>
-                        <div class="table-body-row">
-                            <div class="body-item">1</div>
-                            <div class="body-item">Lagos</div>
-                            <div class="body-item">Ontem</div>
-                            <div class="body-item">Hoje</div>
-                            <div class="body-item"><button>Apagar</button></div>
-                        </div>
+                            <span class="table-header">ID</span>
+                            <span class="table-header">Sabor</span>
+                            <span class="table-header">Add</span>
+                            <span class="table-header">Edit</span>
+                            <span class="table-header">Accoes</span>
+                            <span>1</span>
+                            <span>Morango</span>
+                            <span>Ontem</span>
+                            <span>Hoje</span>
+                            <span><button>Apagar</button></span>
+                            <span>2</span>
+                            <span>Chocolate</span>
+                            <span>Ontem</span>
+                            <span>Hoje</span>
+                            <span><button>Editar</button><button>Apagar</button></span>
+                            <span>3</span>
+                            <span>Nutella</span>
+                            <span>Ontem</span>
+                            <span>Hoje</span>
+                            <span><button>Editar</button><button>Apagar</button></span>
                     </div>                
-                    <button class="btn btn-secondary" id="flavours-showform-btn">Adicionar Novo Sabor</button>
+                    <button class="btn btn-secondary self-center" id="flavours-showform-btn">Novo</button>
                     <form>
                         <label for="">Portugues</label>
                         <input type="text" name="flavours_PT">
                         <label for="">Ingles</label>
                         <input type="text" name="flavours_EN">
 
-                        <button id="flavours-add-btn">Adicionar</button> 
+                        <button class="" id="flavours-add-btn">Adicionar</button> 
                     </form>
                 </div>
             </div>
             <div class="products columns-4-of-4">
                 <button class="btn btn-primary self-center" id="products-menu-btn">Produtos</button>    
                 <div class="sub-choice">             
-                    <button class="btn btn-secondary" id="products-show-btn">Ver Produtos</button>   
+                    <button class="btn btn-secondary self-center" id="products-show-btn">Ver Produtos</button>   
                     <div class="table">
-                        <div class="table-header">
-                            <div class="header-item">ID</div>
-                            <div class="header-item">Destino</div>
-                            <div class="header-item">Adicionado</div>
-                            <div class="header-item">Editado</div>
-                            <div class="header-item">Accoes</div>
-                        </div>
-                        <div class="table-body-row">
-                            <div class="body-item">1</div>
-                            <div class="body-item">Lagos</div>
-                            <div class="body-item">Ontem</div>
-                            <div class="body-item">Hoje</div>
-                            <div class="body-item"><button>Apagar</button></div>
-                        </div>
+                            <span class="table-header">ID</span>
+                            <span class="table-header">Produto</span>
+                            <span class="table-header">Add</span>
+                            <span class="table-header">Edit</span>
+                            <span class="table-header">Accoes</span>
+                            <span class="produt" data-produ=>1</span>
+                            <span>Crepes</span>
+                            <span>Waffles</span>
+                            <span>Hoje</span>
+                            <span><button>Editar</button><button>Apagar</button></span>
+                            <span>2</span>
+                            <span>Albufeira</span>
+                            <span>Ontem</span>
+                            <span>Hoje</span>
+                            <span><button>Editar</button><button>Apagar</button></span>
                     </div>             
-                    <button class="btn btn-secondary" id="products-showform-btn">Adicionar Novo Produto</button>
+                    <button class="btn btn-secondary self-center" id="products-showform-btn">Novo</button>
                     <form>
                         <label for="">Portugues</label>
                         <input type="text" name="flavours_PT">
                         <label for="">Ingles</label>
                         <input type="text" name="flavours_EN">
 
-                        <button id="flavours-add-btn">Adicionar</button> 
+                        <button class="btn-form-insert" id="flavours-add-btn">Adicionar</button> 
                     </form>
                 </div>
             </div>
