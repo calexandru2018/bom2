@@ -133,6 +133,11 @@ a{
     /* display: grid; */
     display: none;
     grid-template-columns: 1fr 2fr;
-    grid-gap: 0.5rem 1rem;
+    grid-gap: 0.5rem 0rem;
     margin: 1.5rem 0 0;
+}
+.sub-choice form input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid lightgray;
 }
