@@ -71,6 +71,16 @@ a{
     grid-column-start: 2;
     width: fit-content;
     justify-self: right;
+    background-color: darkseagreen;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: all 0.1s ease-in-out
+}
+.btn-form-insert:hover{
+    opacity: 0.7;
 }
 .table {
     /* display: grid; */
