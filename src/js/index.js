@@ -7,6 +7,7 @@ import '../img/bq4.jpg';
 import '../img/bq2.jpg';
 import '../img/bq3.jpg';
 import '../img/logo.png';
+import '../img/favicon16.ico';
 
 var pixelScrollLimit = 450; 
 var w = window.innerWidth;

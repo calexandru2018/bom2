@@ -41,7 +41,7 @@ module.exports = {
                 use:  ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
             },
             {
-                test: /\.(png|jpg|jpeg|gif|svg)$/,
+                test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
                 use: [
                   {
                     loader: 'file-loader',

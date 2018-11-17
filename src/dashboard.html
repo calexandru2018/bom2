@@ -11,10 +11,14 @@
         <div class="login" style="display: none"></div>
         <div class="dashboard">
             <div class="user-info columns-2-of-4">
-                <img class="self-center" src="https://via.placeholder.com/150" alt="Imagem do administractor" srcset="">
-                <div class="user-settings">
-                    <a class="btn-auto btn-primary" href="#">Definicoes</a>
-                    <a class="btn-auto btn-primary" href="#">Logout</a>
+                <img class="self-center" src="assets/img/logo.png" alt="Imagem do administractor" srcset="">
+                <div class="user-options">
+                    <a class="btn-auto btn-primary" href="#">
+                        <img src="assets/img/settings.svg" alt="" srcset="">
+                    </a>
+                    <a class="btn-auto btn-primary" href="#">
+                        <img src="assets/img/logout.svg" alt="" srcset="">
+                    </a>
                 </div>
             </div>
             <div class="user-name columns-2-of-4">
@@ -24,26 +28,32 @@
                 <button class="btn btn-primary self-center" id="places-menu-btn">Destinos</button>
                 <div class="sub-choice">
                    <button class="btn btn-secondary self-center" id="places-show-btn">Ver Destinos</button>
-                    <div class="table">
-                        <span class="table-header">ID</span>
+                    <div class="table-col-4">
+                        <!-- <span class="table-header">ID</span> -->
                         <span class="table-header">Destino</span>
                         <span class="table-header">Desde</span>
                         <span class="table-header">Ate</span>
                         <span class="table-header">Accoes</span>
-                        <span>1</span>
+                        <!-- <span>1</span> -->
                         <span>Lagos</span>
-                        <span>Ontem</span>
-                        <span>Hoje</span>
-                        <span><button>Editar</button><button>Apagar</button></span>
-                        <span>2</span>
+                        <span>2018-01-01</span>
+                        <span>2018-12-31</span>
+                        <span class="action-icons">
+                            <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
+                            <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                        </span>
+                        <!-- <span>2</span> -->
                         <span>Albufeira</span>
-                        <span>Ontem</span>
-                        <span>Hoje</span>
-                        <span><button>Editar</button><button>Apagar</button></span>
+                        <span>2018-01-01</span>
+                        <span>2018-12-31</span>
+                        <span class="action-icons">
+                            <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
+                            <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                        </span>
                     </div>
                     <button class="btn btn-secondary self-center" id="places-showform-btn">Novo</button>  
                     <form>
-                        <label for="">Nome</label>
+                        <label for="">Cidade</label>
                         <input type="text" name="name">
                         <label for="">Desde</label>
                         <input type="date" name="name">
@@ -62,27 +72,24 @@
                 <button class="btn btn-primary self-center" id="flavours-menu-btn">Sabores</button>  
                 <div class="sub-choice">           
                     <button class="btn btn-secondary self-center" id="flavours-show-btn">Ver Sabores</button>
-                    <div class="table">
-                            <span class="table-header">ID</span>
+                    <div class="table-col-2">
                             <span class="table-header">Sabor</span>
-                            <span class="table-header">Add</span>
-                            <span class="table-header">Edit</span>
                             <span class="table-header">Accoes</span>
-                            <span>1</span>
                             <span>Morango</span>
-                            <span>Ontem</span>
-                            <span>Hoje</span>
-                            <span><button>Apagar</button></span>
-                            <span>2</span>
+                            <span class="action-icons">
+                                <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
+                                <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                            </span>
                             <span>Chocolate</span>
-                            <span>Ontem</span>
-                            <span>Hoje</span>
-                            <span><button>Editar</button><button>Apagar</button></span>
-                            <span>3</span>
+                            <span class="action-icons">
+                                <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
+                                <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                            </span>
                             <span>Nutella</span>
-                            <span>Ontem</span>
-                            <span>Hoje</span>
-                            <span><button>Editar</button><button>Apagar</button></span>
+                            <span class="action-icons">
+                                <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
+                                <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                            </span>
                     </div>                
                     <button class="btn btn-secondary self-center" id="flavours-showform-btn">Novo</button>
                     <form>
@@ -91,7 +98,7 @@
                         <label for="">Ingles</label>
                         <input type="text" name="flavours_EN">
 
-                        <button class="" id="flavours-add-btn">Adicionar</button> 
+                        <button class="btn-form-insert" id="flavours-add-btn">Adicionar</button> 
                     </form>
                 </div>
             </div>
@@ -99,22 +106,19 @@
                 <button class="btn btn-primary self-center" id="products-menu-btn">Produtos</button>    
                 <div class="sub-choice">             
                     <button class="btn btn-secondary self-center" id="products-show-btn">Ver Produtos</button>   
-                    <div class="table">
-                            <span class="table-header">ID</span>
-                            <span class="table-header">Produto</span>
-                            <span class="table-header">Add</span>
-                            <span class="table-header">Edit</span>
-                            <span class="table-header">Accoes</span>
-                            <span class="produt" data-produ=>1</span>
-                            <span>Crepes</span>
-                            <span>Waffles</span>
-                            <span>Hoje</span>
-                            <span><button>Editar</button><button>Apagar</button></span>
-                            <span>2</span>
-                            <span>Albufeira</span>
-                            <span>Ontem</span>
-                            <span>Hoje</span>
-                            <span><button>Editar</button><button>Apagar</button></span>
+                    <div class="table-col-2">
+                        <span class="table-header">Produto</span>
+                        <span class="table-header">Accoes</span>
+                        <span>Crepes</span>
+                        <span class="action-icons">
+                            <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
+                            <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                        </span>
+                        <span>Waffles</span>
+                        <span class="action-icons">
+                            <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
+                            <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                        </span>
                     </div>             
                     <button class="btn btn-secondary self-center" id="products-showform-btn">Novo</button>
                     <form>
