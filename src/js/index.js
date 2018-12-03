@@ -1,5 +1,6 @@
 
 import 'normalize.css';
+import '../../node_modules/fullcalendar/dist/fullcalendar.css';
 import '../fonts/Antro_Vectra_Bolder.otf';
 import '../css/main.css';
 import '../img/bq.jpg';
@@ -8,6 +9,7 @@ import '../img/bq2.jpg';
 import '../img/bq3.jpg';
 import '../img/logo.png';
 import '../img/favicon16.ico';
+import { Calendar } from 'fullcalendar';
 
 var pixelScrollLimit = 450; 
 var w = window.innerWidth;
@@ -19,6 +21,43 @@ var mainToggleBtn = document.getElementById('main-toggle-button');
 var showLocatorBtn = document.getElementById('show-locator');
 var scrollToProductsBtn = document.getElementById('scroll-to-products');
 
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+  
+    var calendar = new Calendar(calendarEl, {
+        locale: 'pt',
+        height: 'parent',
+        firstDay: 1,
+        buttonText: {
+            today:  'hoje'
+        },
+        events: [
+            {
+                title: 'Albufeira',
+                start: '2018-12-01',
+                end: '2018-12-05',
+                description: 'This is a cool event',
+                url: 'https://www.google.com/maps/dir/?api=1&destination=37.015578,-7.920545'
+            },
+            {
+                title: 'Aljezur',
+                start: '2018-12-07',
+                end: '2018-12-10',
+                description: 'This is a cool event',
+                url: 'https://www.google.com/maps/dir/?api=1&destination=37.352141,-8.843425'
+            }
+        ],
+        eventClick: (info) => {
+            info.jsEvent.preventDefault(); // don't let the browser navigate
+
+            if (info.event.url) {
+              window.open(info.event.url);
+            }
+        }
+    });
+  
+    calendar.render();
+});
 window.addEventListener('resize', () => {
     w = window.innerWidth;
 });
