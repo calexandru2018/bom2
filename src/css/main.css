@@ -257,15 +257,18 @@ __________
 	/* grid-template-columns: repeat(5, 1fr); */
 	grid-template-rows: 1fr min-content;
 	text-align: center;
-	margin-top: -250px;
 	transition: margin 0.5s ease;
-	max-height: 310px;/* 
-	overflow-y: scroll; */
+	margin-top: -440px;
+    max-height: 500px;
+	/* margin-top: -250px; 
+	__ORIGNAL VALUES__
+	max-height: 310px;*/
+	/*overflow-y: scroll; */
 }
 .road-map-locator{
 	display: grid;
 	grid-auto-rows: 1fr;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 .destination{
 	display: grid;
@@ -692,10 +695,15 @@ __________
 	.footer .contact-information, .footer .footer-surplus{
 		font-size: 0.8em;
 	}
+	.roadmap {
+		margin-top: -465px;
+		/* font-size: 1.3em; */
+		max-height: 635px;
+	}
  }
 @media (min-width: 576px) { 
 	.roadmap {
-		margin-top: -245px;
+		margin-top: -530px;
 		font-size: 1.3em;
 	}
 	.main-header > .nav-toggle {

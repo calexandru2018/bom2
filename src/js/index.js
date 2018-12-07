@@ -20,42 +20,47 @@ var scrollToTopButton = document.getElementById('scroll-to-top');
 var mainToggleBtn = document.getElementById('main-toggle-button');
 var showLocatorBtn = document.getElementById('show-locator');
 var scrollToProductsBtn = document.getElementById('scroll-to-products');
-
-document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+var calendarEl = document.getElementById('calendar');
   
-    var calendar = new Calendar(calendarEl, {
-        locale: 'pt',
-        height: 'parent',
-        firstDay: 1,
-        buttonText: {
-            today:  'hoje'
+var calendar = new Calendar(calendarEl, {
+    defaultView: 'month',
+    locale: 'pt',
+    height: 'parent',
+    firstDay: 1,
+    navLinks: false, //will change to true  so people can ask for events
+    buttonText: {
+        today:  'hoje'
+    },
+    events: [
+        {
+            title: 'Albufeira',
+            start: '2018-12-01',
+            end: '2018-12-05',
+            description: 'This is a cool event',
+            url: 'https://www.google.com/maps/dir/?api=1&destination=37.015578,-7.920545'
         },
-        events: [
-            {
-                title: 'Albufeira',
-                start: '2018-12-01',
-                end: '2018-12-05',
-                description: 'This is a cool event',
-                url: 'https://www.google.com/maps/dir/?api=1&destination=37.015578,-7.920545'
-            },
-            {
-                title: 'Aljezur',
-                start: '2018-12-07',
-                end: '2018-12-10',
-                description: 'This is a cool event',
-                url: 'https://www.google.com/maps/dir/?api=1&destination=37.352141,-8.843425'
-            }
-        ],
-        eventClick: (info) => {
-            info.jsEvent.preventDefault(); // don't let the browser navigate
-
-            if (info.event.url) {
-              window.open(info.event.url);
-            }
+        {
+            title: 'Aljezur',
+            start: '2018-12-07',
+            end: '2018-12-10',
+            description: 'This is a cool event',
+            url: 'https://www.google.com/maps/dir/?api=1&destination=37.352141,-8.843425'
         }
-    });
-  
+    ],
+    eventClick: (info) => {
+        info.jsEvent.preventDefault(); // don't let the browser navigate
+
+        if (info.event.url) {
+          window.open(info.event.url, '_blank');
+        }
+    },
+/*     navLinkDayClick: function(date, jsEvent) {
+        console.log('day', date.toISOString());
+        console.log('coords', jsEvent.pageX, jsEvent.pageY);
+    } */
+});
+
+document.addEventListener('DOMContentLoaded', () =>  {
     calendar.render();
 });
 window.addEventListener('resize', () => {
