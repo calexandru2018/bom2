@@ -28,16 +28,18 @@
                 <button class="btn btn-primary self-center" id="places-menu-btn">Destinos</button>
                 <div class="sub-choice">
                    <button class="btn btn-secondary self-center" id="places-show-btn">Ver Destinos</button>
-                    <div class="table-col-4">
+                    <div class="table-col-5">
                         <!-- <span class="table-header">ID</span> -->
                         <span class="table-header">Destino</span>
                         <span class="table-header">Desde</span>
                         <span class="table-header">Ate</span>
+                        <span class="table-header">Mapa</span>
                         <span class="table-header">Accoes</span>
                         <!-- <span>1</span> -->
-                        <span>Lagos</span>
+                        <span>Aljezur</span>
                         <span>2018-01-01</span>
                         <span>2018-12-31</span>
+                        <span><a href=" https://www.google.com/maps/dir/?api=1&destination=37.352141,-8.843425" target="_blank">Ver</a></span>
                         <span class="action-icons">
                             <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
                             <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
@@ -46,6 +48,7 @@
                         <span>Albufeira</span>
                         <span>2018-01-01</span>
                         <span>2018-12-31</span>
+                        <span><a href="https://www.google.com/maps/dir/?api=1&destination=37.015578,-7.920545" target="_blank">Ver</a></span>
                         <span class="action-icons">
                             <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
                             <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
@@ -126,7 +129,12 @@
                         <input type="text" name="flavours_PT">
                         <label for="">Ingles</label>
                         <input type="text" name="flavours_EN">
-
+                        <label for="flavourList">Sabores</label>
+                        <select name="flavour" id="flavourList">
+                            <option selected disabled>Selecione um sabor</option>
+                            <option value="1">Nutella</option>
+                            <option value="2">Chocolate</option>
+                        </select>
                         <button class="btn-form-insert" id="flavours-add-btn">Adicionar</button> 
                     </form>
                 </div>
