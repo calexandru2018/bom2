@@ -6,7 +6,13 @@ import '../img/edit.svg';
 import '../img/remove.svg';
 import '../img/settings.svg';
 import '../img/logout.svg';
+var settingsOverlay = document.getElementById('settings-overlay');
 
+document.querySelectorAll('.show-settings').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        settingsOverlay.classList.toggle('display-grid'); 
+    });
+});
 document.querySelectorAll('.btn-primary').forEach((btn) => {
     btn.addEventListener('click', () => {
         const nextEl = btn.nextElementSibling;
@@ -16,6 +22,6 @@ document.querySelectorAll('.btn-primary').forEach((btn) => {
 document.querySelectorAll('.btn-secondary').forEach((btn) => {
     btn.addEventListener('click', () => {
         const nextEl = btn.nextElementSibling;
-        nextEl.classList.toggle('display-grid'); 
+        nextEl.classList.toggle('display-grid');
     });
 });

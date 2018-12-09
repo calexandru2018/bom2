@@ -7,18 +7,67 @@
     <title>Dashboard - Bom Ao Quadrado</title>
 </head>
 <body>
+    <div id="settings-overlay">
+        <div class="admin-settings">
+            <button class="btn btn-primary self-center" id="show-admin-list">Adicionar Administrador</button>
+            <form class="admin-add-new">
+                <label for="email">E-mail*</label>
+                <input type="email" name="email">
+                <label for="password">Palavra Passe*</label>
+                <input type="passwird" name="pwd">
+                <label for="name">Nome*</label>
+                <input type="text" name="name">
+                <label for="phoneNumber">Telefone</label>
+                <input type="tel" name="phoneNumber">
+
+                <button class="btn-form-insert" id="admin-add-btn">Adicionar</button> 
+            </form>
+            <button class="btn btn-primary self-center" id="show-admin-list">Gerir Administradores</button>
+            <div class="admin-list table-col-3">
+                <span class="table-header">Nome</span>
+                <span class="table-header">Telefone</span>
+                <span class="table-header">Accoes</span>
+                <span>David Simoes</span>
+                <span>123 456 789</span>
+                <span class="action-icons">
+                    <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
+                    <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                </span>
+                <span>Catarina Lourenço</span>
+                <span>987 654 321</span>
+                <span class="action-icons">
+                    <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
+                    <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                </span>
+            </div>
+            <button class="btn btn-primary self-center" id="show-admin-list">Alterar Password</button>
+            <form class="change-password-form" style="display: none">
+                <label for="email">Passe Actual</label>
+                <input type="password" name="actualPassword">
+                <label for="name">Nova Passe*</label>
+                <input type="passwrod" name="newPassword">
+                <label for="name">Repita Passe*</label>
+                <input type="passwrod" name="rePassword">
+
+                <button class="btn-form-insert" id="admin-change-pwd-btn">Adicionar</button> 
+            </form>
+            <button class="show-settings btn-auto btn-primary" style="width: 35px; justify-self: center;">
+                <img src="assets/img/settings.svg" alt="" srcset="">
+            </button>
+        </div>
+    </div>
     <div class="page-wrapper">
         <div class="login" style="display: none"></div>
         <div class="dashboard">
             <div class="user-info columns-2-of-4">
                 <img class="self-center" src="assets/img/logo.png" alt="Imagem do administractor" srcset="">
                 <div class="user-options">
-                    <a class="btn-auto btn-primary" href="#">
+                    <button class="show-settings btn-auto btn-primary">
                         <img src="assets/img/settings.svg" alt="" srcset="">
-                    </a>
-                    <a class="btn-auto btn-primary" href="#">
+                    </button>
+                    <button class="btn-auto btn-primary">
                         <img src="assets/img/logout.svg" alt="" srcset="">
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="user-name columns-2-of-4">
@@ -67,7 +116,7 @@
                         <label for="">Longitude</label>
                         <input type="text" name="longitude">
 
-                        <button class="btn-form-insert" id="places-add-btn">Adicionar</button> 
+                        <button class="btn-form-insert btn-col-right" id="places-add-btn">Adicionar</button> 
                     </form>
                 </div>                         
             </div>
@@ -101,7 +150,7 @@
                         <label for="">Ingles</label>
                         <input type="text" name="flavours_EN">
 
-                        <button class="btn-form-insert" id="flavours-add-btn">Adicionar</button> 
+                        <button class="btn-form-insert btn-col-right" id="flavours-add-btn">Adicionar</button> 
                     </form>
                 </div>
             </div>
@@ -135,7 +184,7 @@
                             <option value="1">Nutella</option>
                             <option value="2">Chocolate</option>
                         </select>
-                        <button class="btn-form-insert" id="flavours-add-btn">Adicionar</button> 
+                        <button class="btn-form-insert btn-col-right" id="product-add-btn">Adicionar</button> 
                     </form>
                 </div>
             </div>
