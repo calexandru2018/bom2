@@ -1,6 +1,6 @@
 
 import 'normalize.css';
-import '../../node_modules/fullcalendar/dist/fullcalendar.css';
+import '../../node_modules/fullcalendar/dist/fullcalendar.min.css';
 import '../fonts/Antro_Vectra_Bolder.otf';
 import '../css/main.css';
 import '../img/bq.jpg';

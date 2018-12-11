@@ -30,20 +30,20 @@
                 <span>David Simoes</span>
                 <span>123 456 789</span>
                 <span class="action-icons">
-                    <a class="edit-admin" data-admin-id="1">
+                    <a class="edit-admin" data-type="admin" data-admin-id="1">
                         <img src="assets/img/edit.svg"" alt="" srcset="">
                     </a>
-                    <a class="delete-admin" data-admin-id="1">
+                    <a class="delete-admin" data-type="admin" data-admin-id="1">
                         <img src="assets/img/remove.svg"" alt="" srcset="">
                     </a>
                 </span>
                 <span>Catarina Lourenço</span>
                 <span>987 654 321</span>
                 <span class="action-icons">
-                        <a class="edit-admin" data-admin-id="2">
+                        <a class="edit-admin" data-type="admin" data-admin-id="2">
                             <img src="assets/img/edit.svg"" alt="" srcset="">
                         </a>
-                        <a class="delete-admin" data-admin-id="2">
+                        <a class="delete-admin" data-type="admin" data-admin-id="2">
                             <img src="assets/img/remove.svg"" alt="" srcset="">
                         </a>
                     </span>
@@ -64,24 +64,7 @@
             </button>
         </div>
     </div>
-    <div id="edit-content" data-content-type="admin">
-        <form class="edit-admin-form">
-            <h2>Editar Administrador</h2>
-            <label for="email">E-mail*</label>
-            <input type="email" name="email">
-            <label for="password">Palavra Passe*</label>
-            <input type="passwird" name="pwd">
-            <label for="name">Nome*</label>
-            <input type="text" name="name">
-            <label for="phoneNumber">Telefone</label>
-            <input type="tel" name="phoneNumber">
-
-            <div class="edit-admin-buttons">
-                <button class="btn-form-insert edit-admin self-left">Voltar</button>
-                <button class="btn-form-insert" id="admin-edit-btn self-right">Editar</button> 
-            </div>
-        </form>
-    </div>
+    <div id="edit-content"></div>
     <div class="page-wrapper">
         <div class="login" style="display: none"></div>
         <div class="dashboard">
@@ -116,8 +99,12 @@
                         <span>2018-12-31</span>
                         <span><a href=" https://www.google.com/maps/dir/?api=1&destination=37.352141,-8.843425" target="_blank">Ver</a></span>
                         <span class="action-icons">
-                            <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
-                            <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                            <a class="edit-place" data-type="place" data-place-id="1">
+                                <img src="assets/img/edit.svg"" alt="" srcset="">
+                            </a>
+                            <a class="delete-place" data-type="place" data-place-id="1">
+                                <img src="assets/img/remove.svg"" alt="" srcset="">
+                            </a>
                         </span>
                         <!-- <span>2</span> -->
                         <span>Albufeira</span>
@@ -125,8 +112,12 @@
                         <span>2018-12-31</span>
                         <span><a href="https://www.google.com/maps/dir/?api=1&destination=37.015578,-7.920545" target="_blank">Ver</a></span>
                         <span class="action-icons">
-                            <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
-                            <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                            <a class="edit-place" data-type="place" data-place-id="2">
+                                <img src="assets/img/edit.svg"" alt="" srcset="">
+                            </a>
+                            <a class="delete-place" data-type="place" data-place-id="1">
+                                <img src="assets/img/remove.svg"" alt="" srcset="">
+                            </a>
                         </span>
                     </div>
                     <button class="btn btn-secondary self-center" id="places-showform-btn">Novo</button>  
@@ -155,18 +146,30 @@
                             <span class="table-header">Accoes</span>
                             <span>Morango</span>
                             <span class="action-icons">
-                                <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
-                                <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                                <a class="edit-flavour" data-type="flavour" data-flavour-id="1">
+                                    <img src="assets/img/edit.svg"" alt="" srcset="">
+                                </a>
+                                <a class="delete-flavour" data-type="flavour" data-flavour-id="1">
+                                    <img src="assets/img/remove.svg"" alt="" srcset="">
+                                </a>
                             </span>
                             <span>Chocolate</span>
                             <span class="action-icons">
-                                <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
-                                <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                                <a class="edit-flavour" data-type="flavour" data-flavour-id="2">
+                                    <img src="assets/img/edit.svg"" alt="" srcset="">
+                                </a>
+                                <a class="delete-flavour" data-type="flavour" data-flavour-id="2">
+                                    <img src="assets/img/remove.svg"" alt="" srcset="">
+                                </a>
                             </span>
                             <span>Nutella</span>
                             <span class="action-icons">
-                                <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
-                                <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                                <a class="edit-flavour" data-type="flavour" data-flavour-id="3">
+                                    <img src="assets/img/edit.svg"" alt="" srcset="">
+                                </a>
+                                <a class="delete-flavour" data-type="flavour" data-flavour-id="3">
+                                    <img src="assets/img/remove.svg"" alt="" srcset="">
+                                </a>
                             </span>
                     </div>                
                     <button class="btn btn-secondary self-center" id="flavours-showform-btn">Novo</button>
@@ -189,13 +192,21 @@
                         <span class="table-header">Accoes</span>
                         <span>Crepes</span>
                         <span class="action-icons">
-                            <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
-                            <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                            <a class="edit-product" data-type="product" data-product-id="1">
+                                <img src="assets/img/edit.svg"" alt="" srcset="">
+                            </a>
+                            <a class="delete-product" data-type="product" data-product-id="1">
+                                <img src="assets/img/remove.svg"" alt="" srcset="">
+                            </a>
                         </span>
                         <span>Waffles</span>
                         <span class="action-icons">
-                            <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
-                            <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                            <a class="edit-product" data-type="product" data-product-id="2">
+                                <img src="assets/img/edit.svg"" alt="" srcset="">
+                            </a>
+                            <a class="delete-product" data-type="product" data-product-id="2">
+                                <img src="assets/img/remove.svg"" alt="" srcset="">
+                            </a>
                         </span>
                     </div>             
                     <button class="btn btn-secondary self-center" id="products-showform-btn">Novo</button>
