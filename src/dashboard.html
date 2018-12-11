@@ -30,15 +30,23 @@
                 <span>David Simoes</span>
                 <span>123 456 789</span>
                 <span class="action-icons">
-                    <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
-                    <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
+                    <a class="edit-admin" data-admin-id="1">
+                        <img src="assets/img/edit.svg"" alt="" srcset="">
+                    </a>
+                    <a class="delete-admin" data-admin-id="1">
+                        <img src="assets/img/remove.svg"" alt="" srcset="">
+                    </a>
                 </span>
                 <span>Catarina Lourenço</span>
                 <span>987 654 321</span>
                 <span class="action-icons">
-                    <a href="#edit"><img src="assets/img/edit.svg"" alt="" srcset=""></a>
-                    <a href="#remove"><img src="assets/img/remove.svg"" alt="" srcset=""></a>
-                </span>
+                        <a class="edit-admin" data-admin-id="2">
+                            <img src="assets/img/edit.svg"" alt="" srcset="">
+                        </a>
+                        <a class="delete-admin" data-admin-id="2">
+                            <img src="assets/img/remove.svg"" alt="" srcset="">
+                        </a>
+                    </span>
             </div>
             <button class="btn btn-primary self-center" id="show-admin-list">Alterar Password</button>
             <form class="change-password-form" style="display: none">
@@ -51,10 +59,28 @@
 
                 <button class="btn-form-insert" id="admin-change-pwd-btn">Adicionar</button> 
             </form>
-            <button class="show-settings btn-auto btn-primary" style="width: 35px; justify-self: center;">
-                <img src="assets/img/settings.svg" alt="" srcset="">
+            <button class="show-settings btn-auto btn-primary self-center">
+                Voltar
             </button>
         </div>
+    </div>
+    <div id="edit-content" data-content-type="admin">
+        <form class="edit-admin-form">
+            <h2>Editar Administrador</h2>
+            <label for="email">E-mail*</label>
+            <input type="email" name="email">
+            <label for="password">Palavra Passe*</label>
+            <input type="passwird" name="pwd">
+            <label for="name">Nome*</label>
+            <input type="text" name="name">
+            <label for="phoneNumber">Telefone</label>
+            <input type="tel" name="phoneNumber">
+
+            <div class="edit-admin-buttons">
+                <button class="btn-form-insert edit-admin self-left">Voltar</button>
+                <button class="btn-form-insert" id="admin-edit-btn self-right">Editar</button> 
+            </div>
+        </form>
     </div>
     <div class="page-wrapper">
         <div class="login" style="display: none"></div>

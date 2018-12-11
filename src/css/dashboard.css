@@ -57,6 +57,32 @@ label{
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
 }
+#edit-content{
+    display: none; /*change to debugg*/
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 200%;
+    width: 100%;
+    z-index: 5;
+}
+.edit-admin-form{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    background-color: white;
+    width: 80%;
+    height: fit-content;
+    margin: 50% auto 0 auto;
+    grid-gap: 0.5rem;
+    border-radius: 5px;
+    padding: 1rem;
+}
+.edit-admin-buttons{
+    display: grid; 
+    grid-template-rows: 1fr; 
+    grid-template-columns: 1fr 1fr
+}
+
 .hide{
     display: none !important;
 }
@@ -75,7 +101,13 @@ label{
     grid-column-end: 5;
 }
 .self-center{
-    justify-self: center;
+    justify-self: center !important;
+}
+.self-left{
+    justify-self: start !important;
+}
+.self-right{
+    justify-self: end !important;
 }
 .btn, .btn-auto{
     outline: none;

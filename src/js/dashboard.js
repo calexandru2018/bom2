@@ -25,3 +25,8 @@ document.querySelectorAll('.btn-secondary').forEach((btn) => {
         nextEl.classList.toggle('display-grid');
     });
 });
+document.querySelectorAll('.edit-admin').forEach( (btn) => {
+    btn.addEventListener('click', () => {
+        document.getElementById('edit-admin').classList.toggle('show');
+    });
+});
