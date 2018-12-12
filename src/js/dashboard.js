@@ -6,9 +6,10 @@ import '../img/edit.svg';
 import '../img/remove.svg';
 import '../img/settings.svg';
 import '../img/logout.svg';
+let editContentContainer = document.getElementById('edit-content');
 const settingsOverlay = document.getElementById('settings-overlay');
 const editAdmin = `
-    <form class="edit-form">
+    <form action="#" class="edit-form">
         <h2>Editar Administrador</h2>
         <label for="email">E-mail*</label>
         <input type="email" name="email">
@@ -20,13 +21,13 @@ const editAdmin = `
         <input type="tel" name="phoneNumber">
 
         <div class="edit-admin-buttons">
-            <button class="btn-form-insert edit-admin self-left">Voltar</button>
-            <button class="btn-form-insert" id="admin-edit-btn self-right">Editar</button> 
+            <button class="btn-form-insert close-edit self-left">Voltar</button>
+            <button type="submit" class="btn-form-insert" id="admin-edit-btn self-right">Editar</button> 
         </div>
     </form>
 `;
 const editPlace = `
-    <form class="edit-form">
+    <form action="#" class="edit-form">
         <h2>Editar Destino</h2>
         <label for="">Cidade</label>
         <input type="text" name="name">
@@ -40,13 +41,13 @@ const editPlace = `
         <input type="text" name="longitude">
 
         <div class="edit-btns">
-            <button class="btn-form-insert edit-place self-left">Voltar</button>
-            <button class="btn-form-insert" id="admin-edit-btn self-right">Editar</button> 
+            <button class="btn-form-insert close-edit self-left">Voltar</button>
+            <button type="submit" class="btn-form-insert" id="place-edit-btn self-right">Editar</button> 
         </div>
     </form>
 `;
 const editFlavour = `
-    <form class="edit-form">
+    <form action="#" class="edit-form">
         <h2>Editar Sabor</h2>
         <label for="">Portugues</label>
         <input type="text" name="flavours_PT">
@@ -54,13 +55,13 @@ const editFlavour = `
         <input type="text" name="flavours_EN">
 
         <div class="edit-btns">
-            <button class="btn-form-insert edit-flavour self-left">Voltar</button>
-            <button class="btn-form-insert" id="admin-edit-btn self-right">Editar</button> 
+            <button class="btn-form-insert close-edit self-left">Voltar</button>
+            <button type="submit" class="btn-form-insert" id="flavour-edit-btn self-right">Editar</button> 
         </div>
     </form>
 `;
 const editProduct = `
-    <form class="edit-form">
+    <form action="#" class="edit-form">
         <h2>Editar Produto</h2>
         <label for="">Portugues</label>
         <input type="text" name="flavours_PT">
@@ -74,8 +75,8 @@ const editProduct = `
         <button>Adicionar novo ?</button>
 
         <div class="edit-btns">
-            <button class="btn-form-insert edit-product self-left">Voltar</button>
-            <button class="btn-form-insert" id="admin-edit-btn self-right">Editar</button> 
+            <button class="btn-form-insert close-edit self-left">Voltar</button>
+            <button type="submit" class="btn-form-insert" id="product-edit-btn self-right">Editar</button> 
         </div>
     </form>
 `;
@@ -98,14 +99,11 @@ document.querySelectorAll('.btn-secondary').forEach((btn) => {
     });
 });
 document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-product').forEach( (btn) => {
-    btn.addEventListener('click', function() {
-        var dataType = this.getAttribute('data-type');
-        console.log(dataType);
-        var editContentContainer = document.getElementById('edit-content');
+    btn.addEventListener('click', function(e) {
+
+        var dataType = ((this.getAttribute('data-type')) ? this.getAttribute('data-type') : false);
         
-        if(!dataType){
-            editContentContainer.classList.toggle('show');
-        }else{
+        if(dataType){
             var contentToShow;
             switch(dataType){
                 case 'admin': contentToShow = editAdmin;
@@ -118,10 +116,19 @@ document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-produc
                     break;
                 default: contentToShow = '';
             }
-            console.log(contentToShow);
-            
             editContentContainer.innerHTML = contentToShow;
-            editContentContainer.classList.toggle('show');
         }
+        editContentContainer.classList.toggle('show');
     });
 });
+/* document
+    .querySelectorAll('form')
+        .forEach( (btn) => {
+            console.log(btn);
+            
+            /* btn.addEventListener('submit', function(e) { 
+            console.log('this is a debugg part');
+            
+            editContentContainer.classList.toggle('show');
+            }); 
+        }); */
