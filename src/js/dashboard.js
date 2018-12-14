@@ -21,7 +21,7 @@ const editAdmin = `
         <input type="tel" name="phoneNumber">
 
         <div class="edit-admin-buttons">
-            <button class="btn-form-insert close-edit self-left">Voltar</button>
+            <a class="btn-form-insert close-edit self-left">Voltar</a>
             <button type="submit" class="btn-form-insert" id="admin-edit-btn self-right">Editar</button> 
         </div>
     </form>
@@ -41,7 +41,7 @@ const editPlace = `
         <input type="text" name="longitude">
 
         <div class="edit-btns">
-            <button class="btn-form-insert close-edit self-left">Voltar</button>
+            <a class="btn-form-insert close-edit self-left">Voltar</a>
             <button type="submit" class="btn-form-insert" id="place-edit-btn self-right">Editar</button> 
         </div>
     </form>
@@ -55,7 +55,7 @@ const editFlavour = `
         <input type="text" name="flavours_EN">
 
         <div class="edit-btns">
-            <button class="btn-form-insert close-edit self-left">Voltar</button>
+            <a class="btn-form-insert close-edit self-left">Voltar</a>
             <button type="submit" class="btn-form-insert" id="flavour-edit-btn self-right">Editar</button> 
         </div>
     </form>
@@ -75,7 +75,7 @@ const editProduct = `
         <button>Adicionar novo ?</button>
 
         <div class="edit-btns">
-            <button class="btn-form-insert close-edit self-left">Voltar</button>
+            <a class="btn-form-insert close-edit self-left">Voltar</a>
             <button type="submit" class="btn-form-insert" id="product-edit-btn self-right">Editar</button> 
         </div>
     </form>
@@ -100,7 +100,7 @@ document.querySelectorAll('.btn-secondary').forEach((btn) => {
 });
 document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-product').forEach( (btn) => {
     btn.addEventListener('click', function(e) {
-
+        console.log('click occured');
         var dataType = ((this.getAttribute('data-type')) ? this.getAttribute('data-type') : false);
         
         if(dataType){
@@ -118,9 +118,15 @@ document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-produc
             }
             editContentContainer.innerHTML = contentToShow;
         }
+       
+        
         editContentContainer.classList.toggle('show');
     });
 });
+document.addEventListener('click',function(e){
+    if(event.target.classList.contains('close-edit'))
+        editContentContainer.classList.toggle('show');
+ });
 /* document
     .querySelectorAll('form')
         .forEach( (btn) => {
