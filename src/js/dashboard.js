@@ -6,6 +6,7 @@ import '../img/edit.svg';
 import '../img/remove.svg';
 import '../img/settings.svg';
 import '../img/logout.svg';
+let flavourCounter = 1;
 let editContentContainer = document.getElementById('edit-content');
 const settingsOverlay = document.getElementById('settings-overlay');
 const editAdmin = `
@@ -20,9 +21,9 @@ const editAdmin = `
         <label for="phoneNumber">Telefone</label>
         <input type="tel" name="phoneNumber">
 
-        <div class="edit-admin-buttons">
+        <div class="edit-btns">
             <a class="btn-form-insert close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert" id="admin-edit-btn self-right">Editar</button> 
+            <button type="submit" class="btn-form-insert" id="admin-edit-btn">Editar</button> 
         </div>
     </form>
 `;
@@ -42,7 +43,7 @@ const editPlace = `
 
         <div class="edit-btns">
             <a class="btn-form-insert close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert" id="place-edit-btn self-right">Editar</button> 
+            <button type="submit" class="btn-form-insert" id="place-edit-btn">Editar</button> 
         </div>
     </form>
 `;
@@ -56,7 +57,7 @@ const editFlavour = `
 
         <div class="edit-btns">
             <a class="btn-form-insert close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert" id="flavour-edit-btn self-right">Editar</button> 
+            <button type="submit" class="btn-form-insert" id="flavour-edit-btn">Editar</button> 
         </div>
     </form>
 `;
@@ -68,15 +69,15 @@ const editProduct = `
         <label for="">Ingles</label>
         <input type="text" name="flavours_EN">
         <label for="editFlavourList">Sabores</label>
-        <select name="flavour" id="editFlavourList">
+        <select name="flavour_1" id="editFlavourList">
             <option value="1" selected>Nutella</option>
             <option value="2">Chocolate</option>
         </select>
-        <button>Adicionar novo ?</button>
+        <a class="add-new-flavour" style="width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed">Adicionar novo ?</a>
 
         <div class="edit-btns">
             <a class="btn-form-insert close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert" id="product-edit-btn self-right">Editar</button> 
+            <button type="submit" class="btn-form-insert" id="product-edit-btn">Editar</button> 
         </div>
     </form>
 `;
@@ -124,8 +125,21 @@ document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-produc
     });
 });
 document.addEventListener('click',function(e){
-    if(event.target.classList.contains('close-edit'))
+    const eTarget = event.target.classList;
+    if(eTarget.contains('close-edit')){
         editContentContainer.classList.toggle('show');
+    }else if(eTarget.contains('add-new-flavour')){
+        const newNode = document.createElement('select');
+        newNode.innerHTML = `
+            <option value="1">Nutella</option>
+            <option value="2">Chocolate</option>
+        `;
+        newNode.classList.add('flavour_' + flavourCounter++);
+
+        const parentEl = event.target.parentNode;
+        const previousEl = event.target.previousElementSibling;
+        parentEl.insertBefore(newNode, previousEl.nextSibling);        
+    }
  });
 /* document
     .querySelectorAll('form')

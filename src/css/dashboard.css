@@ -16,7 +16,8 @@ body,html{
     padding:0; 
 }
 a{
-	text-decoration: none;
+    text-decoration: none;
+    cursor: pointer;
 }
 label{
     font-weight: bold;
