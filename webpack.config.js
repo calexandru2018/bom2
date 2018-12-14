@@ -93,6 +93,14 @@ module.exports = {
             cache: true,
             excludeChunks: ['index', 'alternate']
         }),
+        new HtmlWebpackPlugin({
+            title: 'Login',
+            filename: 'login.html',
+            template: './src/login.html',
+            hash: true,
+            cache: true,
+            excludeChunks: ['index', 'alternate']
+        }),
         new MiniCssExtractPlugin({
             filename: 'assets/css/[name].css',
         }),
