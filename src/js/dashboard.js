@@ -141,14 +141,3 @@ document.addEventListener('click',function(e){
         parentEl.insertBefore(newNode, previousEl.nextSibling);        
     }
  });
-/* document
-    .querySelectorAll('form')
-        .forEach( (btn) => {
-            console.log(btn);
-            
-            /* btn.addEventListener('submit', function(e) { 
-            console.log('this is a debugg part');
-            
-            editContentContainer.classList.toggle('show');
-            }); 
-        }); */
