@@ -10,6 +10,7 @@ import '../img/bq3.jpg';
 import '../img/logo.png';
 import '../img/favicon16.ico';
 import { Calendar } from 'fullcalendar';
+import Instafeed from "instafeed.js";
 
 var pixelScrollLimit = 450; 
 var w = window.innerWidth;
@@ -22,6 +23,20 @@ var showLocatorBtn = document.getElementById('show-locator');
 var scrollToProductsBtn = document.getElementById('scroll-to-products');
 var calendarEl = document.getElementById('calendar');
   
+
+
+const feed = new Instafeed({
+    get: 'user',
+    userId: '5673767342',
+    accessToken: '5673767342.34e4dc1.e7f1db30f38a462f9dd341a3a03b5918',
+    resolution: 'low_resolution',
+    sortBy: 'most-liked',
+    limit: 4,
+    links: true,
+    template: '<a href="{{link}}" target="_blank" data-likes="{{likes}}"><img src="{{image}}"/></a>'
+});
+feed.run();
+
 var calendar = new Calendar(calendarEl, {
     defaultView: 'month',
     locale: 'pt',

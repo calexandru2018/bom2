@@ -547,6 +547,13 @@ __________
     background: url('/dist/assets/img/bq3.jpg') no-repeat center;
     background: cover;
 }
+/* instagram feed */
+#instafeed{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	grid-gap: 1rem;
+}
 /*
 __________
 

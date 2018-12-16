@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "fullcalendar": "^4.0.0-alpha.2",
+    "instafeed.js": "^1.4.1",
     "normalize.css": "^8.0.0",
     "webpack-cli": "^3.1.2"
   },
