@@ -29,7 +29,7 @@ const feed = new Instafeed({
     get: 'user',
     userId: '5673767342',
     accessToken: '5673767342.34e4dc1.e7f1db30f38a462f9dd341a3a03b5918',
-    resolution: 'low_resolution',
+    resolution: 'standard_resolution',
     sortBy: 'most-liked',
     limit: 7,
     links: true,

@@ -550,7 +550,7 @@ __________
 /* instagram feed */
 #instafeed{
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: 1fr;
 	grid-gap: 1rem;
 }
@@ -560,11 +560,23 @@ __________
 }
 #instafeed > a:first-child{
 	grid-column-start: 1;
+	grid-column-end: 4;
+}
+#instafeed > a:nth-child(2){
+	grid-column-start: 4;
+	grid-column-end: 6;
+}
+#instafeed > a:nth-child(4){
+	grid-column-start: 2;
+	grid-column-end: 5;
+}
+#instafeed > a:nth-child(6){
+	grid-column-start: 1;
 	grid-column-end: 3;
 }
 #instafeed > a:nth-child(7){
-	grid-column-start: 2;
-	grid-column-end: 4;
+	grid-column-start: 3;
+	grid-column-end: 6;
 }
 #instafeed img {
 	width: inherit;
