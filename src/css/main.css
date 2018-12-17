@@ -524,6 +524,7 @@ __________
 }
 .bg1 > div > p {
 	font-family: 'Montserrat','Roboto' ;
+	font-size: 0.7em;
 	margin: 2rem 1rem;
 }
 .bg1::after {
