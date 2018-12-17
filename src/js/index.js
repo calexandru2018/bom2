@@ -30,10 +30,19 @@ const feed = new Instafeed({
     userId: '5673767342',
     accessToken: '5673767342.34e4dc1.e7f1db30f38a462f9dd341a3a03b5918',
     resolution: 'standard_resolution',
-    sortBy: 'most-liked',
-    limit: 7,
+    /* sortBy: 'most-liked',
+    limit: 7, */
     links: true,
-    template: '<a href="{{link}}" target="_blank" data-likes="{{likes}}"><img src="{{image}}"/></a>'
+    template: `<a href="{{link}}" target="_blank" style="position: relative">
+                    <div>
+                        <div style="width: fit-content;">{{likes}}</div>
+                    </div>
+                    <img src="{{image}}"/>
+                </a>`,
+    filter: function(image) {
+        console.log(image);
+        return image.tags.indexOf('testebom2') >= 0;
+    }
 });
 feed.run();
 
