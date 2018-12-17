@@ -549,6 +549,7 @@ __________
 }
 /* instagram feed */
 #instafeed{
+	margin-top: 50px;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: 1fr;
@@ -556,7 +557,7 @@ __________
 }
 #instafeed a {
 	width: 100%;
-    height: 100px;
+    height: 150px;
 }
 #instafeed > a:first-child{
 	grid-column-start: 1;
@@ -783,7 +784,7 @@ __________
 		font-size: 2.3em;
 	}
 	#instafeed a{
-		height: 200px;
+		height: 230px;
 	}
 	#scroll-to-top{
 		bottom: 25px;
@@ -846,6 +847,9 @@ __________
 	.col {
 		width: 47%;
 		margin: 0.7rem;
+	}
+	#instafeed a{
+		height: 300px;
 	}
 	.social-media-wrapper{
 		grid-column-start: 1;
@@ -959,6 +963,9 @@ __________
 @media (min-width: 1200px) { 
 	.col{
 		max-width: 750px;
+	}
+	#instafeed a {
+		height: 500px;
 	}
 	.bg1:after {
 		background-position-y: 45%;
