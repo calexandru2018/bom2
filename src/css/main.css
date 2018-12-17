@@ -768,6 +768,9 @@ __________
 	.bg1 > div > h1 {
 		font-size: 2.3em;
 	}
+	#instafeed a{
+		height: 200px;
+	}
 	#scroll-to-top{
 		bottom: 25px;
 		right: 35px;
@@ -805,6 +808,9 @@ __________
 	.logo-landing-page {
 		width: 160px;
 		margin-top: -56px;
+	}
+	.bg1 > div{
+		margin-top: -60vh;
 	}
 	.main-nav{
 		grid-auto-rows: min-content;
@@ -868,6 +874,9 @@ __________
 	}
 	.main-header > .nav-toggle {
 		margin-left: -330px;
+	}
+	#instafeed a {
+		height: 350px;
 	}
 	.main-nav{
 		width: 250px;
