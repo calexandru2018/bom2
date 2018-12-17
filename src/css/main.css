@@ -550,9 +550,31 @@ __________
 /* instagram feed */
 #instafeed{
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: 1fr;
 	grid-gap: 1rem;
+}
+#instafeed a {
+	width: 100%;
+    height: 100px;
+}
+#instafeed > a:first-child{
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+#instafeed > a:nth-child(7){
+	grid-column-start: 2;
+	grid-column-end: 4;
+}
+#instafeed img {
+	width: inherit;
+    height: inherit;
+    object-fit: cover;
+    object-position: center;
+}
+#instafeed:first-child{
+	grid-column-start: 1;
+	grid-column-end: 3;
 }
 /*
 __________

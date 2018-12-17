@@ -31,7 +31,7 @@ const feed = new Instafeed({
     accessToken: '5673767342.34e4dc1.e7f1db30f38a462f9dd341a3a03b5918',
     resolution: 'low_resolution',
     sortBy: 'most-liked',
-    limit: 4,
+    limit: 7,
     links: true,
     template: '<a href="{{link}}" target="_blank" data-likes="{{likes}}"><img src="{{image}}"/></a>'
 });
@@ -68,11 +68,7 @@ var calendar = new Calendar(calendarEl, {
         if (info.event.url) {
           window.open(info.event.url, '_blank');
         }
-    },
-/*     navLinkDayClick: function(date, jsEvent) {
-        console.log('day', date.toISOString());
-        console.log('coords', jsEvent.pageX, jsEvent.pageY);
-    } */
+    }
 });
 
 document.addEventListener('DOMContentLoaded', () =>  {
@@ -90,8 +86,7 @@ document.querySelectorAll('.nav-toggle').forEach(el => {
         }else{
             mainNavigation.classList.toggle('open');
         }
-        console.log(`Width is ${w}`);
-        
+        // console.log(`Width is ${w}`);
     });
 });
 parallaxScroll.addEventListener('scroll', () => {
