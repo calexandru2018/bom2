@@ -22,7 +22,7 @@ const editAdmin = `
         <input type="tel" name="phoneNumber" data-category="admin-edit-input">
 
         <div class="edit-btns">
-            <a class="btn-form-insert close-edit self-left">Voltar</a>
+            <a class="close-edit self-left">Voltar</a>
             <button type="submit" class="btn-form-insert" id="admin-edit-input">Editar</button> 
         </div>
     </form>
@@ -42,7 +42,7 @@ const editPlace = `
         <input type="text" name="longitude" data-category="place-edit-input">
 
         <div class="edit-btns">
-            <a class="btn-form-insert close-edit self-left">Voltar</a>
+            <a class="close-edit self-left">Voltar</a>
             <button type="submit" class="btn-form-insert" id="place-edit-input">Editar</button> 
         </div>
     </form>
@@ -56,7 +56,7 @@ const editFlavour = `
         <input type="text" name="flavours_EN" data-category="flavour-edit-input">
 
         <div class="edit-btns">
-            <a class="btn-form-insert close-edit self-left">Voltar</a>
+            <a class="close-edit self-left">Voltar</a>
             <button type="submit" class="btn-form-insert" id="flavour-edit-input">Editar</button> 
         </div>
     </form>
@@ -76,7 +76,7 @@ const editProduct = `
         <a class="add-new-flavour" style="width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed">Adicionar novo ?</a>
 
         <div class="edit-btns">
-            <a class="btn-form-insert close-edit self-left">Voltar</a>
+            <a class="close-edit self-left">Voltar</a>
             <button type="submit" class="btn-form-insert" id="product-edit-input">Editar</button> 
         </div>
     </form>
