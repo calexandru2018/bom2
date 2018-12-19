@@ -31,15 +31,15 @@ const editPlace = `
     <form action="#" class="edit-form">
         <h2>Editar Destino</h2>
         <label for="">Cidade</label>
-        <input type="text" name="name">
+        <input type="text" name="name" data-category="place-edit-input">
         <label for="">Desde</label>
-        <input type="date" name="name">
+        <input type="date" name="name" data-category="place-edit-input">
         <label for="">Ate</label>
-        <input type="date" name="name">
+        <input type="date" name="name" data-category="place-edit-input">
         <label for="">Latitude</label>
-        <input type="text" name="latitude">
+        <input type="text" name="latitude" data-category="place-edit-input">
         <label for="">Longitude</label>
-        <input type="text" name="longitude">
+        <input type="text" name="longitude" data-category="place-edit-input">
 
         <div class="edit-btns">
             <a class="btn-form-insert close-edit self-left">Voltar</a>
@@ -51,9 +51,9 @@ const editFlavour = `
     <form action="#" class="edit-form">
         <h2>Editar Sabor</h2>
         <label for="">Portugues</label>
-        <input type="text" name="flavours_PT">
+        <input type="text" name="flavours_PT" data-category="flavour-edit-input">
         <label for="">Ingles</label>
-        <input type="text" name="flavours_EN">
+        <input type="text" name="flavours_EN" data-category="flavour-edit-input">
 
         <div class="edit-btns">
             <a class="btn-form-insert close-edit self-left">Voltar</a>
@@ -69,7 +69,7 @@ const editProduct = `
         <label for="">Ingles</label>
         <input type="text" name="flavours_EN">
         <label for="editFlavourList">Sabores</label>
-        <select name="flavour_1" id="editFlavourList">
+        <select name="flavour_1" data-category="product-edit-input_1">
             <option value="1" selected>Nutella</option>
             <option value="2">Chocolate</option>
         </select>
@@ -103,7 +103,6 @@ document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-produc
     btn.addEventListener('click', function(e) {
         console.log('click occured');
         var dataType = ((this.getAttribute('data-type')) ? this.getAttribute('data-type') : false);
-        
         if(dataType){
             var contentToShow;
             switch(dataType){
@@ -119,8 +118,6 @@ document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-produc
             }
             editContentContainer.innerHTML = contentToShow;
         }
-       
-        
         editContentContainer.classList.toggle('show');
     });
 });
@@ -129,15 +126,19 @@ document.addEventListener('click',function(e){
     if(eTarget.contains('close-edit')){
         editContentContainer.classList.toggle('show');
     }else if(eTarget.contains('add-new-flavour')){
-        const newNode = document.createElement('select');
+        flavourCounter++;
+        const newNode = document.createElement('select');   
+        newNode.name = 'flavour_' + flavourCounter;   
+        const parentEl = event.target.parentNode;
+        const previousEl = event.target.previousElementSibling;
+        const categoryType = previousEl.getAttribute('data-category').split('-');
+        
+        newNode.setAttribute('data-category', 'product-' + categoryType[1] + '-input_' + flavourCounter);
         newNode.innerHTML = `
             <option value="1">Nutella</option>
             <option value="2">Chocolate</option>
         `;
-        newNode.classList.add('flavour_' + flavourCounter++);
 
-        const parentEl = event.target.parentNode;
-        const previousEl = event.target.previousElementSibling;
         parentEl.insertBefore(newNode, previousEl.nextSibling);        
     }
  });
