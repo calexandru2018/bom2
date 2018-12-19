@@ -99,6 +99,17 @@ document.querySelectorAll('.btn-secondary').forEach((btn) => {
         nextEl.classList.toggle('display-grid');
     });
 });
+document.querySelectorAll('.btn-form-insert').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log(btn.id);
+        const formCollector = document.querySelectorAll('[data-category^=' + btn.id + ']');
+        formCollector.forEach( (el) => {
+            console.log(el.name);
+        });
+        
+    });
+});
 document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-product').forEach( (btn) => {
     btn.addEventListener('click', function(e) {
         console.log('click occured');
