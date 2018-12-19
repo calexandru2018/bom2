@@ -13,17 +13,17 @@ const editAdmin = `
     <form action="#" class="edit-form">
         <h2>Editar Administrador</h2>
         <label for="email">E-mail*</label>
-        <input type="email" name="email">
+        <input type="email" name="email" data-category="admin-edit-input">
         <label for="password">Palavra Passe*</label>
-        <input type="passwird" name="pwd">
+        <input type="passwird" name="pwd" data-category="admin-edit-input">
         <label for="name">Nome*</label>
-        <input type="text" name="name">
+        <input type="text" name="name" data-category="admin-edit-input">
         <label for="phoneNumber">Telefone</label>
-        <input type="tel" name="phoneNumber">
+        <input type="tel" name="phoneNumber" data-category="admin-edit-input">
 
         <div class="edit-btns">
             <a class="btn-form-insert close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert" id="admin-edit-btn">Editar</button> 
+            <button type="submit" class="btn-form-insert" id="admin-edit-input">Editar</button> 
         </div>
     </form>
 `;
@@ -43,7 +43,7 @@ const editPlace = `
 
         <div class="edit-btns">
             <a class="btn-form-insert close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert" id="place-edit-btn">Editar</button> 
+            <button type="submit" class="btn-form-insert" id="place-edit-input">Editar</button> 
         </div>
     </form>
 `;
@@ -57,7 +57,7 @@ const editFlavour = `
 
         <div class="edit-btns">
             <a class="btn-form-insert close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert" id="flavour-edit-btn">Editar</button> 
+            <button type="submit" class="btn-form-insert" id="flavour-edit-input">Editar</button> 
         </div>
     </form>
 `;
@@ -65,9 +65,9 @@ const editProduct = `
     <form action="#" class="edit-form">
         <h2>Editar Produto</h2>
         <label for="">Portugues</label>
-        <input type="text" name="flavours_PT">
+        <input type="text" name="flavours_PT" data-category="product-edit-input">
         <label for="">Ingles</label>
-        <input type="text" name="flavours_EN">
+        <input type="text" name="flavours_EN" data-category="product-edit-input">
         <label for="editFlavourList">Sabores</label>
         <select name="flavour_1" data-category="product-edit-input_1">
             <option value="1" selected>Nutella</option>
@@ -77,7 +77,7 @@ const editProduct = `
 
         <div class="edit-btns">
             <a class="btn-form-insert close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert" id="product-edit-btn">Editar</button> 
+            <button type="submit" class="btn-form-insert" id="product-edit-input">Editar</button> 
         </div>
     </form>
 `;
