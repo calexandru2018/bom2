@@ -91,18 +91,21 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
     const errorMsg = document.getElementById('error-message');
     let formData = new FormData();
     let errorCollector = false;
-    console.log(formCollector);
+    //console.log(formCollector);
     formCollector.forEach( (el) => {
         if((el.type === 'text' || el.type == 'textarea') && el.value == ''){
             errorCollector = true;
         }else if(el.type == 'select-one' && el.value == '0'){
             errorCollector = true;
-            console.log('select value is' + el.value);
+        }else if(el.type == 'checkbox' && !el.checked){
+            errorCollector = true;
         }else{
-            formData.append(el.name, el.value);
+            if(el.type != 'checkbox')
+                formData.append(el.name, el.value);
         }
     });  
     if(!errorCollector){
+        console.log('Message is sent');
         errorMsg.classList.add('hide');
         fetch('path/to/message', {
             method: 'POST',
@@ -117,6 +120,7 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
                 });
         });
     }else{
+        console.log('Form is not filled');
         errorMsg.classList.remove('hide');
     }  
 });
