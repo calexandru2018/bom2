@@ -210,6 +210,7 @@ a{
 }
 .contact-form label{
 	margin-bottom: 0.2em;
+	color: rgb(245, 245, 245)
 }
 .contact-form .form-input{
 	margin-bottom: 1em;
@@ -217,20 +218,22 @@ a{
     border-radius: 2px;
 	outline: none;
 	padding: 0.4em;
-	background-color: white !important;
+	background-color: rgb(245, 245, 245) !important;
 	color: dimgray;
 }
-.contact-form .btn-send{
+.btn-send{
 	color: var(--card-dark-light-color);
 	background-color: var(--card-light-light-color);
 	border: none;
     width: fit-content;
     outline: 20px;
     border-radius: 2px;
-	transition: all 0.3s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	justify-self: end;
 }
 .btn-send:hover{
-	box-shadow: inset 0px 0px 10px var(--card-dark-dark-color);
+	/* box-shadow: inset 0px 0px 10px var(--card-dark-dark-color); */
+	background-color: #f8a67a;
 	color: white;
 }
 /* 

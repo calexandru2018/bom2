@@ -225,7 +225,7 @@
                     <p>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit voluptatibus aliquam, laudantium sint officiis, consequatur maxime quidem itaque voluptate ut asperiores cum possimus, dolorum voluptas recusandae tenetur at. Eligendi, quisquam!
                     </p>
-                    <div id="instafeed"></div>
+                    <!-- <div id="instafeed"></div> -->
                 </div>
         </section>
         <section class="section parallax bg4">
@@ -257,21 +257,22 @@
                     </p>
                 </div>
                 <div class="contact-form-wrapper">
-                    <form class="contact-form">                   
+                    <div id="error-message" class="hide" style="color: rgb(255, 40, 80);">Todos os campos tem que ser preenchidos!</div>
+                    <form id="contact-form" class="contact-form">                   
                         <label for="form-name">Nome</label>
                         <input name="form-name" type="text" class="form-input">
                         <label for="form-email">E-mail</label>
-                        <input name="form-email" type="text "class="form-input">
+                        <input name="form-email" type="email "class="form-input">
                         <label for="">Motivo de contacto</label>
-                        <select name="form-select" id="form-select" class="form-input">
-                            <option selected disabled>Escolha o motivo</option>
-                            <option>Informação</option>
-                            <option>Feedback</option>
-                            <option>Eventos</option>
+                        <select name="form-select" class="form-input">
+                            <option value="0" selected disabled>Escolha o motivo</option>
+                            <option value="1">Informação</option>
+                            <option value="2">Feedback</option>
+                            <option value="3">Eventos</option>
                         </select>
                         <label for="">Mensagem</label>
-                        <textarea name="form-message" id="form-message" class="form-input" cols="30" rows="10"></textarea>
-                        <button type="button" id="form-send" class="btn btn-send">Enviar</button>
+                        <textarea name="form-message" class="form-input" cols="30" rows="10"></textarea>
+                        <button type="submit" id="send-btn" class="btn btn-send">Enviar</button>
                     </form>
                 </div>
             </div>

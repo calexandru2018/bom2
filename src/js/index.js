@@ -73,7 +73,6 @@ var calendar = new Calendar(calendarEl, {
     ],
     eventClick: (info) => {
         info.jsEvent.preventDefault(); // don't let the browser navigate
-
         if (info.event.url) {
           window.open(info.event.url, '_blank');
         }
@@ -85,6 +84,41 @@ document.addEventListener('DOMContentLoaded', () =>  {
 });
 window.addEventListener('resize', () => {
     w = window.innerWidth;
+});
+document.getElementById('send-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    const formCollector = document.querySelectorAll('.form-input');
+    const errorMsg = document.getElementById('error-message');
+    let formData = new FormData();
+    let errorCollector = false;
+    console.log(formCollector);
+    formCollector.forEach( (el) => {
+        if((el.type === 'text' || el.type == 'textarea') && el.value == ''){
+            errorCollector = true;
+        }else if(el.type == 'select-one' && el.value == '0'){
+            errorCollector = true;
+            console.log('select value is' + el.value);
+        }else{
+            formData.append(el.name, el.value);
+        }
+    });  
+    if(!errorCollector){
+        errorMsg.classList.add('hide');
+        fetch('path/to/message', {
+            method: 'POST',
+            body: formData
+        })
+        .then(r => r.text())
+        .then(data => {
+            //fix a loder
+            if(!data)
+                formCollector.forEach((el) => {
+                    el.value = '';
+                });
+        });
+    }else{
+        errorMsg.classList.remove('hide');
+    }  
 });
 document.querySelectorAll('.nav-toggle').forEach(el => {
     el.addEventListener('click', () => {
