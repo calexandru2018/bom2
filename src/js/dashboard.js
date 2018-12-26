@@ -23,7 +23,7 @@ const editAdmin = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert" id="admin-edit-input">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="admin-edit-input">Editar</button> 
         </div>
     </form>
 `;
@@ -43,7 +43,7 @@ const editPlace = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert" id="place-edit-input">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="place-edit-input">Editar</button> 
         </div>
     </form>
 `;
@@ -57,7 +57,7 @@ const editFlavour = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert" id="flavour-edit-input">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="flavour-edit-input">Editar</button> 
         </div>
     </form>
 `;
@@ -77,7 +77,7 @@ const editProduct = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert" id="product-edit-input">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="product-edit-input">Editar</button> 
         </div>
     </form>
 `;
@@ -99,7 +99,7 @@ document.querySelectorAll('.btn-secondary').forEach((btn) => {
         nextEl.classList.toggle('display-grid');
     });
 });
-document.querySelectorAll('.btn-form-insert').forEach((btn) => {
+document.querySelectorAll('add-data').forEach((btn) => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
         console.log(btn.id);
@@ -112,7 +112,6 @@ document.querySelectorAll('.btn-form-insert').forEach((btn) => {
 });
 document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-product').forEach( (btn) => {
     btn.addEventListener('click', function(e) {
-        console.log('click occured');
         var dataType = ((this.getAttribute('data-type')) ? this.getAttribute('data-type') : false);
         if(dataType){
             var contentToShow;
@@ -133,9 +132,30 @@ document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-produc
     });
 });
 document.addEventListener('click',function(e){
+    e.preventDefault();    
     const eTarget = event.target.classList;
     if(eTarget.contains('close-edit')){
         editContentContainer.classList.toggle('show');
+    }else if(eTarget.contains('edit-data')){
+        //should check type of category
+        const categoryType = event.target.id.split('-')[0];
+        switch(categoryType){
+            case 'admin':   console.log('Call admin function');
+                            //call function;
+                break;
+            case 'place':   console.log('Call place function');
+                            //call function;
+                break;
+            case 'flavour': console.log('Call flavour function');
+                            //call function;
+                break;
+            case 'product': console.log('Call product function');
+                            //call function;
+                break;
+        }
+        
+        //call the required function for the category
+
     }else if(eTarget.contains('add-new-flavour')){
         flavourCounter++;
         const newNode = document.createElement('select');   
