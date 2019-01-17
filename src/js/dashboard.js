@@ -23,7 +23,7 @@ const editAdmin = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="admin-edit-input">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="admin-edit-input" data-edit-id="1">Editar</button> 
         </div>
     </form>
 `;
@@ -43,7 +43,7 @@ const editPlace = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="place-edit-input">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="place-edit-input" data-edit-id="1">Editar</button> 
         </div>
     </form>
 `;
@@ -57,7 +57,7 @@ const editFlavour = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="flavour-edit-input">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="flavour-edit-input" data-edit-id="1">Editar</button> 
         </div>
     </form>
 `;
@@ -77,7 +77,7 @@ const editProduct = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="product-edit-input">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="product-edit-input" data-edit-id="1">Editar</button> 
         </div>
     </form>
 `;
@@ -99,17 +99,7 @@ document.querySelectorAll('.btn-secondary').forEach((btn) => {
         nextEl.classList.toggle('display-grid');
     });
 });
-document.querySelectorAll('add-data').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log(btn.id);
-        const formCollector = document.querySelectorAll('[data-category^=' + btn.id + ']');
-        formCollector.forEach( (el) => {
-            console.log(el.name);
-        });
-        
-    });
-});
+/* Shows the edit forms */
 document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-product').forEach( (btn) => {
     btn.addEventListener('click', function(e) {
         var dataType = ((this.getAttribute('data-type')) ? this.getAttribute('data-type') : false);
@@ -131,32 +121,31 @@ document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-produc
         editContentContainer.classList.toggle('show');
     });
 });
+
 document.addEventListener('click',function(e){
     e.preventDefault();    
-    const eTarget = event.target.classList;
-    if(eTarget.contains('close-edit')){
+    const eTarget = event.target;
+    if(eTarget.classList.contains('close-edit')){
         editContentContainer.classList.toggle('show');
-    }else if(eTarget.contains('edit-data')){
+    }else if(eTarget.classList.contains('edit-data')){
         //should check type of category
         const categoryType = event.target.id.split('-')[0];
         switch(categoryType){
-            case 'admin':   console.log('Call admin function');
+            case 'admin':   console.log('Call edit admin function');
                             //call function;
                 break;
-            case 'place':   console.log('Call place function');
+            case 'place':   console.log('Call edit place function');
                             //call function;
                 break;
-            case 'flavour': console.log('Call flavour function');
+            case 'flavour': console.log('Call edit flavour function');
                             //call function;
                 break;
-            case 'product': console.log('Call product function');
+            case 'product': console.log('Call edit product function');
                             //call function;
                 break;
         }
-        
         //call the required function for the category
-
-    }else if(eTarget.contains('add-new-flavour')){
+    }else if(eTarget.classList.contains('add-new-flavour')){
         flavourCounter++;
         const newNode = document.createElement('select');   
         newNode.name = 'flavour_' + flavourCounter;   
@@ -171,5 +160,33 @@ document.addEventListener('click',function(e){
         `;
 
         parentEl.insertBefore(newNode, previousEl.nextSibling);        
+    }else if(eTarget.classList.contains('add-data')){
+        const valueHolder = new FormData();
+        console.log(eTarget.id);
+        const formCollector = document.querySelectorAll('[data-category^=' + eTarget.id + ']');
+        formCollector.forEach( (el) => {
+            valueHolder.append(el.name, el.value);
+            console.log(el.name, el.value);
+        });
+        // asyncAction(valueHolder, 1);
+        formCollector.forEach( (el) => {
+            el.value = '';
+        });
     }
- });
+});
+let asyncAction = (formCollection, actionType) => {
+    /*
+        Action type:
+        1 - Insert
+        2 - Edit
+    */
+   formCollection.append('actionType', actionType);
+    fetch('path/to/async/file', {
+        method: 'POST',
+        body: formCollection
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert('Action accomplished');
+    });
+}
