@@ -131,15 +131,21 @@ document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-produc
 document.addEventListener('click',function(e){
     e.preventDefault();    
     const eTarget = event.target;
+    console.log(eTarget);
+    
     if(eTarget.classList.contains('close-edit')){
         //Closes the edit panel
         editContentContainer.classList.toggle('show');
-    }else if(eTarget.classList.contains('edit-data')){
-        //Calls function to edit existing object based on the target id
-        asyncCollectAndSubmit(event.target.id);
     }else if(eTarget.classList.contains('add-data')){
         //Calls function to insert new object based on the target id
         asyncCollectAndSubmit(eTarget.id);
+    }else if(eTarget.classList.contains('edit-data')){
+        //Calls function to edit existing object based on the target id
+        asyncCollectAndSubmit(event.target.id);
+    }else if(eTarget.classList.contains('test-data')){
+        //Calls function to delete object based on the target id
+        console.log('in edit');
+        // asyncCollectAndSubmit(eTarget.id);
     }else if(eTarget.classList.contains('add-new-flavour')){
         //Adds new select box with a new flavour to add to a product
         flavourCounter++;
@@ -172,14 +178,19 @@ document.addEventListener('click',function(e){
         parentEl.insertBefore(newNode, previousEl.nextSibling);        
     }
 });
-const asyncCollectAndSubmit = (targetID) => {    
+const asyncCollectAndSubmit = (targetID) => {   
+    /*
+        Action type:
+        1 - Insert/Add
+        2 - Edit
+        3 - Delete
+    */ 
     const formCollector = document.querySelectorAll(`[data-category^=${targetID}`);
     const valueHolder = new FormData();
     const categoryType = targetID.split('-')[0];
     const actionType = targetID.split('-')[1];
-    const itemID = (actionType == 'edit') ? document.getElementById(targetID).getAttribute('data-' + targetID) : false;
+    const itemID = (actionType != 'add') ? document.getElementById(targetID).getAttribute('data-' + targetID) : false;
     console.log(categoryType, actionType, itemID);
-    
 
     formCollector.forEach( (el) => {
         valueHolder.append(el.name, el.value);
@@ -189,7 +200,9 @@ const asyncCollectAndSubmit = (targetID) => {
     formCollector.forEach( (el) => {
         el.value = '';
     });
+    valueHolder.append('categoryType', categoryType);
     valueHolder.append('actionType', actionType);
+    //Append itemID if positive, meaning that the clients wants to edit the value
     if(itemID)
         valueHolder.append('itemID', itemID);
 /*     
