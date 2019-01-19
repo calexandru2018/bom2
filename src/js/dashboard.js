@@ -104,6 +104,12 @@ document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-produc
     btn.addEventListener('click', function(e) {
         var dataType = ((this.getAttribute('data-type')) ? this.getAttribute('data-type') : false);
         if(dataType){
+            /* 
+            ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+
+            editContentContainer.innerHTML = showEditForm(dataType);  
+            
+            */
             var contentToShow;
             switch(dataType){
                 case 'admin': contentToShow = editAdmin;
@@ -144,6 +150,21 @@ document.addEventListener('click',function(e){
         const categoryType = previousEl.getAttribute('data-category').split('-');
         
         newNode.setAttribute('data-category', 'product-' + categoryType[1] + '-input_' + flavourCounter);
+/*         
+        ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+
+        fetch('path/to/file/to/get/flavours', {
+            method: 'GET'
+        })
+        .then((response) => response.text())
+        .then((data) => {
+            // newNode.innerHTML = data;
+            console.log('worked');
+        })
+        .catch((error) =>{
+            console.log(error);
+        }); 
+*/
         newNode.innerHTML = `
             <option value="1">Nutella</option>
             <option value="2">Chocolate</option>
@@ -152,7 +173,7 @@ document.addEventListener('click',function(e){
     }
 });
 const asyncCollectAndSubmit = (targetID) => {    
-    const formCollector = document.querySelectorAll(`[data-category=${targetID}`);
+    const formCollector = document.querySelectorAll(`[data-category^=${targetID}`);
     const valueHolder = new FormData();
     console.log(targetID.split('-')[0]);
 
@@ -164,7 +185,7 @@ const asyncCollectAndSubmit = (targetID) => {
     formCollector.forEach( (el) => {
         el.value = '';
     });
-    valueHolder.append('actionType', 'targetID.split('-')[0]');
+    valueHolder.append('actionType', targetID.split('-')[0]);
 /*     
     ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
 
@@ -179,6 +200,19 @@ const asyncCollectAndSubmit = (targetID) => {
     .catch((error) =>{
         console.log(error);
     }); 
-    
 */
 }
+const showEditForm = (contentType, contentID) => {
+    const valueHolder = new FormData();
+    valueHolder.append('contentType', contentType);
+    valueHolder.append('contentID', contentID);
+    fetch('path/to/file', {
+        method: 'POST',
+        body: valueHolder
+    })
+    .then((response) => response.text())
+    .then((data) => {
+        return data;
+    })
+    .catch((error) => {console.log(error)});
+};
