@@ -142,7 +142,7 @@ document.addEventListener('click',function(e){
     }else if(eTarget.classList.contains('edit-data')){
         //Calls function to edit existing object based on the target id
         asyncCollectAndSubmit(event.target.id);
-    }else if(eTarget.classList.contains('test-data')){
+    }else if(eTarget.classList.contains('data-data')){
         //Calls function to delete object based on the target id
         console.log('in edit');
         // asyncCollectAndSubmit(eTarget.id);
