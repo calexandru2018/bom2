@@ -43,7 +43,7 @@ const editPlace = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="place-edit-input" data-edit-id="1">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="place-edit-input" data-place-edit-input="1">Editar</button> 
         </div>
     </form>
 `;
@@ -57,7 +57,7 @@ const editFlavour = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="flavour-edit-input" data-edit-id="1">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="flavour-edit-input" data-flavour-edit-input="1">Editar</button> 
         </div>
     </form>
 `;
@@ -77,7 +77,7 @@ const editProduct = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="product-edit-input" data-edit-id="1">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="product-edit-input" data-product-edit-input="1">Editar</button> 
         </div>
     </form>
 `;
@@ -175,7 +175,11 @@ document.addEventListener('click',function(e){
 const asyncCollectAndSubmit = (targetID) => {    
     const formCollector = document.querySelectorAll(`[data-category^=${targetID}`);
     const valueHolder = new FormData();
-    console.log(targetID.split('-')[0]);
+    const categoryType = targetID.split('-')[0];
+    const actionType = targetID.split('-')[1];
+    const itemID = (actionType == 'edit') ? document.getElementById(targetID).getAttribute('data-' + targetID) : false;
+    console.log(categoryType, actionType, itemID);
+    
 
     formCollector.forEach( (el) => {
         valueHolder.append(el.name, el.value);
@@ -185,7 +189,9 @@ const asyncCollectAndSubmit = (targetID) => {
     formCollector.forEach( (el) => {
         el.value = '';
     });
-    valueHolder.append('actionType', targetID.split('-')[0]);
+    valueHolder.append('actionType', actionType);
+    if(itemID)
+        valueHolder.append('itemID', itemID);
 /*     
     ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
 
