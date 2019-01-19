@@ -126,26 +126,16 @@ document.addEventListener('click',function(e){
     e.preventDefault();    
     const eTarget = event.target;
     if(eTarget.classList.contains('close-edit')){
+        //Closes the edit panel
         editContentContainer.classList.toggle('show');
     }else if(eTarget.classList.contains('edit-data')){
-        //should check type of category
-        const categoryType = event.target.id.split('-')[0];
-        switch(categoryType){
-            case 'admin':   console.log('Call edit admin function');
-                            //call function;
-                break;
-            case 'place':   console.log('Call edit place function');
-                            //call function;
-                break;
-            case 'flavour': console.log('Call edit flavour function');
-                            //call function;
-                break;
-            case 'product': console.log('Call edit product function');
-                            //call function;
-                break;
-        }
-        //call the required function for the category
+        //Calls function to edit existing object based on the target id
+        asyncCollectAndSubmit(event.target.id);
+    }else if(eTarget.classList.contains('add-data')){
+        //Calls function to insert new object based on the target id
+        asyncCollectAndSubmit(eTarget.id);
     }else if(eTarget.classList.contains('add-new-flavour')){
+        //Adds new select box with a new flavour to add to a product
         flavourCounter++;
         const newNode = document.createElement('select');   
         newNode.name = 'flavour_' + flavourCounter;   
@@ -158,35 +148,37 @@ document.addEventListener('click',function(e){
             <option value="1">Nutella</option>
             <option value="2">Chocolate</option>
         `;
-
         parentEl.insertBefore(newNode, previousEl.nextSibling);        
-    }else if(eTarget.classList.contains('add-data')){
-        const valueHolder = new FormData();
-        console.log(eTarget.id);
-        const formCollector = document.querySelectorAll('[data-category^=' + eTarget.id + ']');
-        formCollector.forEach( (el) => {
-            valueHolder.append(el.name, el.value);
-            console.log(el.name, el.value);
-        });
-        // asyncAction(valueHolder, 1);
-        formCollector.forEach( (el) => {
-            el.value = '';
-        });
     }
 });
-let asyncAction = (formCollection, actionType) => {
-    /*
-        Action type:
-        1 - Insert
-        2 - Edit
-    */
-   formCollection.append('actionType', actionType);
+const asyncCollectAndSubmit = (targetID) => {    
+    const formCollector = document.querySelectorAll(`[data-category=${targetID}`);
+    const valueHolder = new FormData();
+    console.log(targetID.split('-')[0]);
+
+    formCollector.forEach( (el) => {
+        valueHolder.append(el.name, el.value);
+        console.log(el.name, el.value);
+    });
+    //Cleans the input area from content
+    formCollector.forEach( (el) => {
+        el.value = '';
+    });
+    valueHolder.append('actionType', 'targetID.split('-')[0]');
+/*     
+    ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+
     fetch('path/to/async/file', {
         method: 'POST',
-        body: formCollection
+        body: valueHolder
     })
     .then(response => response.text())
     .then(data => {
         alert('Action accomplished');
-    });
+    })
+    .catch((error) =>{
+        console.log(error);
+    }); 
+    
+*/
 }
