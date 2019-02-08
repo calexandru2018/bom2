@@ -28,7 +28,7 @@ var calendarEl = document.getElementById('calendar');
 const feed = new Instafeed({
     get: 'user',
     userId: '5673767342',
-    accessToken: '5673767342.34e4dc1.e7f1db30f38a462f9dd341a3a03b5918',
+    accessToken: '5673767342.34e4dc1.c91bd25b06d04943b3481c6445f437e1',
     resolution: 'standard_resolution',
     /* sortBy: 'most-liked',
     limit: 7, */
