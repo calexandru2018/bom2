@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'antro-bold';
-    src: url('../assets/fonts/Antro_Vectra_Bolder.otf');
+    src: url('/bom2/dist/assets/fonts/Antro_Vectra_Bolder.otf');
 }
 @import url('https://fonts.googleapis.com/css?family=Montserrat:600,600i|Roboto');
 :root {
@@ -532,23 +532,23 @@ section > div > p{
 }
 .bg1::after {
     left: -1%;
-    background: url('/dist/assets/img/bq.jpg') no-repeat center;
+    background: url('/bom2/dist/assets/img/bq.jpg') no-repeat center;
 	background-size: cover;
 	background-position-y: 60%;
 }
 .bg2::after {
   	left: -1%;
-    background: url('/dist/assets/img/bq4.jpg') no-repeat center;
+    background: url('/bom2/dist/assets/img/bq4.jpg') no-repeat center;
     background: cover;
 }
 .bg3::after {
   	left: -1%;
-    background: url('/dist/assets/img/bq2.jpg') no-repeat center;
+    background: url('/bom2/dist/assets/img/bq2.jpg') no-repeat center;
     background: cover;
 }
 .bg4::after {
   	left: -1%;
-    background: url('/dist/assets/img/bq3.jpg') no-repeat center;
+    background: url('/bom2/dist/assets/img/bq3.jpg') no-repeat center;
     background: cover;
 }
 /* instagram feed */
