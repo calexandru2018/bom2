@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'antro-bold';
-    src: url('/dist/assets/fonts/Antro_Vectra_Bolder.otf');
+    src: url('../assets/fonts/Antro_Vectra_Bolder.otf');
 }
 @import url('https://fonts.googleapis.com/css?family=Montserrat:600,600i|Roboto');
 :root {
