@@ -7,7 +7,7 @@ import '../img/remove.svg';
 import '../img/settings.svg';
 import '../img/logout.svg';
 let flavourCounter = 1;
-let editContentContainer = document.getElementById('edit-content');
+const editContentContainer = document.getElementById('edit-content');
 const settingsOverlay = document.getElementById('settings-overlay');
 const editAdmin = `
     <form action="#" class="edit-form">
@@ -101,7 +101,7 @@ document.querySelectorAll('.btn-secondary').forEach((btn) => {
 });
 /* Shows the edit forms */
 document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-product').forEach( (btn) => {
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function() {
         var dataType = ((this.getAttribute('data-type')) ? this.getAttribute('data-type') : false);
         if(dataType){
             /* 
@@ -138,14 +138,14 @@ document.addEventListener('click',function(e){
         editContentContainer.classList.toggle('show');
     }else if(eTarget.classList.contains('add-data')){
         //Calls function to insert new object based on the target id
-        asyncCollectAndSubmit(eTarget.id);
+        asyncCollectAndAction(eTarget.id);
     }else if(eTarget.classList.contains('edit-data')){
         //Calls function to edit existing object based on the target id
-        asyncCollectAndSubmit(event.target.id);
-    }else if(eTarget.classList.contains('data-data')){
+        asyncCollectAndAction(event.target.id);
+    }else if(eTarget.classList.contains('delete-data')){
         //Calls function to delete object based on the target id
         console.log('in edit');
-        // asyncCollectAndSubmit(eTarget.id);
+        // asyncCollectAndAction(eTarget.id);
     }else if(eTarget.classList.contains('add-new-flavour')){
         //Adds new select box with a new flavour to add to a product
         flavourCounter++;
@@ -178,7 +178,7 @@ document.addEventListener('click',function(e){
         parentEl.insertBefore(newNode, previousEl.nextSibling);        
     }
 });
-const asyncCollectAndSubmit = (targetID) => {   
+const asyncCollectAndAction = (targetID) => {   
     /*
         Action type:
         1 - Insert/Add
@@ -189,7 +189,10 @@ const asyncCollectAndSubmit = (targetID) => {
     const valueHolder = new FormData();
     const categoryType = targetID.split('-')[0];
     const actionType = targetID.split('-')[1];
-    const itemID = (actionType != 'add') ? document.getElementById(targetID).getAttribute('data-' + targetID) : false;
+    //If actionType != add then there is an ID to fetch, meaning that the user wants to edit an object. 
+    //False is genereated in case the user added a new object
+    const itemID = (actionType != 'add') ? document.getElementById(targetID).getAttribute(`data-${targetID}`) : false;
+
     console.log(categoryType, actionType, itemID);
 
     formCollector.forEach( (el) => {
@@ -202,7 +205,7 @@ const asyncCollectAndSubmit = (targetID) => {
     });
     valueHolder.append('categoryType', categoryType);
     valueHolder.append('actionType', actionType);
-    //Append itemID if positive, meaning that the clients wants to edit the value
+    //Append itemID, meaning that the clients wants to edit the value. If itemID is false then the user wants to add a new object
     if(itemID)
         valueHolder.append('itemID', itemID);
 /*     
