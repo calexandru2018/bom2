@@ -249,19 +249,19 @@
                 <div class="contact-form-wrapper">
                     <div id="error-message" class="hide" style="color: rgb(255, 40, 80);">Todos os campos tem que ser preenchidos, motivo escolhido e aceite os termos.</div>
                     <form id="contact-form" class="contact-form">                   
-                        <label for="form-name">Nome</label>
-                        <input name="form-name" type="text" class="form-input">
-                        <label for="form-email">E-mail</label>
-                        <input name="form-email" type="email "class="form-input">
-                        <label for="">Motivo de contacto</label>
+                        <!-- <label for="form-name">Nome</label> -->
+                        <input name="form-name" type="text" class="form-input" placeholder="Nome">
+                        <!-- <label for="form-email">E-mail</label> -->
+                        <input name="form-email" type="email "class="form-input" placeholder="Email">
+                        <!-- <label for="">Motivo de contacto</label> -->
                         <select name="form-select" class="form-input">
-                            <option value="0" selected disabled>Escolha o motivo</option>
+                            <option value="0" selected disabled>Motivo de contacto</option>
                             <option value="1">Informação</option>
                             <option value="2">Feedback</option>
                             <option value="3">Eventos</option>
                         </select>
-                        <label for="">Mensagem</label>
-                        <textarea name="form-message" class="form-input" cols="30" rows="10"></textarea>
+                        <!-- <label for="">Mensagem</label> -->
+                        <textarea name="form-message" class="form-input" cols="30" rows="10" placeholder="A sua mensagem"></textarea>
                         <div style="display: grid; grid-template-columns: 1fr 1fr;">
                             <span>
                                 <label for="terms">Li e aceito os termos</label>

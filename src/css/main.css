@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'antro-bold';
-    src: url('/bom2/dist/assets/fonts/Antro_Vectra_Bolder.otf');
+    src: url('/dist/assets/fonts/Antro_Vectra_Bolder.otf');
 }
 @import url('https://fonts.googleapis.com/css?family=Montserrat:600,600i|Roboto');
 :root {
@@ -212,14 +212,25 @@ a{
 	margin-bottom: 0.2em;
 	color: rgb(245, 245, 245)
 }
+::placeholder{
+	color: var(--fourth-color);
+	opacity: 1;
+}
+::-ms-input-placeholder{
+	color: var(--fourth-color);
+}
+:-ms-input-placeholder{
+	color: var(--fourth-color);
+}
 .contact-form .form-input{
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
 	border: none;
     border-radius: 2px;
 	outline: none;
 	padding: 0.4em;
-	background-color: rgb(245, 245, 245) !important;
-	color: dimgray;
+	background-color: transparent;
+	color: var(--fourth-color);
+	box-shadow: 0 9px 5px -9px var(--fourth-color);
 }
 .btn-send{
 	color: white;
@@ -227,7 +238,7 @@ a{
 	border: none;
     width: fit-content;
     outline: 20px;
-    border-radius: 2px;
+    border-radius: 5px;
 	transition: all 0.2s ease-in-out;
 	justify-self: end;
 	cursor:pointer;
@@ -532,23 +543,23 @@ section > div > p{
 }
 .bg1::after {
     left: -1%;
-    background: url('/bom2/dist/assets/img/bq.jpg') no-repeat center;
+    background: url('/dist/assets/img/bq.jpg') no-repeat center;
 	background-size: cover;
 	background-position-y: 60%;
 }
 .bg2::after {
   	left: -1%;
-    background: url('/bom2/dist/assets/img/bq4.jpg') no-repeat center;
+    background: url('/dist/assets/img/bq4.jpg') no-repeat center;
     background: cover;
 }
 .bg3::after {
   	left: -1%;
-    background: url('/bom2/dist/assets/img/bq2.jpg') no-repeat center;
+    background: url('/dist/assets/img/bq2.jpg') no-repeat center;
     background: cover;
 }
 .bg4::after {
   	left: -1%;
-    background: url('/bom2/dist/assets/img/bq3.jpg') no-repeat center;
+    background: url('/dist/assets/img/bq3.jpg') no-repeat center;
     background: cover;
 }
 /* instagram feed */
@@ -606,6 +617,20 @@ section > div > p{
 }
 #instafeed > a:hover > div{
 	opacity: 1;
+}
+#contacts > .contact-wrapper .contact-form-wrapper{
+	padding: 10px;
+    border-radius: 10px;
+	border: 3px solid;
+	border-color: rgba(222, 184, 135, 0.5);
+	background-color:rgba(222, 184, 135, 1);
+}
+#contacts input, #contacts select, #contacts textarea{
+	padding: 15px;
+    border-radius: 10px;
+}
+#contacts input[type="text"], #contacts select{
+	height: 50px;
 }
 /*
 __________
@@ -856,7 +881,7 @@ __________
 		font-size: 2.5em;
 	}
 	.col {
-		width: 47%;
+		width: 46%;
 		margin: 0.7rem;
 	}
 	#instafeed a{
@@ -881,9 +906,11 @@ __________
 		grid-row-start: 2;
 		grid-row-end: 3;
 	}
+	#contacts > .contact-wrapper .contact-text{
+		margin-bottom: 50px;
+	}
 	#contacts > .contact-wrapper .contact-form-wrapper{
 		font-size: 1.5vh;
-		margin-top: 50px;
 	}
 	.footer{
 		grid-gap: 1em;
