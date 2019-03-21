@@ -49,6 +49,9 @@ a{
 .show{
 	display: inline;
 }
+.divider{
+	width: 100%;
+}
 #scroll-to-products{
 	cursor: pointer;
 }
@@ -510,13 +513,14 @@ __________
 	z-index: -1;
 }
 .static {
-	font-size: 2.5vh;
+	font-size: 16px;
+	line-height: 1.25;
+	hyphens: auto;
 	min-height: 50%;
 	height: auto;
 	display: grid;
 	grid-auto-rows: min-content;
-	/* grid-template-rows: repeat(2, 1fr); */
-	text-align: justify;
+	text-align: initial;
 	padding: 0em 1.3em;		
 	font-family: 'Montserrat','Roboto' ;
 	font-weight: bold;
@@ -860,6 +864,9 @@ __________
 	section > div > p, .flip-card-grid, .contact-wrapper, #instafeed{
 		padding: 0.5em 5em;
 	}
+	section > div > ol{
+		padding: 0.5em 6em;
+	}
 	.bg1 > div{
 		margin-top: -60vh;
 	}
@@ -920,6 +927,9 @@ __________
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+	.static {
+		font-size: 21px;
+	}
 	.scroll-home-btn{
 		display: inline-block !important;
 	}
@@ -995,6 +1005,12 @@ __________
 	}
 	.contact-form-wrapper{
 		margin-top: 0px !important;
+	}
+	#contacts > .contact-wrapper .contact-text p{
+		margin-top: 0;
+	}
+	#contacts > .contact-wrapper .contact-form-wrapper{
+		height: fit-content;
 	}
 }
 /* Extra large devices (large desktops, 1200px and up) */
