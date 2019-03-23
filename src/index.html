@@ -261,14 +261,14 @@
                     </p>
                 </div>
                 <div class="contact-form-wrapper">
-                    <div id="error-message" class="hide" style="color: rgb(178, 34, 34);">Todos os campos tem que ser preenchidos, motivo escolhido e aceite os termos.</div>
-                    <form id="contact-form" class="contact-form">                   
-                        <!-- <label for="form-name">Nome</label> -->
-                        <input name="form-name" type="text" class="form-input" placeholder="Nome">
-                        <!-- <label for="form-email">E-mail</label> -->
-                        <input name="form-email" type="email "class="form-input" placeholder="Email">
-                        <!-- <label for="">Motivo de contacto</label> -->
-                        <select name="form-select" class="form-input">
+                        <div id="error-message" class="hide" style="color: rgb(178, 34, 34);">Todos os campos tem que ser preenchidos, motivo escolhido e aceite os termos.</div>
+                        <form id="contact-form" class="contact-form">                   
+                            <!-- <label for="form-name">Nome</label> -->
+                            <input name="form-name" type="text" class="form-input" placeholder="Nome">
+                            <!-- <label for="form-email">E-mail</label> -->
+                            <input name="form-email" type="email "class="form-input" placeholder="Email">
+                            <!-- <label for="">Motivo de contacto</label> -->
+                            <select name="form-select" class="form-input">
                             <option value="0" selected disabled>Motivo de contacto</option>
                             <option value="1">Informação</option>
                             <option value="2">Feedback</option>
@@ -277,11 +277,12 @@
                         <!-- <label for="">Mensagem</label> -->
                         <textarea name="form-message" class="form-input" cols="30" rows="10" placeholder="A sua mensagem"></textarea>
                         <div style="display: grid; grid-template-columns: 1fr 1fr;">
-                            <span>
-                                <label for="terms">Li e aceito os termos</label>
-                                <input type="checkbox" name="terms" class="form-input" style="vertical-align: middle; margin: 0 !important">
-                            </span>
-                            <button type="submit" id="send-btn" class="btn btn-send">Enviar</button>
+                                <span>
+                                    <label for="terms">Li e aceito os termos</label>
+                                    <input type="checkbox" name="terms" class="form-input" style="vertical-align: middle; margin: 0 !important">
+                                </span>
+                            <div id="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                            <button type="submit"  class="hide" id="send-btn" class="btn btn-send">Enviar</button>
                         </div>
                     </form>
                 </div>

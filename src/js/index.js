@@ -40,7 +40,7 @@ const feed = new Instafeed({
                     <img src="{{image}}"/>
                 </a>`,
     filter: function(image) {
-        console.log(image);
+        // console.log(image);
         return image.tags.indexOf('testebom2') >= 0;
     }
 });
@@ -87,11 +87,13 @@ window.addEventListener('resize', () => {
 });
 document.getElementById('send-btn').addEventListener('click', (e) => {
     e.preventDefault();
+    const sendButton = document.getElementById('send-btn');
+    const spinner = document.getElementById('lds-ellipsis');
+
     const formCollector = document.querySelectorAll('.form-input');
     const errorMsg = document.getElementById('error-message');
     let formData = new FormData();
     let errorCollector = false;
-    //console.log(formCollector);
     formCollector.forEach( (el) => {
         if((el.type === 'text' || el.type == 'textarea') && el.value == ''){
             errorCollector = true;
@@ -105,6 +107,8 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
         }
     });  
     if(!errorCollector){
+        sendButton.classList.add('hide');
+        spinner.classList.remove('hide');
         console.log('Message is sent');
         errorMsg.classList.add('hide');
         fetch('path/to/message', {
@@ -113,14 +117,16 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
         })
         .then(r => r.text())
         .then(data => {
-            //fix a loder
-            if(!data)
+            if(!data){
                 formCollector.forEach((el) => {
                     el.value = '';
                 });
+                sendButton.classList.remove('hide');
+                spinner.classList.add('hide');
+            }
         });
     }else{
-        console.log('Form is not filled');
+        // console.log('Form is not filled');
         errorMsg.classList.remove('hide');
     }  
 });
