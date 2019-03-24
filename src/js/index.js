@@ -89,6 +89,7 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
     e.preventDefault();
     const sendButton = document.getElementById('send-btn');
     const spinner = document.getElementById('lds-ellipsis');
+    const sentConfirmation = document.getElementById('message-sent-confirmation');
 
     const formCollector = document.querySelectorAll('.form-input');
     const errorMsg = document.getElementById('error-message');
@@ -121,8 +122,14 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
                 formCollector.forEach((el) => {
                     el.value = '';
                 });
-                sendButton.classList.remove('hide');
-                spinner.classList.add('hide');
+                setTimeout(function(){ 
+                    spinner.classList.add('hide');
+                    sentConfirmation.classList.remove('hide');
+                    setTimeout(function(){
+                        sentConfirmation.classList.add('hide');
+                        sendButton.classList.remove('hide');
+                    }, 3000)
+                }, 1000);
             }
         });
     }else{

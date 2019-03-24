@@ -47,6 +47,8 @@ a{
 }
 .hide{
 	display: none !important;
+	opacity: 0;
+	transition: visibility 0s, opacity 0.5s linear;
 }
 .show{
 	display: inline;
@@ -56,6 +58,10 @@ a{
 }
 #scroll-to-products{
 	cursor: pointer;
+}
+#message-sent-confirmation{
+	color: rgb(46, 139, 87); 
+	text-align: right;
 }
 .card-background-light{
 	box-shadow: inset 0 0 40px var(--card-light-light-color);
@@ -135,7 +141,7 @@ a{
 }
 .parallax-wrapper {
 	height: 100vh;
-	overflow-x: auto;
+	overflow-x: hidden;
 	overflow-y: auto;
 	perspective: 2;
 }
@@ -786,12 +792,14 @@ __________
 #lds-ellipsis {
 	display: inline-block;
 	position: relative;
-	width: 50%;
+	width: auto;
+	/* width: 50%; */
 	/* width: 64px; */
 	/* height: 64px; */
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: -12%;
+/* 	margin-left: auto;
+	margin-right: auto; */
+	margin-top: -15px;
+	right: -50%;
   }
   #lds-ellipsis div {
 	position: absolute;
@@ -930,6 +938,10 @@ __________
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
+	#lds-ellipsis {
+		margin-top: -22px;
+		right: -75%;
+	  }
 	.logo-landing-page {
 		width: 160px;
 		margin-top: -56px;
@@ -1077,7 +1089,8 @@ __________
 	}
 	.contact-wrapper{
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		/* grid-template-columns: repeat(2, 1fr); */
+		grid-template-columns: repeat(1, 1fr);
 		grid-gap: 3rem;
 	}
 	.contact-form-wrapper{
@@ -1092,6 +1105,9 @@ __________
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
+	.contact-wrapper{
+		grid-template-columns: repeat(2, 1fr);
+	}
 	.col{
 		max-width: 750px;
 	}
