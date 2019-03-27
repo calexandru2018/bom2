@@ -241,7 +241,7 @@ a{
 	padding: 0.4em;
 	background-color: transparent;
 	color: var(--fourth-color);
-	box-shadow: 0 9px 5px -9px var(--fourth-color);
+	box-shadow: 0 9px 4px -10px var(--fourth-color);
 }
 .btn-send{
 	color: white;
@@ -639,7 +639,7 @@ section > div > p{
 }
 #contacts input, #contacts select, #contacts textarea{
 	padding: 15px;
-    border-radius: 10px;
+  /* border-radius: 10px; */
 }
 #contacts input[type="text"], #contacts select{
 	height: 50px;
