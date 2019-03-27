@@ -1105,6 +1105,9 @@ __________
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
+	.static {
+		line-height: 1.5;
+	}
 	.contact-wrapper{
 		grid-template-columns: repeat(2, 1fr);
 	}
@@ -1122,6 +1125,9 @@ __________
 		grid-column-end: 3;
 		grid-row-start: 2;
 		grid-row-end: 3;
+	}
+	.footer{
+		padding-top: 30px;
 	}
 }
 /*
