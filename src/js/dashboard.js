@@ -21,9 +21,10 @@ const editAdmin = `
         <label for="phoneNumber">Telefone</label>
         <input type="tel" name="phoneNumber" data-category="admin-edit-input">
 
+
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="admin-edit-input" data-edit-id="1">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="admin-edit-input" data-admin-edit-id="1">Editar</button> 
         </div>
     </form>
 `;
@@ -31,11 +32,11 @@ const editPlace = `
     <form action="#" class="edit-form">
         <h2>Editar Destino</h2>
         <label for="">Cidade</label>
-        <input type="text" name="name" data-category="place-edit-input">
+        <input type="text" name="city" data-category="place-edit-input">
         <label for="">Desde</label>
-        <input type="date" name="name" data-category="place-edit-input">
+        <input type="date" name="start" data-category="place-edit-input">
         <label for="">Ate</label>
-        <input type="date" name="name" data-category="place-edit-input">
+        <input type="date" name="end" data-category="place-edit-input">
         <label for="">Latitude</label>
         <input type="text" name="latitude" data-category="place-edit-input">
         <label for="">Longitude</label>
@@ -43,7 +44,7 @@ const editPlace = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="place-edit-input" data-place-edit-input="1">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="place-edit-input" data-place-edit-id="1">Editar</button> 
         </div>
     </form>
 `;
@@ -57,7 +58,7 @@ const editFlavour = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="flavour-edit-input" data-flavour-edit-input="1">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="flavour-edit-input" data-flavour-edit-id="1">Editar</button> 
         </div>
     </form>
 `;
@@ -77,7 +78,7 @@ const editProduct = `
 
         <div class="edit-btns">
             <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="product-edit-input" data-product-edit-input="1">Editar</button> 
+            <button type="submit" class="btn-form-insert edit-data" id="product-edit-input" data-product-edit-id="1">Editar</button> 
         </div>
     </form>
 `;
@@ -102,15 +103,17 @@ document.querySelectorAll('.btn-secondary').forEach((btn) => {
 /* Shows the edit forms */
 document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-product').forEach( (btn) => {
     btn.addEventListener('click', function() {
-        var dataType = ((this.getAttribute('data-type')) ? this.getAttribute('data-type') : false);
+        const dataType = ((this.getAttribute('data-type')) ? this.getAttribute('data-type') : false);
+        const contentID = this.getAttribute(`data-${dataType}-id`);
+
         if(dataType){
             /* 
             ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
 
-            editContentContainer.innerHTML = showEditForm(dataType);  
+            editContentContainer.innerHTML = showEditForm(dataType, contentID);  
             
             */
-            var contentToShow;
+            let contentToShow = '';
             switch(dataType){
                 case 'admin': contentToShow = editAdmin;
                     break;
@@ -141,23 +144,25 @@ document.addEventListener('click',function(e){
         asyncCollectAndAction(eTarget.id);
     }else if(eTarget.classList.contains('edit-data')){
         //Calls function to edit existing object based on the target id
-        asyncCollectAndAction(event.target.id);
+        asyncCollectAndAction(eTarget.id);
     }else if(eTarget.classList.contains('delete-data')){
         //Calls function to delete object based on the target id
         console.log('in edit');
         // asyncCollectAndAction(eTarget.id);
     }else if(eTarget.classList.contains('add-new-flavour')){
-        //Adds new select box with a new flavour to add to a product
+        //Adds new select box with a new flavour to "add to a product" function
         flavourCounter++;
         const newNode = document.createElement('select');   
         newNode.name = 'flavour_' + flavourCounter;   
-        const parentEl = event.target.parentNode;
-        const previousEl = event.target.previousElementSibling;
+        const parentEl = eTarget.parentNode;
+        const previousEl = eTarget.previousElementSibling;
         const categoryType = previousEl.getAttribute('data-category').split('-');
         
         newNode.setAttribute('data-category', 'product-' + categoryType[1] + '-input_' + flavourCounter);
 /*         
         ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+
+        Gets the flavours from the DB and shows them in the select
 
         fetch('path/to/file/to/get/flavours', {
             method: 'GET'
@@ -180,37 +185,32 @@ document.addEventListener('click',function(e){
 });
 const asyncCollectAndAction = (targetID) => {   
     /*
+        If actionType != add then there is an itemID to fetch, meaning that the user wants to edit or delete an object. 
+        False is genereated in case the user is adding a new item
         Action type:
         1 - Insert/Add
         2 - Edit
         3 - Delete
     */ 
+    let collectedData = '';
     const formCollector = document.querySelectorAll(`[data-category^=${targetID}`);
-    const valueHolder = new FormData();
     const categoryType = targetID.split('-')[0];
     const actionType = targetID.split('-')[1];
-    //If actionType != add then there is an ID to fetch, meaning that the user wants to edit an object. 
-    //False is genereated in case the user added a new object
-    const itemID = (actionType != 'add') ? document.getElementById(targetID).getAttribute(`data-${targetID}`) : false;
+    
+    switch(actionType){
+        case 'add': collectedData = insertNewItem(formCollector, categoryType, actionType);
+            break;
+        case 'edit': collectedData = editItem(targetID, formCollector, categoryType, actionType);
+            break;
+        case 'delete': collectedData = deleteItem();
+            break;
+    }
+/*     for (var pair of collectedData.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+    } */
 
-    console.log(categoryType, actionType, itemID);
-
-    formCollector.forEach( (el) => {
-        valueHolder.append(el.name, el.value);
-        console.log(el.name, el.value);
-    });
-    //Cleans the input area from content
-    formCollector.forEach( (el) => {
-        el.value = '';
-    });
-    valueHolder.append('categoryType', categoryType);
-    valueHolder.append('actionType', actionType);
-    //Append itemID, meaning that the clients wants to edit the value. If itemID is false then the user wants to add a new object
-    if(itemID)
-        valueHolder.append('itemID', itemID);
 /*     
     ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
-
     fetch('path/to/async/file', {
         method: 'POST',
         body: valueHolder
@@ -224,6 +224,38 @@ const asyncCollectAndAction = (targetID) => {
     }); 
 */
 }
+const insertNewItem = function(formCollector, categoryType, actionType){
+    const valueHolder = new FormData();
+
+    formCollector.forEach( (el) => {
+        valueHolder.append(el.name, el.value);
+    });
+    //Cleans the input area from content
+    /* formCollector.forEach( (el) => {
+        el.value = '';
+    }); */
+    valueHolder.append('categoryType', categoryType);
+    valueHolder.append('actionType', actionType);
+    
+    return valueHolder;
+}
+const editItem = function(targetID, formCollector, categoryType, actionType){
+    const valueHolder = new FormData();
+
+    const holder = targetID.split('-');
+    const modifiedTargetID = holder[0] + '-' + holder[1] + '-' + 'id';
+    const itemID = (actionType != 'add') ? document.getElementById(targetID).getAttribute(`data-${modifiedTargetID}`) : false;
+
+    formCollector.forEach( (el) => {
+        valueHolder.append(el.name, el.value);
+    });
+    valueHolder.append('itemID', itemID);
+    valueHolder.append('categoryType', categoryType);
+    valueHolder.append('actionType', actionType);
+
+    return valueHolder;
+}
+
 const showEditForm = (contentType, contentID) => {
     const valueHolder = new FormData();
     valueHolder.append('contentType', contentType);
