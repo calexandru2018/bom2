@@ -59,8 +59,7 @@ a{
 #scroll-to-products{
 	cursor: pointer;
 }
-#message-sent-confirmation{
-	color: rgb(46, 139, 87); 
+#message-status{
 	text-align: right;
 }
 .card-background-light{

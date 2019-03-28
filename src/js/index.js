@@ -89,7 +89,7 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
     e.preventDefault();
     const sendButton = document.getElementById('send-btn');
     const spinner = document.getElementById('lds-ellipsis');
-    const sentConfirmation = document.getElementById('message-sent-confirmation');
+    const messageStatus = document.getElementById('message-status');
 
     const formCollector = document.querySelectorAll('.form-input');
     const errorMsg = document.getElementById('error-message');
@@ -107,6 +107,7 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
                 formData.append(el.name, el.value);
         }
     });  
+    
     if(!errorCollector){
         sendButton.classList.add('hide');
         spinner.classList.remove('hide');
@@ -119,17 +120,16 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
         .then(r => r.text())
         .then(data => {
             if(!data){
+                messageStatus.innerHTML = "Mensagem enviada &#10003;";
+                messageStatus.style = "color: rgb(46, 139, 87)";
                 formCollector.forEach((el) => {
                     el.value = '';
                 });
-                setTimeout(function(){ 
-                    spinner.classList.add('hide');
-                    sentConfirmation.classList.remove('hide');
-                    setTimeout(function(){
-                        sentConfirmation.classList.add('hide');
-                        sendButton.classList.remove('hide');
-                    }, 3000)
-                }, 1000);
+                timeout(3000, spinner, messageStatus, sendButton);
+            }else{
+                messageStatus.innerText = "Occoreu um erro ao enviar a mensagem, tente novamente.";
+                messageStatus.style = "color: rgb(178, 34, 34)";
+                timeout(5000, spinner, messageStatus, sendButton);
             }
         });
     }else{
@@ -188,3 +188,14 @@ function scrollTo(el, navigationBtnPressed, isDesktop){
     if(navigationBtnPressed && !isDesktop)
         mainNavigation.classList.toggle('open'); 
 }
+
+function timeout(timeoutValue, spinnerEl, messageStatusEl, buttonEl){
+    setTimeout(function(){ 
+        spinnerEl.classList.add('hide');
+        messageStatusEl.classList.remove('hide');
+        setTimeout(function(){
+            messageStatusEl.classList.add('hide');
+            buttonEl.classList.remove('hide');
+        }, timeoutValue)
+    }, 1000);
+};
