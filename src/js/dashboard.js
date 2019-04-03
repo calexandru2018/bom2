@@ -134,7 +134,7 @@ document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-produc
 document.addEventListener('click',function(e){
     e.preventDefault();    
     const eTarget = event.target;
-    console.log(eTarget);
+    console.log(event.target);
     
     switch(true){
         case eTarget.classList.contains('close-edit'):
@@ -143,9 +143,7 @@ document.addEventListener('click',function(e){
         case eTarget.classList.contains('add-data'):
         case eTarget.classList.contains('edit-data'):
         case eTarget.classList.contains('delete-data'):
-            asyncCollectAndAction(eTarget.id);
-            console.log('it entered the switch', true);
-            
+            asyncCollectAndAction(eTarget.id);            
             break;
         case eTarget.classList.contains('add-new-flavour'):
             addNewFlavourToProduct(eTarget);
@@ -161,24 +159,26 @@ const asyncCollectAndAction = (targetID) => {
         2 - Edit
         3 - Delete
     */ 
+   console.log('target Id is: ', targetID);
+   
     let collectedData = '';
     let formCollector = ''
     const categoryType = targetID.split('-')[0];
     const actionType = targetID.split('-')[1];
-    // console.log('action type is: ', actionType, typeof(actionType));
+    console.log('action type is: ', actionType, typeof(actionType), actionType);
     
-    if(actionType != 'delete'){
+    if(actionType != 'delete' || actionType != "delete"){
         formCollector = document.querySelectorAll(`[data-category^=${targetID}`);
     }
     
-    switch(actionType){
+/*     switch(actionType){
         case 'add': collectedData = insertNewItem(formCollector, categoryType, actionType);
             break;
         case 'edit': collectedData = editItem(targetID, formCollector, categoryType, actionType);
             break;
         case 'delete': collectedData = deleteItem(targetID, categoryType);
             break;
-    }
+    } */
 /*     for (var pair of collectedData.entries()) {
         console.log(pair[0]+ ', ' + pair[1]); 
     } */
@@ -263,35 +263,35 @@ const deleteItem = function(targetID, categoryType){
     
 };
 const addNewFlavourToProduct = function(target){
-     //Adds new select box with a new flavour to "add to a product" function
-     flavourCounter++;
-     const newNode = document.createElement('select');   
-     newNode.name = 'flavour_' + flavourCounter;   
-     const parentEl = target.parentNode;
-     const previousEl = target.previousElementSibling;
-     const categoryType = previousEl.getAttribute('data-category').split('-');
+    //Adds new select box with a new flavour to "add to a product" function
+    flavourCounter++;
+    const newNode = document.createElement('select');   
+    newNode.name = 'flavour_' + flavourCounter;   
+    const parentEl = target.parentNode;
+    const previousEl = target.previousElementSibling;
+    const categoryType = previousEl.getAttribute('data-category').split('-');
      
-     newNode.setAttribute('data-category', 'product-' + categoryType[1] + '-input_' + flavourCounter);
+    newNode.setAttribute('data-category', 'product-' + categoryType[1] + '-input_' + flavourCounter);
 /*         
-     ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+    ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
 
-     Gets the flavours from the DB and shows them in the select
+    Gets the flavours from the DB and shows them in the select
 
-     fetch('path/to/file/to/get/flavours', {
-         method: 'GET'
-     })
-     .then((response) => response.text())
-     .then((data) => {
-         // newNode.innerHTML = data;
-         console.log('worked');
-     })
-     .catch((error) =>{
-         console.log(error);
-     }); 
+    fetch('path/to/file/to/get/flavours', {
+        method: 'GET'
+    })
+    .then((response) => response.text())
+    .then((data) => {
+        // newNode.innerHTML = data;
+        console.log('worked');
+    })
+    .catch((error) =>{
+        console.log(error);
+    }); 
 */
-     newNode.innerHTML = `
-         <option value="1">Nutella</option>
-         <option value="2">Chocolate</option>
-     `;
-     parentEl.insertBefore(newNode, previousEl.nextSibling);
+    newNode.innerHTML = `
+        <option value="1">Nutella</option>
+        <option value="2">Chocolate</option>
+    `;
+    parentEl.insertBefore(newNode, previousEl.nextSibling);
 }
