@@ -136,51 +136,20 @@ document.addEventListener('click',function(e){
     const eTarget = event.target;
     console.log(eTarget);
     
-    if(eTarget.classList.contains('close-edit')){
-        //Closes the edit panel
-        editContentContainer.classList.toggle('show');
-    }else if(eTarget.classList.contains('add-data')){
-        //Calls function to insert new object based on the target id
-        asyncCollectAndAction(eTarget.id);
-    }else if(eTarget.classList.contains('edit-data')){
-        //Calls function to edit existing object based on the target id
-        asyncCollectAndAction(eTarget.id);
-    }else if(eTarget.classList.contains('delete-data')){
-        //Calls function to delete object based on the target id
-        console.log('in edit');
-        // asyncCollectAndAction(eTarget.id);
-    }else if(eTarget.classList.contains('add-new-flavour')){
-        //Adds new select box with a new flavour to "add to a product" function
-        flavourCounter++;
-        const newNode = document.createElement('select');   
-        newNode.name = 'flavour_' + flavourCounter;   
-        const parentEl = eTarget.parentNode;
-        const previousEl = eTarget.previousElementSibling;
-        const categoryType = previousEl.getAttribute('data-category').split('-');
-        
-        newNode.setAttribute('data-category', 'product-' + categoryType[1] + '-input_' + flavourCounter);
-/*         
-        ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
-
-        Gets the flavours from the DB and shows them in the select
-
-        fetch('path/to/file/to/get/flavours', {
-            method: 'GET'
-        })
-        .then((response) => response.text())
-        .then((data) => {
-            // newNode.innerHTML = data;
-            console.log('worked');
-        })
-        .catch((error) =>{
-            console.log(error);
-        }); 
-*/
-        newNode.innerHTML = `
-            <option value="1">Nutella</option>
-            <option value="2">Chocolate</option>
-        `;
-        parentEl.insertBefore(newNode, previousEl.nextSibling);        
+    switch(true){
+        case eTarget.classList.contains('close-edit'):
+            editContentContainer.classList.toggle('show');
+            break;
+        case eTarget.classList.contains('add-data'):
+        case eTarget.classList.contains('edit-data'):
+        case eTarget.classList.contains('delete-data'):
+            asyncCollectAndAction(eTarget.id);
+            console.log('it entered the switch', true);
+            
+            break;
+        case eTarget.classList.contains('add-new-flavour'):
+            addNewFlavourToProduct(eTarget);
+            break;
     }
 });
 const asyncCollectAndAction = (targetID) => {   
@@ -193,16 +162,21 @@ const asyncCollectAndAction = (targetID) => {
         3 - Delete
     */ 
     let collectedData = '';
-    const formCollector = document.querySelectorAll(`[data-category^=${targetID}`);
+    let formCollector = ''
     const categoryType = targetID.split('-')[0];
     const actionType = targetID.split('-')[1];
+    // console.log('action type is: ', actionType, typeof(actionType));
+    
+    if(actionType != 'delete'){
+        formCollector = document.querySelectorAll(`[data-category^=${targetID}`);
+    }
     
     switch(actionType){
         case 'add': collectedData = insertNewItem(formCollector, categoryType, actionType);
             break;
         case 'edit': collectedData = editItem(targetID, formCollector, categoryType, actionType);
             break;
-        case 'delete': collectedData = deleteItem();
+        case 'delete': collectedData = deleteItem(targetID, categoryType);
             break;
     }
 /*     for (var pair of collectedData.entries()) {
@@ -224,38 +198,6 @@ const asyncCollectAndAction = (targetID) => {
     }); 
 */
 }
-const insertNewItem = function(formCollector, categoryType, actionType){
-    const valueHolder = new FormData();
-
-    formCollector.forEach( (el) => {
-        valueHolder.append(el.name, el.value);
-    });
-    //Cleans the input area from content
-    /* formCollector.forEach( (el) => {
-        el.value = '';
-    }); */
-    valueHolder.append('categoryType', categoryType);
-    valueHolder.append('actionType', actionType);
-    
-    return valueHolder;
-}
-const editItem = function(targetID, formCollector, categoryType, actionType){
-    const valueHolder = new FormData();
-
-    const holder = targetID.split('-');
-    const modifiedTargetID = holder[0] + '-' + holder[1] + '-' + 'id';
-    const itemID = (actionType != 'add') ? document.getElementById(targetID).getAttribute(`data-${modifiedTargetID}`) : false;
-
-    formCollector.forEach( (el) => {
-        valueHolder.append(el.name, el.value);
-    });
-    valueHolder.append('itemID', itemID);
-    valueHolder.append('categoryType', categoryType);
-    valueHolder.append('actionType', actionType);
-
-    return valueHolder;
-}
-
 const showEditForm = (contentType, contentID) => {
     const valueHolder = new FormData();
     valueHolder.append('contentType', contentType);
@@ -270,3 +212,86 @@ const showEditForm = (contentType, contentID) => {
     })
     .catch((error) => {console.log(error)});
 };
+const insertNewItem = function(formCollector, categoryType, actionType){
+    const valueHolder = new FormData();
+
+    console.log('Insert new item');
+    
+    formCollector.forEach( (el) => {
+        valueHolder.append(el.name, el.value);
+        console.log(el.name, el.value);
+    });
+    valueHolder.append('categoryType', categoryType);
+    valueHolder.append('actionType', actionType);
+    
+    //Cleans the input area from content
+    /* formCollector.forEach( (el) => {
+        el.value = '';
+    }); */
+
+    return valueHolder;
+}
+const editItem = function(targetID, formCollector, categoryType, actionType){
+    const valueHolder = new FormData();
+
+    console.log('Edit existing item');
+    const holder = targetID.split('-');
+    const modifiedTargetID = holder[0] + '-' + holder[1] + '-' + 'id';
+    const itemID = (actionType != 'add') ? document.getElementById(targetID).getAttribute(`data-${modifiedTargetID}`) : false;
+
+    formCollector.forEach( (el) => {
+        valueHolder.append(el.name, el.value);
+        console.log(el.name, el.value);
+    });
+    valueHolder.append('itemID', itemID);
+    valueHolder.append('categoryType', categoryType);
+    valueHolder.append('actionType', actionType);
+
+    //Cleans the input area from content
+    /* formCollector.forEach( (el) => {
+        el.value = '';
+    }); */
+
+    return valueHolder;
+}
+const deleteItem = function(targetID, categoryType){
+    const valueHolder = new FormData();
+
+    alert(true);
+
+    console.log(targetID);
+    
+};
+const addNewFlavourToProduct = function(target){
+     //Adds new select box with a new flavour to "add to a product" function
+     flavourCounter++;
+     const newNode = document.createElement('select');   
+     newNode.name = 'flavour_' + flavourCounter;   
+     const parentEl = target.parentNode;
+     const previousEl = target.previousElementSibling;
+     const categoryType = previousEl.getAttribute('data-category').split('-');
+     
+     newNode.setAttribute('data-category', 'product-' + categoryType[1] + '-input_' + flavourCounter);
+/*         
+     ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+
+     Gets the flavours from the DB and shows them in the select
+
+     fetch('path/to/file/to/get/flavours', {
+         method: 'GET'
+     })
+     .then((response) => response.text())
+     .then((data) => {
+         // newNode.innerHTML = data;
+         console.log('worked');
+     })
+     .catch((error) =>{
+         console.log(error);
+     }); 
+*/
+     newNode.innerHTML = `
+         <option value="1">Nutella</option>
+         <option value="2">Chocolate</option>
+     `;
+     parentEl.insertBefore(newNode, previousEl.nextSibling);
+}

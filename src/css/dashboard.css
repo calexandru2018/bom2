@@ -248,4 +248,9 @@ button.add-col-2{
     outline: none;
     border-bottom: 1px solid lightgray;
 }
+.edit-product, .edit-place, .edit-flavour, .edit-admin, .delete-data{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2px 5px;
+}
 
