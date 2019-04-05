@@ -101,7 +101,7 @@ document.querySelectorAll('.btn-secondary').forEach((btn) => {
     });
 });
 /* Shows the edit forms */
-document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-product').forEach( (btn) => {
+document.querySelectorAll('.show-edit-form').forEach( (btn) => {
     btn.addEventListener('click', function() {
         const dataType = ((this.getAttribute('data-type')) ? this.getAttribute('data-type') : false);
         const contentID = this.getAttribute(`data-${dataType}-id`);
@@ -110,7 +110,7 @@ document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-produc
             /* 
             ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
 
-            editContentContainer.innerHTML = showEditForm(dataType, contentID);  
+            editContentContainer.innerHTML = getEditForm(dataType, contentID);  
             
             */
             let contentToShow = '';
@@ -134,7 +134,7 @@ document.querySelectorAll('.edit-admin, .edit-place, .edit-flavour, .edit-produc
 document.addEventListener('click',function(e){
     e.preventDefault();    
     const eTarget = event.target;
-    console.log(event.target);
+    // console.log(event.target);
     
     switch(true){
         case eTarget.classList.contains('close-edit'):
@@ -144,6 +144,9 @@ document.addEventListener('click',function(e){
         case eTarget.classList.contains('edit-data'):
         case eTarget.classList.contains('delete-data'):
             asyncCollectAndAction(eTarget.id);            
+            break;
+        case eTarget.classList.contains('show-edit-form'):
+            asyncCollectAndAction(eTarget);            
             break;
         case eTarget.classList.contains('add-new-flavour'):
             addNewFlavourToProduct(eTarget);
@@ -171,14 +174,14 @@ const asyncCollectAndAction = (targetID) => {
         formCollector = document.querySelectorAll(`[data-category^=${targetID}`);
     }
     
-/*     switch(actionType){
+    switch(actionType){
         case 'add': collectedData = insertNewItem(formCollector, categoryType, actionType);
             break;
         case 'edit': collectedData = editItem(targetID, formCollector, categoryType, actionType);
             break;
         case 'delete': collectedData = deleteItem(targetID, categoryType);
             break;
-    } */
+    }
 /*     for (var pair of collectedData.entries()) {
         console.log(pair[0]+ ', ' + pair[1]); 
     } */
@@ -198,7 +201,7 @@ const asyncCollectAndAction = (targetID) => {
     }); 
 */
 }
-const showEditForm = (contentType, contentID) => {
+const getEditForm = (contentType, contentID) => {
     const valueHolder = new FormData();
     valueHolder.append('contentType', contentType);
     valueHolder.append('contentID', contentID);
@@ -294,4 +297,31 @@ const addNewFlavourToProduct = function(target){
         <option value="2">Chocolate</option>
     `;
     parentEl.insertBefore(newNode, previousEl.nextSibling);
+}
+const showEditForm = function(targetID){
+    const dataType = ((targetID.getAttribute('data-type')) ? targetID.getAttribute('data-type') : false);
+    const contentID = targetID.getAttribute(`data-${dataType}-id`);
+
+    if(dataType){
+        /* 
+        ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+
+        editContentContainer.innerHTML = getEditForm(dataType, contentID);  
+        
+        */
+        let contentToShow = '';
+        switch(dataType){
+            case 'admin': contentToShow = editAdmin;
+                break;
+            case 'place': contentToShow = editPlace;
+                break;
+            case 'flavour': contentToShow = editFlavour;
+                break;
+            case 'product': contentToShow = editProduct;
+                break;
+            default: contentToShow = '';
+        }
+        editContentContainer.innerHTML = contentToShow;
+    }
+    editContentContainer.classList.toggle('show');
 }
