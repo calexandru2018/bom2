@@ -172,9 +172,9 @@ const editItem = function(targetID){
     valueHolder.append('categoryType', holder[0]);
     valueHolder.append('actionType', holder[1]);
 
-    for (var pair of valueHolder.entries()) {
+/*     for (var pair of valueHolder.entries()) {
         console.log(pair[0]+ ', ' + pair[1]); 
-    }
+    } */
 
     fetch('path/to/async/file', {
         method: 'POST',
@@ -196,9 +196,14 @@ const editItem = function(targetID){
 
 const deleteItem = function(targetID){
     const valueHolder = new FormData();
+    const categoryType = targetID.getAttribute('data-category');
+    const id = targetID.getAttribute(`data-${categoryType}-id`);
+    valueHolder.append(id, 'id');
+    valueHolder.append(categoryType, 'category');
 
-    console.log("All under is delete");
-    console.log(targetID, 'need to specify category');
+    for (var pair of valueHolder.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+    }
 
     fetch('path/to/async/file', {
         method: 'POST',
