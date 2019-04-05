@@ -94,12 +94,16 @@ document.addEventListener('click',function(e){
             editContentContainer.classList.toggle('show');
             break;
         case eTarget.classList.contains('add-data'):
+            insertNewItem(eTarget.id);      
+            break;      
         case eTarget.classList.contains('edit-data'):
-        case eTarget.classList.contains('delete-data'):
-            asyncCollectAndAction(eTarget.id);            
+            editItem(eTarget.id);            
             break;
-        case (eTarget.closest('a') && eTarget.closest('a').classList.contains('show-edit-form')):
-            showEditForm(eTarget.closest('a.show-edit-form'))          
+        case (eTarget.closest('a') && eTarget.closest('a').classList.contains('delete-data')):
+            deleteItem(eTarget.closest('a.delete-data'));            
+            break;
+        case (eTarget.closest('a') && eTarget.closest('a').classList.contains('edit-form-form')):
+            showEditForm(eTarget.closest('a.edit-form-form'))          
             break;
         case eTarget.classList.contains('add-new-flavour'):
             addNewFlavourToProduct(eTarget);
@@ -119,44 +123,92 @@ document.addEventListener('click',function(e){
             console.log('');
     }
 });
-const asyncCollectAndAction = (targetID) => {   
-    /*
-        If actionType != add then there is an itemID to fetch, meaning that the user wants to edit or delete an object. 
-        False is genereated in case the user is adding a new item
-        Action type:
-        1 - Insert/Add
-        2 - Edit
-        3 - Delete
-    */ 
-   console.log('target Id is: ', targetID);
-   
-    let collectedData = '';
-    let formCollector = ''
-    const categoryType = targetID.split('-')[0];
-    const actionType = targetID.split('-')[1];
-    console.log('action type is: ', actionType, typeof(actionType), actionType);
-    
-    if(actionType != 'delete' || actionType != "delete"){
-        formCollector = document.querySelectorAll(`[data-category^=${targetID}`);
-    }
-    
-    switch(actionType){
-        case 'add': collectedData = insertNewItem(formCollector, categoryType, actionType);
-            break;
-        case 'edit': collectedData = editItem(targetID, formCollector, categoryType, actionType);
-            break;
-        case 'delete': collectedData = deleteItem(targetID, categoryType);
-            break;
-    }
-/*     for (var pair of collectedData.entries()) {
-        console.log(pair[0]+ ', ' + pair[1]); 
-    } */
+/* Collects and creates a new item */
+const insertNewItem = function(targetID){
+    const formCollector = document.querySelectorAll(`[data-category^=${targetID}`)
+    const valueHolder = new FormData();
 
-/*     
-    ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+    console.log('Insert new item');
+    
+    formCollector.forEach( (el) => {
+        valueHolder.append(el.name, el.value);
+        console.log(el.name, el.value);
+    });
+    valueHolder.append('categoryType', 'flavour/place/product');
+    valueHolder.append('actionType', 'add');
+    
+    fetch('path/to/async/file', {
+        method: 'POST',
+        body: valueHolder
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert('Inserted new item');
+    })
+    .catch((error) =>{
+        console.log(error);
+    });
+    
+    //Cleans the input area from content
+    /* formCollector.forEach( (el) => {
+        el.value = '';
+    }); */
 
-*/
+    return valueHolder;
 }
+/* Collects and post the updated data */
+const editItem = function(targetID){
+    const formCollector = document.querySelectorAll(`[data-category^=${targetID}`)
+    const valueHolder = new FormData();
+
+    console.log('Edit existing item');
+    const holder = targetID.split('-');
+    const modifiedTargetID = holder[0] + '-' + holder[1] + '-' + 'id';
+
+    formCollector.forEach( (el) => {
+        valueHolder.append(el.name, el.value);
+        console.log(el.name, el.value);
+    });
+    valueHolder.append('itemID', 'itemID');
+    valueHolder.append('categoryType', 'place/flavour/product');
+    valueHolder.append('actionType', 'edit');
+
+    fetch('path/to/async/file', {
+        method: 'POST',
+        body: valueHolder
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert('Action accomplished');
+    })
+    .catch((error) =>{
+        console.log(error);
+    });
+
+    //Cleans the input area from content
+    /* formCollector.forEach( (el) => {
+        el.value = '';
+    }); */
+}
+
+const deleteItem = function(targetID){
+    const valueHolder = new FormData();
+
+    console.log("All under is delete");
+    console.log(targetID, 'need to specify category');
+
+    fetch('path/to/async/file', {
+        method: 'POST',
+        body: valueHolder
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert('Action accomplished');
+    })
+    .catch((error) =>{
+        console.log(error);
+    });    
+};
 const fetchItemToEdit = (contentType, contentID) => {
     const valueHolder = new FormData();
     valueHolder.append('contentType', contentType);
@@ -171,81 +223,35 @@ const fetchItemToEdit = (contentType, contentID) => {
     })
     .catch((error) => {console.log(error)});
 };
-/* Collects and creates a new item */
-const insertNewItem = function(formCollector, categoryType, actionType){
-    const valueHolder = new FormData();
+const showEditForm = function(targetID){
+    console.log('inside show edit form: ', targetID);
+    
+    const dataType = ((targetID.getAttribute('data-type')) ? targetID.getAttribute('data-type') : false);
+    const contentID = targetID.getAttribute(`data-${dataType}-id`);
 
-    console.log('Insert new item');
-    
-    formCollector.forEach( (el) => {
-        valueHolder.append(el.name, el.value);
-        console.log(el.name, el.value);
-    });
-    valueHolder.append('categoryType', categoryType);
-    valueHolder.append('actionType', actionType);
-    
-/*     fetch('path/to/async/file', {
-        method: 'POST',
-        body: valueHolder
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert('Action accomplished');
-    })
-    .catch((error) =>{
-        console.log(error);
-    });  */
-    
-    //Cleans the input area from content
-    /* formCollector.forEach( (el) => {
-        el.value = '';
-    }); */
+    if(dataType){
+        /* 
+        ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
 
-    return valueHolder;
+        editContentContainer.innerHTML = fetchItemToEdit(dataType, contentID);  
+        
+        */
+        let contentToShow = '';
+        switch(dataType){
+            case 'admin': contentToShow = editAdmin;
+                break;
+            case 'place': contentToShow = editPlace;
+                break;
+            case 'flavour': contentToShow = editFlavour;
+                break;
+            case 'product': contentToShow = editProduct;
+                break;
+            default: contentToShow = '';
+        }
+        editContentContainer.innerHTML = contentToShow;
+    }
+    editContentContainer.classList.toggle('show');
 }
-/* Collects and post the updated data */
-const editItem = function(targetID, formCollector, categoryType, actionType){
-    const valueHolder = new FormData();
-
-    console.log('Edit existing item');
-    const holder = targetID.split('-');
-    const modifiedTargetID = holder[0] + '-' + holder[1] + '-' + 'id';
-    const itemID = (actionType != 'add') ? document.getElementById(targetID).getAttribute(`data-${modifiedTargetID}`) : false;
-
-    formCollector.forEach( (el) => {
-        valueHolder.append(el.name, el.value);
-        console.log(el.name, el.value);
-    });
-    valueHolder.append('itemID', itemID);
-    valueHolder.append('categoryType', categoryType);
-    valueHolder.append('actionType', actionType);
-
-/*     fetch('path/to/async/file', {
-        method: 'POST',
-        body: valueHolder
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert('Action accomplished');
-    })
-    .catch((error) =>{
-        console.log(error);
-    });  */
-
-    //Cleans the input area from content
-    /* formCollector.forEach( (el) => {
-        el.value = '';
-    }); */
-}
-
-const deleteItem = function(targetID, categoryType){
-    const valueHolder = new FormData();
-
-    alert(true);
-
-    console.log(targetID);
-    
-};
 const addNewFlavourToProduct = function(target){
     //Adds new select box with a new flavour to "add to a product" function
     flavourCounter++;
@@ -278,33 +284,4 @@ const addNewFlavourToProduct = function(target){
         <option value="2">Chocolate</option>
     `;
     parentEl.insertBefore(newNode, previousEl.nextSibling);
-}
-const showEditForm = function(targetID){
-    console.log(targetID);
-    
-    const dataType = ((targetID.getAttribute('data-type')) ? targetID.getAttribute('data-type') : false);
-    const contentID = targetID.getAttribute(`data-${dataType}-id`);
-
-    if(dataType){
-        /* 
-        ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
-
-        editContentContainer.innerHTML = fetchItemToEdit(dataType, contentID);  
-        
-        */
-        let contentToShow = '';
-        switch(dataType){
-            case 'admin': contentToShow = editAdmin;
-                break;
-            case 'place': contentToShow = editPlace;
-                break;
-            case 'flavour': contentToShow = editFlavour;
-                break;
-            case 'product': contentToShow = editProduct;
-                break;
-            default: contentToShow = '';
-        }
-        editContentContainer.innerHTML = contentToShow;
-    }
-    editContentContainer.classList.toggle('show');
 }
