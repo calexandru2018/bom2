@@ -10,7 +10,7 @@ let flavourCounter = 1;
 const editContentContainer = document.getElementById('edit-content');
 const settingsOverlay = document.getElementById('settings-overlay');
 const editAdmin = `
-    <form action="#" class="edit-form">
+    <form action="#" class="edit-form-layout">
         <h2>Editar Administrador</h2>
         <label for="email">E-mail*</label>
         <input type="email" name="email" data-category="admin-edit-input">
@@ -29,7 +29,7 @@ const editAdmin = `
     </form>
 `;
 const editPlace = `
-    <form action="#" class="edit-form">
+    <form action="#" class="edit-form-layout">
         <h2>Editar Destino</h2>
         <label for="">Cidade</label>
         <input type="text" name="city" data-category="place-edit-input">
@@ -49,7 +49,7 @@ const editPlace = `
     </form>
 `;
 const editFlavour = `
-    <form action="#" class="edit-form">
+    <form action="#" class="edit-form-layout">
         <h2>Editar Sabor</h2>
         <label for="">Portugues</label>
         <input type="text" name="flavours_PT" data-category="flavour-edit-input">
@@ -63,7 +63,7 @@ const editFlavour = `
     </form>
 `;
 const editProduct = `
-    <form action="#" class="edit-form">
+    <form action="#" class="edit-form-layout">
         <h2>Editar Produto</h2>
         <label for="">Portugues</label>
         <input type="text" name="flavours_PT" data-category="product-edit-input">
@@ -87,23 +87,22 @@ document.addEventListener('click',function(e){
     e.preventDefault();    
     let nextEl = '';
     const eTarget = e.target;
-    console.log("this is eTarget: ", eTarget);
     
     switch(true){
         case eTarget.classList.contains('close-edit'):
             editContentContainer.classList.toggle('show');
             break;
         case eTarget.classList.contains('add-data'):
-            insertNewItem(eTarget.id);      
+            insertNewItem(eTarget);      
             break;      
         case eTarget.classList.contains('edit-data'):
-            editItem(eTarget.id);            
+            editItem(eTarget);            
             break;
         case (eTarget.closest('a') && eTarget.closest('a').classList.contains('delete-data')):
             deleteItem(eTarget.closest('a.delete-data'));            
             break;
-        case (eTarget.closest('a') && eTarget.closest('a').classList.contains('edit-form-form')):
-            showEditForm(eTarget.closest('a.edit-form-form'))          
+        case (eTarget.closest('a') && eTarget.closest('a').classList.contains('edit-form')):
+            showEditForm(eTarget.closest('a.edit-form'))          
             break;
         case eTarget.classList.contains('add-new-flavour'):
             addNewFlavourToProduct(eTarget);
@@ -125,18 +124,21 @@ document.addEventListener('click',function(e){
 });
 /* Collects and creates a new item */
 const insertNewItem = function(targetID){
-    const formCollector = document.querySelectorAll(`[data-category^=${targetID}`)
+    const formCollector = document.querySelectorAll(`[data-category^=${targetID.id}`)
+    const categoryType = targetID.id.split('-');
     const valueHolder = new FormData();
 
-    console.log('Insert new item');
-    
     formCollector.forEach( (el) => {
         valueHolder.append(el.name, el.value);
-        console.log(el.name, el.value);
+        // console.log(el.name, el.value);
     });
-    valueHolder.append('categoryType', 'flavour/place/product');
-    valueHolder.append('actionType', 'add');
+    valueHolder.append('categoryType', categoryType[0]);
+    valueHolder.append('actionType', categoryType[1]);
     
+/*     for (var pair of valueHolder.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+    } */
+
     fetch('path/to/async/file', {
         method: 'POST',
         body: valueHolder
@@ -153,25 +155,26 @@ const insertNewItem = function(targetID){
     /* formCollector.forEach( (el) => {
         el.value = '';
     }); */
-
-    return valueHolder;
 }
 /* Collects and post the updated data */
 const editItem = function(targetID){
-    const formCollector = document.querySelectorAll(`[data-category^=${targetID}`)
+    const formCollector = document.querySelectorAll(`[data-category^=${targetID.id}`)
+    const holder = targetID.id.split('-');
+    const modifiedTargetID = `${holder[0]}-${holder[1]}-id`;
+    const itemID = targetID.getAttribute(`data-${modifiedTargetID}`)
     const valueHolder = new FormData();
-
-    console.log('Edit existing item');
-    const holder = targetID.split('-');
-    const modifiedTargetID = holder[0] + '-' + holder[1] + '-' + 'id';
 
     formCollector.forEach( (el) => {
         valueHolder.append(el.name, el.value);
-        console.log(el.name, el.value);
+        // console.log(el.name, el.value);
     });
-    valueHolder.append('itemID', 'itemID');
-    valueHolder.append('categoryType', 'place/flavour/product');
-    valueHolder.append('actionType', 'edit');
+    valueHolder.append('itemID', itemID);
+    valueHolder.append('categoryType', holder[0]);
+    valueHolder.append('actionType', holder[1]);
+
+    for (var pair of valueHolder.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+    }
 
     fetch('path/to/async/file', {
         method: 'POST',
