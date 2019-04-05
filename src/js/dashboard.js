@@ -82,59 +82,12 @@ const editProduct = `
         </div>
     </form>
 `;
-
-document.querySelectorAll('.show-settings').forEach((btn) => {
-    btn.addEventListener('click', () => {
-        settingsOverlay.classList.toggle('display-grid'); 
-    });
-});
-document.querySelectorAll('.btn-primary').forEach((btn) => {
-    btn.addEventListener('click', () => {
-        const nextEl = btn.nextElementSibling;
-        nextEl.classList.toggle('display-grid'); 
-    });
-});
-document.querySelectorAll('.btn-secondary').forEach((btn) => {
-    btn.addEventListener('click', () => {
-        const nextEl = btn.nextElementSibling;
-        nextEl.classList.toggle('display-grid');
-    });
-});
-/* Shows the edit forms */
-document.querySelectorAll('.show-edit-form').forEach( (btn) => {
-    btn.addEventListener('click', function() {
-        const dataType = ((this.getAttribute('data-type')) ? this.getAttribute('data-type') : false);
-        const contentID = this.getAttribute(`data-${dataType}-id`);
-
-        if(dataType){
-            /* 
-            ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
-
-            editContentContainer.innerHTML = getEditForm(dataType, contentID);  
-            
-            */
-            let contentToShow = '';
-            switch(dataType){
-                case 'admin': contentToShow = editAdmin;
-                    break;
-                case 'place': contentToShow = editPlace;
-                    break;
-                case 'flavour': contentToShow = editFlavour;
-                    break;
-                case 'product': contentToShow = editProduct;
-                    break;
-                default: contentToShow = '';
-            }
-            editContentContainer.innerHTML = contentToShow;
-        }
-        editContentContainer.classList.toggle('show');
-    });
-});
-
+/* Listenes to all clicks */
 document.addEventListener('click',function(e){
     e.preventDefault();    
-    const eTarget = event.target;
-    // console.log(event.target);
+    let nextEl = '';
+    const eTarget = e.target;
+    console.log("this is eTarget: ", eTarget);
     
     switch(true){
         case eTarget.classList.contains('close-edit'):
@@ -145,12 +98,25 @@ document.addEventListener('click',function(e){
         case eTarget.classList.contains('delete-data'):
             asyncCollectAndAction(eTarget.id);            
             break;
-        case eTarget.classList.contains('show-edit-form'):
-            asyncCollectAndAction(eTarget);            
+        case (eTarget.closest('a') && eTarget.closest('a').classList.contains('show-edit-form')):
+            showEditForm(eTarget.closest('a.show-edit-form'))          
             break;
         case eTarget.classList.contains('add-new-flavour'):
             addNewFlavourToProduct(eTarget);
             break;
+        case (eTarget.closest('button') && eTarget.closest('button').classList.contains('show-settings')):
+            settingsOverlay.classList.toggle('display-grid');
+            break;
+        case (eTarget.classList.contains('btn-primary')):
+            nextEl = eTarget.nextElementSibling;
+            nextEl.classList.toggle('display-grid'); 
+            break;
+        case (eTarget.classList.contains('btn-secondary')):
+            nextEl = eTarget.nextElementSibling;
+            nextEl.classList.toggle('display-grid');
+            break;
+        default:
+            console.log('');
     }
 });
 const asyncCollectAndAction = (targetID) => {   
@@ -188,20 +154,10 @@ const asyncCollectAndAction = (targetID) => {
 
 /*     
     ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
-    fetch('path/to/async/file', {
-        method: 'POST',
-        body: valueHolder
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert('Action accomplished');
-    })
-    .catch((error) =>{
-        console.log(error);
-    }); 
+
 */
 }
-const getEditForm = (contentType, contentID) => {
+const fetchItemToEdit = (contentType, contentID) => {
     const valueHolder = new FormData();
     valueHolder.append('contentType', contentType);
     valueHolder.append('contentID', contentID);
@@ -215,6 +171,7 @@ const getEditForm = (contentType, contentID) => {
     })
     .catch((error) => {console.log(error)});
 };
+/* Collects and creates a new item */
 const insertNewItem = function(formCollector, categoryType, actionType){
     const valueHolder = new FormData();
 
@@ -227,6 +184,18 @@ const insertNewItem = function(formCollector, categoryType, actionType){
     valueHolder.append('categoryType', categoryType);
     valueHolder.append('actionType', actionType);
     
+/*     fetch('path/to/async/file', {
+        method: 'POST',
+        body: valueHolder
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert('Action accomplished');
+    })
+    .catch((error) =>{
+        console.log(error);
+    });  */
+    
     //Cleans the input area from content
     /* formCollector.forEach( (el) => {
         el.value = '';
@@ -234,6 +203,7 @@ const insertNewItem = function(formCollector, categoryType, actionType){
 
     return valueHolder;
 }
+/* Collects and post the updated data */
 const editItem = function(targetID, formCollector, categoryType, actionType){
     const valueHolder = new FormData();
 
@@ -250,13 +220,24 @@ const editItem = function(targetID, formCollector, categoryType, actionType){
     valueHolder.append('categoryType', categoryType);
     valueHolder.append('actionType', actionType);
 
+/*     fetch('path/to/async/file', {
+        method: 'POST',
+        body: valueHolder
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert('Action accomplished');
+    })
+    .catch((error) =>{
+        console.log(error);
+    });  */
+
     //Cleans the input area from content
     /* formCollector.forEach( (el) => {
         el.value = '';
     }); */
-
-    return valueHolder;
 }
+
 const deleteItem = function(targetID, categoryType){
     const valueHolder = new FormData();
 
@@ -299,6 +280,8 @@ const addNewFlavourToProduct = function(target){
     parentEl.insertBefore(newNode, previousEl.nextSibling);
 }
 const showEditForm = function(targetID){
+    console.log(targetID);
+    
     const dataType = ((targetID.getAttribute('data-type')) ? targetID.getAttribute('data-type') : false);
     const contentID = targetID.getAttribute(`data-${dataType}-id`);
 
@@ -306,7 +289,7 @@ const showEditForm = function(targetID){
         /* 
         ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
 
-        editContentContainer.innerHTML = getEditForm(dataType, contentID);  
+        editContentContainer.innerHTML = fetchItemToEdit(dataType, contentID);  
         
         */
         let contentToShow = '';
