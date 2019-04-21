@@ -10,77 +10,89 @@ let flavourCounter = 1;
 const editContentContainer = document.getElementById('edit-content');
 const settingsOverlay = document.getElementById('settings-overlay');
 const editAdmin = `
-    <form action="#" class="edit-form-layout">
-        <h2>Editar Administrador</h2>
-        <label for="email">E-mail*</label>
-        <input type="email" name="email" data-category="admin-edit-input">
-        <label for="password">Palavra Passe*</label>
-        <input type="passwird" name="pwd" data-category="admin-edit-input">
-        <label for="name">Nome*</label>
-        <input type="text" name="name" data-category="admin-edit-input">
-        <label for="phoneNumber">Telefone</label>
-        <input type="tel" name="phoneNumber" data-category="admin-edit-input">
-
-
-        <div class="edit-btns">
-            <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="admin-edit-input" data-admin-edit-id="1">Editar</button> 
-        </div>
-    </form>
+    <div class="edit-form-layout">
+        <form action="#">
+            <h2>Editar Administrador</h2>
+            <label for="email">E-mail*</label>
+            <input type="email" name="email" data-category="admin-edit-input">
+            <label for="password">Palavra Passe*</label>
+            <input type="passwird" name="pwd" data-category="admin-edit-input">
+            <label for="name">Nome*</label>
+            <input type="text" name="name" data-category="admin-edit-input">
+            <label for="phoneNumber">Telefone</label>
+            <input type="tel" name="phoneNumber" data-category="admin-edit-input">
+            <div class="edit-btns">
+                <a class="close-edit self-left">Voltar</a>
+                <button type="submit" class="btn-form-insert edit-data" id="admin-edit-input" data-admin-edit-id="1">Editar</button> 
+            </div>
+        </form>
+        <div class="hide status-message"></div>
+    </div>
 `;
 const editPlace = `
-    <form action="#" class="edit-form-layout">
-        <h2>Editar Destino</h2>
-        <label for="">Cidade</label>
-        <input type="text" name="city" data-category="place-edit-input">
-        <label for="">Desde</label>
-        <input type="date" name="start" data-category="place-edit-input">
-        <label for="">Ate</label>
-        <input type="date" name="end" data-category="place-edit-input">
-        <label for="">Latitude</label>
-        <input type="text" name="latitude" data-category="place-edit-input">
-        <label for="">Longitude</label>
-        <input type="text" name="longitude" data-category="place-edit-input">
+    <div class="edit-form-layout">
+        <form action="#">
+            <h2>Editar Destino</h2>
+            <label for="">Cidade</label>
+            <input type="text" name="city" data-category="place-edit-input">
+            <label for="">Desde</label>
+            <input type="date" name="start" data-category="place-edit-input">
+            <label for="">Ate</label>
+            <input type="date" name="end" data-category="place-edit-input">
+            <label for="">Latitude</label>
+            <input type="text" name="latitude" data-category="place-edit-input">
+            <label for="">Longitude</label>
+            <input type="text" name="longitude" data-category="place-edit-input">
 
-        <div class="edit-btns">
-            <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="place-edit-input" data-place-edit-id="1">Editar</button> 
-        </div>
-    </form>
+            <div class="edit-btns">
+                <a class="close-edit self-left">Voltar</a>
+                <button type="submit" class="btn-form-insert edit-data" id="place-edit-input" data-place-edit-id="1">Editar</button> 
+            </div>
+        </form>
+        <div class="hide status-message"></div>
+    </div>
+    
 `;
 const editFlavour = `
-    <form action="#" class="edit-form-layout">
-        <h2>Editar Sabor</h2>
-        <label for="">Portugues</label>
-        <input type="text" name="flavours_PT" data-category="flavour-edit-input">
-        <label for="">Ingles</label>
-        <input type="text" name="flavours_EN" data-category="flavour-edit-input">
+    <div class="edit-form-layout">
+        <form action="#">
+            <h2>Editar Sabor</h2>
+            <label for="">Portugues</label>
+            <input type="text" name="flavours_PT" data-category="flavour-edit-input">
+            <label for="">Ingles</label>
+            <input type="text" name="flavours_EN" data-category="flavour-edit-input">
 
-        <div class="edit-btns">
-            <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="flavour-edit-input" data-flavour-edit-id="1">Editar</button> 
-        </div>
-    </form>
+            <div class="edit-btns">
+                <a class="close-edit self-left">Voltar</a>
+                <button type="submit" class="btn-form-insert edit-data" id="flavour-edit-input" data-flavour-edit-id="1">Editar</button> 
+            </div>
+        </form>
+        <div class="hide status-message"></div>
+    </div>
 `;
 const editProduct = `
-    <form action="#" class="edit-form-layout">
-        <h2>Editar Produto</h2>
-        <label for="">Portugues</label>
-        <input type="text" name="flavours_PT" data-category="product-edit-input">
-        <label for="">Ingles</label>
-        <input type="text" name="flavours_EN" data-category="product-edit-input">
-        <label for="editFlavourList">Sabores</label>
-        <select name="flavour_1" data-category="product-edit-input_1">
-            <option value="1" selected>Nutella</option>
-            <option value="2">Chocolate</option>
-        </select>
-        <a class="add-new-flavour" style="width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed">Adicionar novo ?</a>
+    <div class="edit-form-layout"> 
+        <form action="#">
+            <h2>Editar Produto</h2>
+            <label for="">Portugues</label>
+            <input type="text" name="flavours_PT" data-category="product-edit-input">
+            <label for="">Ingles</label>
+            <input type="text" name="flavours_EN" data-category="product-edit-input">
+            <label for="editFlavourList">Sabores</label>
+            <select name="flavour_1" data-category="product-edit-input_1">
+                <option value="1" selected>Nutella</option>
+                <option value="2">Chocolate</option>
+            </select>
+            <a class="add-new-flavour" style="width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed">Adicionar novo ?</a>
 
-        <div class="edit-btns">
-            <a class="close-edit self-left">Voltar</a>
-            <button type="submit" class="btn-form-insert edit-data" id="product-edit-input" data-product-edit-id="1">Editar</button> 
-        </div>
-    </form>
+            <div class="edit-btns">
+                <a class="close-edit self-left">Voltar</a>
+
+                <button type="submit" class="btn-form-insert edit-data" id="product-edit-input" data-product-edit-id="1">Editar</button> 
+            </div>
+        </form>        
+        <div class="hide status-message"></div>
+    </div>
 `;
 /* Listenes to all clicks */
 document.addEventListener('click',function(e){
@@ -119,7 +131,7 @@ document.addEventListener('click',function(e){
             nextEl.classList.toggle('display-grid');
             break;
         default:
-            console.log('');
+            console.log('error');
     }
 });
 /* Collects and creates a new item */
@@ -158,6 +170,8 @@ const insertNewItem = function(targetID){
 }
 /* Collects and post the updated data */
 const editItem = function(targetID){
+    const targetIDParent = targetID.closest('div');
+    const statusMessage = document.querySelector('.status-message');     
     const formCollector = document.querySelectorAll(`[data-category^=${targetID.id}`)
     const holder = targetID.id.split('-');
     const modifiedTargetID = `${holder[0]}-${holder[1]}-id`;
@@ -176,15 +190,45 @@ const editItem = function(targetID){
         console.log(pair[0]+ ', ' + pair[1]); 
     } */
 
+    let spinner = document.createElement("div"); 
+        spinner.classList.add('sk-folding-cube');
+        spinner.innerHTML = `
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        `;
+
+    targetID.classList.add('hide');
+    targetIDParent.appendChild(spinner);
+
     fetch('path/to/async/file', {
         method: 'POST',
         body: valueHolder
     })
     .then(response => response.text())
     .then(data => {
-        alert('Action accomplished');
+        setTimeout(function(){ 
+            if(data){
+                statusMessage.innerHTML = 'Informacao actualizada!';
+                statusMessage.style.color = 'green';
+            }else{
+                statusMessage.innerHTML = 'Houve um erro ao actualizar!';
+                statusMessage.style.color = 'red';
+            }
+            
+            statusMessage.classList.remove('hide');
+            targetID.classList.remove('hide');
+            spinner.remove();
+        }, 3000);
     })
     .catch((error) =>{
+        statusMessage.innerHTML = 'Houve um erro ao actualizar!';
+        statusMessage.style.color = 'red';
+        statusMessage.classList.remove('hide');
+        targetID.classList.remove('hide');
+        spinner.remove();
+        
         console.log(error);
     });
 
@@ -234,8 +278,9 @@ const fetchItemToEdit = (contentType, contentID) => {
 const showEditForm = function(targetID){
     console.log('inside show edit form: ', targetID);
     
-    const dataType = ((targetID.getAttribute('data-type')) ? targetID.getAttribute('data-type') : false);
+    const dataType = ((targetID.getAttribute('data-category')) ? targetID.getAttribute('data-category') : false);
     const contentID = targetID.getAttribute(`data-${dataType}-id`);
+    console.log('datatype is: ', dataType);
 
     if(dataType){
         /* 
