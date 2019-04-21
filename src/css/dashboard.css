@@ -95,7 +95,21 @@ label{
 .edit-btns{
     display: grid; 
     grid-template-rows: 1fr; 
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 1fr 1fr;
+}
+.insert-btns{
+    display: grid; 
+    grid-template-rows: 1fr; 
+    grid-template-columns: 1fr 1fr;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+.insert-btns_non-admin{
+    display: grid; 
+    grid-template-rows: 1fr; 
+    grid-template-columns: 1fr 1fr;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .hide{

@@ -20,7 +20,10 @@
                 <label for="phoneNumber">Telefone</label>
                 <input type="tel" name="phoneNumber" data-category="admin-add-input">
 
-                <button class="btn-form-insert add-data" id="admin-add-input">Adicionar</button> 
+                <div class="insert-btns">
+                    <div></div>
+                    <button class="btn-form-insert add-data" id="admin-add-input">Adicionar</button> 
+                </div>
             </form>
             <button class="btn btn-primary self-center" id="show-admin-list">Gerir Administradores</button>
             <div class="admin-list table-col-3">
@@ -57,7 +60,10 @@
                 <label for="name">Repita Passe*</label>
                 <input type="passwrod" name="rePassword" data-category="admin-edit-password">
 
-                <button class="btn-form-insert add-data" id="admin-edit-password">Adicionar</button> 
+                <div class="insert-btns">
+                    <div></div>
+                    <button class="btn-form-insert add-data" id="admin-edit-password">Adicionar</button> 
+                </div>
             </form>
             <button class="show-settings btn-auto btn-primary self-center">
                 Voltar
@@ -133,7 +139,10 @@
                         <label for="">Longitude</label>
                         <input type="text" name="longitude" data-category="place-add-input">
 
-                        <button class="btn-form-insert add-data btn-col-right" id="place-add-input">Adicionar</button> 
+                        <div class="insert-btns_non-admin">
+                            <div></div>
+                            <button class="btn-form-insert add-data btn-col-right" id="place-add-input">Adicionar</button> 
+                        </div>
                     </form>
                 </div>                         
             </div>
@@ -178,8 +187,11 @@
                         <input type="text" name="flavours_PT" data-category="flavours-add-input">
                         <label for="">Sabor em Ingles</label>
                         <input type="text" name="flavours_EN" data-category="flavours-add-input">
-
-                        <button class="btn-form-insert add-data btn-col-right" id="flavours-add-input">Adicionar</button> 
+                        
+                        <div class="insert-btns_non-admin">
+                            <div> </div>
+                            <button class="btn-form-insert add-data btn-col-right" id="flavours-add-input">Adicionar</button> 
+                        </div>
                     </form>
                 </div>
             </div>
@@ -223,8 +235,10 @@
                         </select>
                         <a class="add-new-flavour" style="width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed">Adicionar novo ?</a>
 
-
-                        <button type="submit" class="btn-form-insert add-data btn-col-right" id="product-add-input">Adicionar</button> 
+                        <div class="insert-btns_non-admin">
+                            <div></div>
+                            <button type="submit" class="btn-form-insert add-data btn-col-right" id="product-add-input">Adicionar</button> 
+                        </div>
                     </form>
                 </div>
             </div>

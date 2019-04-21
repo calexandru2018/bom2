@@ -136,6 +136,10 @@ document.addEventListener('click',function(e){
 });
 /* Collects and creates a new item */
 const insertNewItem = function(targetID){
+    const targetIDParent = targetID.closest('div');
+    let statusMessageEl = document.createElement('div')
+    targetIDParent.after(statusMessageEl);
+    statusMessageEl.classList.add('hide', 'status-message');
     const formCollector = document.querySelectorAll(`[data-category^=${targetID.id}`)
     const categoryType = targetID.id.split('-');
     const valueHolder = new FormData();
@@ -151,13 +155,41 @@ const insertNewItem = function(targetID){
         console.log(pair[0]+ ', ' + pair[1]); 
     } */
 
+    let spinner = document.createElement("div"); 
+        spinner.classList.add('sk-folding-cube', 'btn-col-right');
+        spinner.innerHTML = `
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        `;
+
+    targetID.classList.add('hide');
+    targetIDParent.appendChild(spinner);
+
     fetch('path/to/async/file', {
         method: 'POST',
         body: valueHolder
     })
     .then(response => response.text())
     .then(data => {
-        alert('Inserted new item');
+        setTimeout(function(){ 
+            if(data){
+                statusMessageEl.innerHTML = 'Informacao inserida!';
+                statusMessageEl.style.color = 'green';
+            }else{
+                statusMessageEl.innerHTML = 'Houve um erro ao inserir!';
+                statusMessageEl.style.color = 'red';
+            }
+            statusMessageEl.classList.remove('hide');
+            targetID.classList.remove('hide');
+            spinner.remove();
+            setTimeout(function(){
+                statusMessageEl.classList.add('hide');
+                statusMessageEl.innerHTML = '';
+            }, 5000)
+            
+        }, 3000);
     })
     .catch((error) =>{
         console.log(error);
@@ -171,7 +203,9 @@ const insertNewItem = function(targetID){
 /* Collects and post the updated data */
 const editItem = function(targetID){
     const targetIDParent = targetID.closest('div');
-    const statusMessage = document.querySelector('.status-message');     
+    let statusMessageEl = document.createElement('div')
+    targetIDParent.after(statusMessageEl);
+    statusMessageEl.classList.add('hide', 'status-message');  
     const formCollector = document.querySelectorAll(`[data-category^=${targetID.id}`)
     const holder = targetID.id.split('-');
     const modifiedTargetID = `${holder[0]}-${holder[1]}-id`;
@@ -191,7 +225,7 @@ const editItem = function(targetID){
     } */
 
     let spinner = document.createElement("div"); 
-        spinner.classList.add('sk-folding-cube');
+        spinner.classList.add('sk-folding-cube', 'btn-col-right');
         spinner.innerHTML = `
             <div class="sk-cube1 sk-cube"></div>
             <div class="sk-cube2 sk-cube"></div>
@@ -210,24 +244,35 @@ const editItem = function(targetID){
     .then(data => {
         setTimeout(function(){ 
             if(data){
-                statusMessage.innerHTML = 'Informacao actualizada!';
-                statusMessage.style.color = 'green';
+                statusMessageEl.innerHTML = 'Informacao actualizada!';
+                statusMessageEl.style.color = 'green';
             }else{
-                statusMessage.innerHTML = 'Houve um erro ao actualizar!';
-                statusMessage.style.color = 'red';
+                statusMessageEl.innerHTML = 'Houve um erro ao actualizar!';
+                statusMessageEl.style.color = 'red';
             }
             
-            statusMessage.classList.remove('hide');
+            statusMessageEl.innerHTML = 'Houve um erro ao actualizar!';
+            statusMessageEl.style.color = 'red';
+            statusMessageEl.classList.remove('hide');
             targetID.classList.remove('hide');
             spinner.remove();
+            setTimeout(function(){
+                statusMessageEl.classList.add('hide');
+                statusMessageEl.innerHTML = '';
+            }, 5000)
+            
         }, 3000);
     })
     .catch((error) =>{
-        statusMessage.innerHTML = 'Houve um erro ao actualizar!';
-        statusMessage.style.color = 'red';
-        statusMessage.classList.remove('hide');
+        statusMessageEl.innerHTML = 'Houve um erro ao actualizar!';
+        statusMessageEl.style.color = 'red';
+        statusMessageEl.classList.remove('hide');
         targetID.classList.remove('hide');
         spinner.remove();
+        setTimeout(function(){
+            statusMessageEl.classList.add('hide');
+            statusMessageEl.innerHTML = '';
+        }, 5000)
         
         console.log(error);
     });
