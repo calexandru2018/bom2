@@ -310,9 +310,7 @@ const deleteItem = function(targetID){
         else if(categoryType == 'flavour' || categoryType == 'product')
             i = 2;
         else if(categoryType == 'admin')
-            i = 3;
-        
-        
+            i = 3;        
 
         for(var c = 0; c < i; c++){
             previousParent = parentSpan.previousElementSibling;

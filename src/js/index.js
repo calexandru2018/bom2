@@ -121,7 +121,7 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
         .then(data => {
             if(!data){
                 messageStatus.innerHTML = "Mensagem enviada &#10003;";
-                messageStatus.style = "color: rgb(46, 139, 87)";
+                messageStatus.style = "color: rgb(60, 179, 113)";
                 formCollector.forEach((el) => {
                     el.value = '';
                 });

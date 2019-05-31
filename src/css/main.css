@@ -61,6 +61,7 @@ a{
 }
 #message-status{
 	text-align: right;
+	
 }
 .card-background-light{
 	box-shadow: inset 0 0 40px var(--card-light-light-color);
@@ -235,12 +236,12 @@ a{
 .contact-form .form-input{
 	margin-bottom: 1.5em;
 	border: none;
-    border-radius: 2px;
+	border-radius: 2px;
 	outline: none;
 	padding: 0.4em;
 	background-color: transparent;
 	color: var(--fourth-color);
-	box-shadow: 0 9px 4px -10px var(--fourth-color);
+	box-shadow: 0 9px 4px -8px var(--fourth-color);
 }
 .btn-send{
 	color: white;
@@ -640,8 +641,8 @@ section > div > p{
 	padding: 15px;
   /* border-radius: 10px; */
 }
-#contacts input[type="text"], #contacts select{
-	height: 50px;
+#contacts input{
+	height: 35px;
 }
 /*
 __________
