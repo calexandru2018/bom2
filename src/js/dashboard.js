@@ -259,9 +259,9 @@ const editItem = function(targetID){
             setTimeout(function(){
                 statusMessageEl.classList.add('hide');
                 statusMessageEl.innerHTML = '';
-            }, 5000)
+            }, 3000)
             
-        }, 3000);
+        }, 1500);
     })
     .catch((error) =>{
         statusMessageEl.innerHTML = 'Houve um erro ao actualizar!';
@@ -272,7 +272,7 @@ const editItem = function(targetID){
         setTimeout(function(){
             statusMessageEl.classList.add('hide');
             statusMessageEl.innerHTML = '';
-        }, 5000)
+        }, 1500)
         
         console.log(error);
     });
@@ -321,11 +321,8 @@ const fetchItemToEdit = (contentType, contentID) => {
     .catch((error) => {console.log(error)});
 };
 const showEditForm = function(targetID){
-    console.log('inside show edit form: ', targetID);
-    
     const dataType = ((targetID.getAttribute('data-category')) ? targetID.getAttribute('data-category') : false);
     const contentID = targetID.getAttribute(`data-${dataType}-id`);
-    console.log('datatype is: ', dataType);
 
     if(dataType){
         /* 
