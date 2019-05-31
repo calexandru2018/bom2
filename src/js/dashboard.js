@@ -300,7 +300,25 @@ const deleteItem = function(targetID){
     })
     .then(response => response.text())
     .then(data => {
-        alert('Action accomplished');
+        // alert('Action accomplished');
+        var i;
+        var parentSpan = targetID.closest('span');
+        var previousParent;
+
+        if(categoryType == 'place')
+            i = 5;
+        else if(categoryType == 'flavour' || categoryType == 'product')
+            i = 2;
+        else if(categoryType == 'admin')
+            i = 3;
+        
+        
+
+        for(var c = 0; c < i; c++){
+            previousParent = parentSpan.previousElementSibling;
+            parentSpan.remove();
+            parentSpan = previousParent;
+        }        
     })
     .catch((error) =>{
         console.log(error);

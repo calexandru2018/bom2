@@ -32,6 +32,13 @@ label{
     grid-gap: 1rem;
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 5px;
+}
+.login-form input{
+    border-radius: 5px;
+    border: none;
 }
 img{
     width: 200px;
