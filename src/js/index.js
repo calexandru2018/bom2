@@ -22,8 +22,6 @@ var mainToggleBtn = document.getElementById('main-toggle-button');
 var showLocatorBtn = document.getElementById('show-locator');
 var scrollToProductsBtn = document.getElementById('scroll-to-products');
 var calendarEl = document.getElementById('calendar');
-  
-
 
 const feed = new Instafeed({
     get: 'user',
@@ -84,6 +82,29 @@ document.addEventListener('DOMContentLoaded', () =>  {
 });
 window.addEventListener('resize', () => {
     w = window.innerWidth;
+});
+document.querySelectorAll('.cookie-resp').forEach(el => {
+    el.addEventListener('click', () => {
+        var debuggON =  true;
+        let fd = new FormData();
+        if(!debuggON){
+            fd.append('cookie-resp', parseInt(el.getAttribute('data-cookie-resp')));
+            fetch('url/to/update/cookie', {
+                method: 'POST',
+                form: fd
+            })
+            .then((response) => {response.text})
+            .then((data) => {
+                if(data == 1)   
+                    el.closest('.cookie-modal').style.opacity = 0;
+                else
+                    console.log('error');
+            })
+        }else{
+            el.closest('.cookie-modal').style.opacity = 0;
+        }
+        
+    })
 });
 document.getElementById('send-btn').addEventListener('click', (e) => {
     e.preventDefault();
