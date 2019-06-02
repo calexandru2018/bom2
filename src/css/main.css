@@ -358,28 +358,20 @@ __________
 	width: 100%;
 }
 .calendar-language-delimiter .custom-select{
-	grid-column-start: 15;
-	grid-column-end: 16;
-	width: fit-content;
-	height: fit-content;
-	margin: auto;
-	font-size: 0.8rem;
-}
-.custom-select select{
-	border-radius: 2px;
-	padding: 0.5rem;
 	outline: none;
 	border: none;
+	width: 55px;
+	height: fit-content;
+	padding: 0.5rem;
+	border-radius: 2px;
+	justify-self: end;
+	align-self: center;
+	grid-column-start: 15;
+	grid-column-end: 16;
+	font-size: 0.8rem;
 	background-color: var(--second-color);
 	color: var(--fourth-color);
 	font-weight: bold;
-	width: 50px;
-}
-.custom-select select .lang-display-short{
-	display: inline;
-}
-.custom-select select .lang-display-long{
-	display: none;
 }
 #show-locator{
 	color: var(--fourth-color);
@@ -1008,12 +1000,6 @@ __________
 	}
 	.custom-select select{
 		width: auto;
-	}
-	.custom-select select .lang-display-short{
-		display: none;
-	}
-	.custom-select select .lang-display-long{
-		display: inline-block;
 	}
 	.bg1 > div {
 		font-size: 2em;
