@@ -95,13 +95,20 @@ document.querySelectorAll('.cookie-resp').forEach(el => {
             })
             .then((response) => {response.text})
             .then((data) => {
-                if(data == 1)   
+                if(data == 1){   
                     el.closest('.cookie-modal').style.opacity = 0;
-                else
+                    setTimeout(()=>{
+                        el.closest('.cookie-modal').remove();
+                    }, 1000)
+                }else{
                     console.log('error');
+                }
             })
         }else{
             el.closest('.cookie-modal').style.opacity = 0;
+            setTimeout(()=>{
+                el.closest('.cookie-modal').remove();
+            }, 1500)
         }
         
     })
