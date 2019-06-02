@@ -144,10 +144,11 @@ const insertNewItem = function(targetID){
     const categoryType = targetID.id.split('-');
     const valueHolder = new FormData();
 
-    formCollector.forEach( (el) => {
+    formCollector.forEach((el) => {
         valueHolder.append(el.name, el.value);
         // console.log(el.name, el.value);
     });
+    
     valueHolder.append('categoryType', categoryType[0]);
     valueHolder.append('actionType', categoryType[1]);
     
