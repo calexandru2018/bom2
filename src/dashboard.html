@@ -19,7 +19,6 @@
                 <input type="text" name="name" data-category="admin-add-input">
                 <label for="phoneNumber">Telefone</label>
                 <input type="tel" name="phoneNumber" data-category="admin-add-input">
-
                 <div class="insert-btns">
                     <div></div>
                     <button class="btn-form-insert add-data" id="admin-add-input">Adicionar</button> 
@@ -65,7 +64,19 @@
                     <button class="btn-form-insert add-data" id="admin-edit-password">Adicionar</button> 
                 </div>
             </form>
-            <a class="btn btn-primary self-center" href="https://www.instagram.com/oauth/authorize/?client_id=34e4dc127ef64f86b2e8a1f2708948aa&redirect_uri=https://www.bomaoquadrado.pt&response_type=token" onclick="window.open(this.href,'_blank')">Instagram</a>
+            <button class="btn btn-primary self-center" id="show-instagram-menu">Instagram</button>
+            <form class="admin-add-new ig-access-form">
+                <div class="generate-token">
+                    <a class="btn-form-insert self-center" href="https://www.instagram.com/oauth/authorize/?client_id=34e4dc127ef64f86b2e8a1f2708948aa&redirect_uri=https://www.bomaoquadrado.pt&response_type=token" onclick="window.open(this.href,'_blank')">
+                        Novo
+                    </a>
+                    <input type="text" name="access_token" data-category="access_token" placeholder="Novo token">
+                </div>
+                <div class="insert-btns">
+                    <div></div>
+                    <button class="btn-form-insert add-data" id="admin-edit-token">Adicionar</button> 
+                </div>
+            </form>
             <button class="show-settings btn-auto btn-primary self-center">
                 Voltar
             </button>

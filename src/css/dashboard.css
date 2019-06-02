@@ -59,7 +59,11 @@ label{
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
 }
-#edit-content{
+.ig-access-form .generate-token{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+content{
     display: none; /*change to debugg*/
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
@@ -67,12 +71,18 @@ label{
     width: 100%;
     z-index: 5;
 }
+#edit-content{
+    display: none;
+    position: absolute;
+    background-color: rgba(0,0,0,.5);
+    height: 200%;
+    width: 100%;
+    z-index: 2;
+}
 .edit-form-layout{
     position: fixed;
     top: 15%;
     left: 10%;
-    
-
     background-color: white;
     width: 80%;
     height: fit-content;
