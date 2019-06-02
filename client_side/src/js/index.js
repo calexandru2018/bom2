@@ -68,19 +68,19 @@ document.addEventListener('DOMContentLoaded', () =>  {
 window.addEventListener('resize', () => {
     w = window.innerWidth;
 });
-document.querySelectorAll('.cookie-resp').forEach(el => {
-    el.addEventListener('click', () => {
+document.querySelectorAll('.cookie-resp').forEach((el) => {
+    el.addEventListener('click', function() {
         var debuggON =  true;
         let fd = new FormData();
-        if(!debuggON){
+        // if(!debuggON){
             fd.append('cookie-resp', parseInt(el.getAttribute('data-cookie-resp')));
             fetch('url/to/update/cookie', {
                 method: 'POST',
-                form: fd
+                body: fd
             })
             .then((response) => {response.text})
             .then((data) => {
-                if(data == 1){   
+                if(data == true){   
                     el.closest('.cookie-modal').style.opacity = 0;
                     setTimeout(()=>{
                         el.closest('.cookie-modal').remove();
@@ -89,12 +89,12 @@ document.querySelectorAll('.cookie-resp').forEach(el => {
                     console.log('error');
                 }
             })
-        }else{
-            el.closest('.cookie-modal').style.opacity = 0;
-            setTimeout(()=>{
-                el.closest('.cookie-modal').remove();
-            }, 1500)
-        }
+        // }else{
+        //     el.closest('.cookie-modal').style.opacity = 0;
+        //     setTimeout(()=>{
+        //         el.closest('.cookie-modal').remove();
+        //     }, 1500)
+        // }
         
     })
 });
@@ -150,7 +150,7 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
         errorMsg.classList.remove('hide');
     }  
 });
-document.querySelectorAll('.nav-toggle').forEach(el => {
+document.querySelectorAll('.nav-toggle').forEach((el) => {
     el.addEventListener('click', () => {
         if(w >= 992){
             mainNavigation.classList.toggle('close-navigation');

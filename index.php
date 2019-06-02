@@ -1,3 +1,9 @@
+<?php 
+    if(!isset($_COOKIE['acceptCookie'])){
+        // setcookie('acceptCookie', '0',  time()+60*60*24*30, "/bom2");
+        setcookie('acceptCookie', '0',  time()+60*60*24*30, '/', '', true);
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -28,13 +34,11 @@
     </script>
 <link href="assets/css/vendors~index.css?818e20abaae123fdbd40" rel="stylesheet"><link href="assets/css/index.css?818e20abaae123fdbd40" rel="stylesheet"></head>
 <body>
-    <div class="cookie-modal">
-        <p>Ao continuar a usar este site, você concorda com o uso de cookies.</p>
-        <div>
-            <button class="btn btn-send cookie-resp" data-cookie-resp="1">Aceito</button>
-            <button class="btn btn-send cookie-resp" data-cookie-resp="0">Não</button>
-        </div>
-    </div>
+    <?php 
+        if(!isset($_COOKIE['acceptCookie']) || (isset($_COOKIE['acceptCookie']) && $_COOKIE['acceptCookie'] == '0')){
+            include('_include/cookie-prompt.php');
+        }
+    ?>
     <nav class="main-nav card-background-dark" role="navigation">
         <div class="btn nav-toggle">
             <span class="nav-close-icon"><i class="custom-i arrow-right"></i></span>
