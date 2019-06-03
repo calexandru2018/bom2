@@ -1,7 +1,8 @@
 <?php 
-    if(!isset($_COOKIE['acceptCookie'])){
-        // setcookie('acceptCookie', '0',  time()+60*60*24*30, "/bom2");
-        setcookie('acceptCookie', '0',  time()+60*60*24*30, '/', '', true);
+    session_start();
+    if(!isset($_COOKIE['accept_cookie'])){
+        setcookie('accept_cookie', md5(0),  time()+60*60*24*30, "/bom2", '', false); //localhost
+        // setcookie('acceptCookie', '0',  time()+60*60*24*30, '/', '', true);
     }
 ?>
 <!DOCTYPE html>
@@ -35,7 +36,7 @@
 <link href="assets/css/vendors~index.css?818e20abaae123fdbd40" rel="stylesheet"><link href="assets/css/index.css?818e20abaae123fdbd40" rel="stylesheet"></head>
 <body>
     <?php 
-        if(!isset($_COOKIE['acceptCookie']) || (isset($_COOKIE['acceptCookie']) && $_COOKIE['acceptCookie'] == '0')){
+        if(!isset($_COOKIE['accept_cookie']) || (isset($_COOKIE['accept_cookie']) && $_COOKIE['accept_cookie'] == md5(0))){
             include('_include/cookie-prompt.php');
         }
     ?>

@@ -74,11 +74,11 @@ document.querySelectorAll('.cookie-resp').forEach((el) => {
         let fd = new FormData();
         // if(!debuggON){
             fd.append('cookie-resp', parseInt(el.getAttribute('data-cookie-resp')));
-            fetch('url/to/update/cookie', {
+            fetch('./async/update-cookie.php', {
                 method: 'POST',
                 body: fd
             })
-            .then((response) => {response.text})
+            .then((response) => response.text())
             .then((data) => {
                 if(data == true){   
                     el.closest('.cookie-modal').style.opacity = 0;
@@ -86,7 +86,7 @@ document.querySelectorAll('.cookie-resp').forEach((el) => {
                         el.closest('.cookie-modal').remove();
                     }, 1000)
                 }else{
-                    console.log('error');
+                    console.log('error', data);
                 }
             })
         // }else{
