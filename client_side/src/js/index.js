@@ -74,7 +74,8 @@ document.querySelectorAll('.cookie-resp').forEach((el) => {
         let fd = new FormData();
         // if(!debuggON){
             fd.append('cookie-resp', parseInt(el.getAttribute('data-cookie-resp')));
-            fetch('./async/update-cookie.php', {
+            // fetch('./async/update-cookie.php', {
+            fetch('some/path', {
                 method: 'POST',
                 body: fd
             })
@@ -212,3 +213,8 @@ function timeout(timeoutValue, spinnerEl, messageStatusEl, buttonEl){
         }, timeoutValue)
     }, 1000);
 };
+
+document.getElementById('lang-selector').addEventListener('change', function(){
+    const selectedLang = document.getElementById('lang-selector').value;
+    window.location.href = '/bom2/index.php?lang=' + selectedLang;
+});

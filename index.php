@@ -4,7 +4,13 @@
         setcookie('accept_cookie', md5(0),  time()+60*60*24*30, "/bom2", '', false); //localhost
         // setcookie('acceptCookie', '0',  time()+60*60*24*30, '/', '', true);
     }
-?>
+    $LANG = 'pt';
+    if(isset($_GET['lang']) && $_GET['lang']=='en')
+        $LANG = 'en';
+
+    include_once('./assets/lang/_'.$LANG.'.php');
+    
+?> 
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -86,9 +92,9 @@
                 </div>
                 <div class="calendar-language-delimiter">
                     <a id="show-locator" href="#" class="btn" style="align-self: end;">Onde estamos ? <span style="text-decoration: underline">Clique aqui</span></a>
-                    <select class="custom-select">
-                        <option value="pt">PT</option>
-                        <option value="en">EN</option>
+                    <select class="custom-select" id="lang-selector">
+                        <option value="pt" <?php echo ((!isset($_GET['lang'])|| $_GET['lang']=="pt") ? 'selected':'');  ?> >PT</option>
+                        <option value="en" <?php echo (($_GET['lang']=="en") ? 'selected':'');  ?> >EN</option>
                     </select>
                 </div>
             </div>
