@@ -2,7 +2,7 @@
     session_start();
     if(!isset($_COOKIE['accept_cookie'])){
         setcookie('accept_cookie', md5(0),  time()+60*60*24*30, "/bom2", '', false); //localhost
-        // setcookie('acceptCookie', '0',  time()+60*60*24*30, '/', '', true);
+        // setcookie('accept_cookie', md5(0),  time()+60*60*24*30, '/', '', true);
     }
     $LANG = 'pt';
     if(isset($_GET['lang']) && $_GET['lang']=='en')
@@ -46,6 +46,10 @@
         const calenderConfig = {
             locale: '<?php echo $LANG; ?>',
             today: '<?php echo (($LANG == 'en') ? 'today':'hoje'); ?>'
+        };
+        const sendMessageResp = {
+            success: '<?php echo $langArray['contacts']['contactForm']['messageSentSuccess']; ?>',
+            fail: '<?php echo $langArray['contacts']['contactForm']['messageSentFail']; ?>'
         }
     </script>
 <link href="assets/css/vendors~index.css?818e20abaae123fdbd40" rel="stylesheet"><link href="assets/css/index.css?818e20abaae123fdbd40" rel="stylesheet"></head>
@@ -63,25 +67,25 @@
             <img src="assets/img/logo.png" class="nav-mobile-logo" alt="">
         </div>
         <div class="scroll-home-btn">
-            <a data-link="homepage" class="btn btn-nav">Home</a>
+            <a data-link="homepage" class="btn btn-nav"><?php echo $langArray['nav']['home']; ?></a>
         </div>
         <div>
-            <a data-link="concept" class="btn btn-nav">Conceito</a>
+            <a data-link="concept" class="btn btn-nav"><?php echo $langArray['nav']['concept']; ?></a>
         </div>
         <div>
-            <a data-link="products" class="btn btn-nav">Produtos</a>
+            <a data-link="products" class="btn btn-nav"><?php echo $langArray['nav']['products']; ?></a>
         </div>
         <div>
-            <a data-link="story" class="btn btn-nav">História</a>
+            <a data-link="story" class="btn btn-nav"><?php echo $langArray['nav']['background']; ?></a>
         </div>
         <div>
-            <a data-link="hashtag" class="btn btn-nav">#bomaoquadrado</a>
+            <a data-link="hashtag" class="btn btn-nav"><?php echo $langArray['nav']['hashtag']; ?></a>
         </div>
         <div>
-            <a data-link="events" class="btn btn-nav">Eventos</a>
+            <a data-link="events" class="btn btn-nav"><?php echo $langArray['nav']['events']; ?></a>
         </div>
         <div>
-            <a data-link="contacts" class="btn btn-nav">Contactos</a>
+            <a data-link="contacts" class="btn btn-nav"><?php echo $langArray['nav']['contacts']; ?></a>
         </div>
         <div class="nav-contact-info">
             <!-- <div> -->
@@ -89,7 +93,7 @@
                 <a href="tel:+351968167446" target="_top">+351 968 167 446</a>
             <!-- </div>
             <div> -->
-                <a href="mailto:geral@bomaoquadrado.pt" target="_top">geral@bomaoquadrado.pt</a>
+                <a href="mailto:info@bomaoquadrado.pt" target="_top">info@bomaoquadrado.pt</a>
             <!-- </div> -->
         </div>
     </nav>
@@ -100,7 +104,7 @@
                     <div id="calendar"></div>
                 </div>
                 <div class="calendar-language-delimiter">
-                    <a id="show-locator" href="#" class="btn" style="align-self: end;">Onde estamos ? <span style="text-decoration: underline">Clique aqui</span></a>
+                    <a id="show-locator" href="#" class="btn" style="align-self: end;"><?php echo $langArray['calender']['showBtn1']; ?> <span style="text-decoration: underline"><?php echo $langArray['calender']['showBtn2']; ?></span></a>
                     <select class="custom-select" id="lang-selector">
                         <option value="pt" <?php echo ((!isset($_GET['lang']) || $_GET['lang']=="pt") ? 'selected':'');  ?> >PT</option>
                         <option value="en" <?php echo ((isset($_GET['lang']) && $_GET['lang']=="en") ? 'selected':'');  ?> >EN</option>
@@ -117,26 +121,23 @@
         </header>
         <section class="section parallax bg1 justify-content-center" id="homepage">
             <div>
-                <h1>Creparia Artesanal</h1>
-                <h3>Quem prova quer mais!</h3>
-                <p>Clique <u id="scroll-to-products">aqui</u> para ver os nossos produtos</p>
+                <h1><?php echo $langArray['landingText']['mainHeader']; ?></h1>
+                <h3><?php echo $langArray['landingText']['underHeader']; ?></h3>
+                <p><?php echo $langArray['landingText']['checkProductStart']; ?> <u id="scroll-to-products"><?php echo $langArray['landingText']['checkProductsBtn']; ?></u> <?php echo $langArray['landingText']['checkProductsEnd']; ?></p>
             </div>
         </section>
         <!-- Conceito -->
         <section class="section static card-background-light" id="concept">
-            <h1>Conceito</h1>
+            <h1><?php echo $langArray['concept']['title']; ?></h1>
             <div>
-                <p>Somos uma creperia ambulante conhecida pelos deliciosos waffles no palito e crepes tradicionais. Sempre na estrada, de um lado para o outro, a conhecida carrinha cor-de-rosa situa-se no Algarve na época de Verão e em Lisboa no Inverno.</p>
-                <p>Os nossos waffles caracterizam-se pela sua massa leve e húmida por dentro e estaladiça por fora. São recheados e a escolha do sabor fica ao critério do cliente. Além disso vêm agarrados a um palito para ser fácil de comer em andamento sem se sujar. </p>
-                <p>Crepes tradicionais há muitos, mas os nossos são especiais. Com muito trabalho e estudo descobrimos a nossa receita secreta, uma massa equilibrada com ingredientes na proporção correta. Caracteriza-se por ser suave, fininha e tenra. São servidos enrolados com o recheio no interior tornando-se prático de comer.</p>
-                <p>Temos ainda mini panquecas e churritos sem fritura. E para acompanhar estas especialidades temos as nossas bebidas, como o chocolate quente, chás diversos, cappuccino, latte macchiato, limonada ou morangada e claro, uma ginginha de Óbidos para completar este apetitoso menu. </p>
+                <?php echo $langArray['concept']['description']; ?>
             </div>
         </section>
         <section class="section parallax bg2">
         </section>
         <!-- Produtos -->
         <section class="section static card-background-dark" id="products">
-            <h1>Produtos</h1>
+            <h1><?php echo $langArray['productsTitle']; ?></h1>
             <div class="flip-card-grid">
                 <!-- Waffle no palito -->
                 <div class="col" ontouchstart="this.classList.toggle('hover');">
@@ -247,17 +248,9 @@
         </section>
         <!-- História -->
         <section class="section static card-background-light" id="story">
-            <h1>História</h1>
+            <h1><?php echo $langArray['background']['title']; ?></h1>
             <div>
-                <p>Catarina Lourenço e David Simões, licenciados em Produção Alimentar em Restauração na Escola Superior de Hotelaria e Turismo do Estoril.</p>
-                <div class="divider"></div>
-                <p>Trabalhámos em várias cozinhas de hotéis e restaurantes. Destacam-se o Bon Bon em Carvoeiro com uma estrela Michelin, o 100 Maneiras em Lisboa do Chef Ljubomir, o Vila Vita Parc Resort & Spa em Porches, o Hotel Cascais Miragem em Cascais, o Pestana Colombos Premium em Porto Santo, entre outros. </p>
-                <div class="divider"></div>
-                <p>Surgiu o entusiasmo de iniciar um projeto nosso. Ficámos fascinados quando aprendemos a fazer bombons com o Chefe Nelson Félix na cadeira de Pastelaria. Decidimos então criar uma marca de bombons. Surgiu o Bom² (bombom), duas pessoas que se juntaram para fazer algo bom, tão bom que é duas vezes bom! Testámos combinações e criámos recheios incríveis escondidos na fina, estaladiça e brilhante capa de chocolate. Rapidamente começámos a ganhar clientes, eram muitas as encomendas que surgiam para uma pequena capacidade de produção, artesanal e bastante elementar. Algumas complicações apareceram com a incapacidade de investir em máquinas, espaço de produção climatizado e empregados.</p>
-                <div class="divider"></div>
-                <p>Aproximava-se o Verão, tempo muito quente para trabalhar o chocolate. Numa conversa de amigos falou-se na hipótese de comprarmos uma carrinha de Street Food. Abandonámos temporariamente os bombons. Começaram a surgir novas ideias. Comprámos a carrinha e em seguida decorámos e arranjámos ao nosso gosto com a ajuda da empresa Porquê Design.</p>
-                <div class="divider"></div>
-                <p>Decidimos criar algo diferente e inovador, surgiram os originais waffles recheados no palito. Manteve-se o nome, mas alterou-se o conceito. A necessidade de um alimento que fosse prático para comer em andamento levou-nos à criação do waffle preso no palito. Estreámos este conceito de Street Food no Verão de 2017 na Zona Ribeirinha de Portimão. Rapidamente começámos a ganhar elogios pela qualidade das nossas massas, acabando por surgir o nosso slogan “quem prova quer mais”.</p>
+                <?php echo $langArray['background']['description']; ?>
             </div>
         </section>
         <section class="section parallax bg4">
@@ -265,12 +258,9 @@
         </section>
         <!-- #bomaoquadrado -->
         <section class="section static card-background-dark" id="hashtag">
-                <h1>#hashtag</h1>
+                <h1><?php echo $langArray['hashtag']['title']; ?></h1>
                 <div>
-                    <p>Sempre que nos visitares pública uma foto dos nossos crepes/waffles no teu Instagram. identifica-nos @bomaoquadrado e usa os hashtags #bomaoquadrado e #quemprovaquermais.</p>
-                    <p>Se fizermos repost da tua foto ganhas um waffle/crepe à tua escolha.</p>
-                    <p>Agora já sabes como ganhar doces à pala!</p> 
-
+                    <?php echo $langArray['hashtag']['description']; ?> 
                     <div id="instafeed"></div>
                 </div>
         </section>
@@ -278,64 +268,44 @@
         </section>
         <!-- Eventos -->
         <section class="section static card-background-light" id="events">
-            <h1>Eventos</h1>
+            <h1><?php echo $langArray['events']['title']; ?></h1>
             <div>
-                <p>
-                    Vai haver festa? O BOM² pode torná-la deliciosa! Fazemos todo o tipo de eventos.
-                </p>
-                <p>
-                    Pede já a tua proposta:
-                    <ol>
-                        <li>Nome</li>
-                        <li>Email</li>
-                        <li>Telemóvel</li>
-                        <li>Localização</li>
-                        <li>Tipo de evento</li>
-                        <li>Duração do evento</li>
-                        <li>Data do evento</li>
-                        <li>Estimativa do nº de pessoas</li>
-                    </ol>
-                </p>                        
+                <?php echo $langArray['events']['description']; ?>                       
             </div>
         </section>
         <section class="section parallax bg4">
         </section>
         <!-- Contactos -->
         <section class="section static card-background-dark" id="contacts">
-            <h1>Contactos</h1>
+            <h1><?php echo $langArray['contacts']['title']; ?></h1>
             <div class="contact-wrapper">
                 <div class="contact-text">
-                    <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae, sapiente, vel quod, eligendi tenetur consequuntur fugiat deserunt nesciunt voluptatem nisi ipsam amet eum excepturi ad deleniti. Eveniet natus ea vitae!
-                    </p>
-                    <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae, sapiente, vel quod, eligendi tenetur consequuntur fugiat deserunt nesciunt voluptatem nisi ipsam amet eum excepturi ad deleniti. Eveniet natus ea vitae!
-                    </p>
+                    <?php echo $langArray['contacts']['description']; ?>   
                 </div>
                 <div class="contact-form-wrapper">
-                        <div id="error-message" class="hide" style="color: rgb(178, 34, 34);">Todos os campos tem que ser preenchidos e aceite os termos.</div>
+                        <div id="error-message" class="hide" style="color: rgb(178, 34, 34);"><?php echo $langArray['contacts']['contactForm']['fillAllFieldsMsg']; ?></div>
                         <form id="contact-form" class="contact-form">                   
                             <!-- <label for="form-name">Nome</label> -->
-                            <input name="form-name" type="text" class="form-input" placeholder="Nome">
+                            <input name="form-name" type="text" class="form-input" placeholder="<?php echo $langArray['contacts']['contactForm']['name']; ?>">
                             <!-- <label for="form-email">E-mail</label> -->
-                            <input name="form-email" type="email "class="form-input" placeholder="Email">
+                            <input name="form-email" type="email "class="form-input" placeholder="<?php echo $langArray['contacts']['contactForm']['email']; ?>">
                             <!-- <label for="">Motivo de contacto</label> -->
                             <select name="form-select" class="form-input">
-                            <option value="0" selected disabled>Motivo de contacto</option>
-                            <option value="1">Informação</option>
-                            <option value="2">Feedback</option>
-                            <option value="3">Eventos</option>
+                            <option value="0" selected disabled><?php echo $langArray['contacts']['contactForm']['contactSelect']['default']; ?></option>
+                            <option value="1"><?php echo $langArray['contacts']['contactForm']['contactSelect']['info']; ?></option>
+                            <option value="2"><?php echo $langArray['contacts']['contactForm']['contactSelect']['feedback']; ?></option>
+                            <option value="3"><?php echo $langArray['contacts']['contactForm']['contactSelect']['event']; ?></option>
                         </select>
                         <!-- <label for="">Mensagem</label> -->
-                        <textarea name="form-message" class="form-input" cols="30" rows="10" placeholder="A sua mensagem"></textarea>
+                        <textarea name="form-message" class="form-input" cols="30" rows="10" placeholder="<?php echo $langArray['contacts']['contactForm']['messageArea']; ?>"></textarea>
                         <div style="display: grid; grid-template-columns: 1fr 1fr;">
                                 <span>
-                                    <label for="terms">Li e aceito <a href="#" style="text-decoration: underline !important">os termos</a></label>
+                                    <label for="terms"><?php echo $langArray['contacts']['contactForm']['termsStart']; ?> <a href="#" style="text-decoration: underline !important"><?php echo $langArray['contacts']['contactForm']['termsLink']; ?></a></label>
                                     <input type="checkbox" name="terms" class="form-input" style="vertical-align: middle; margin: 0 !important">
                                 </span>
                             <div id="lds-ellipsis" class="hide"><div></div><div></div><div></div><div></div></div>
                             <div id="message-status" class="hide"></div>
-                            <button type="submit" id="send-btn" class="btn btn-send">Enviar</button>
+                            <button type="submit" id="send-btn" class="btn btn-send"><?php echo $langArray['contacts']['contactForm']['sendBtn']; ?></button>
                         </div>
                     </form>
                 </div>
@@ -354,12 +324,12 @@
                     <a href="tel:+351965838259 " target="_top">+351 965 838 259</a> / <a href="tel:+351968167446 " target="_top">+351 968 167 446</a>
                 </div>
                 <div>
-                    <a href="mailto:geral@bomaoquadrado.pt" target="_top">geral@bomaoquadrado.pt</a>
+                    <a href="mailto:info@bomaoquadrado.pt" target="_top">info@bomaoquadrado.pt</a>
                 </div>
             </div>
             <div class="footer-surplus">
                 <div>&copy; Bom<sup>2</sup> 2018</div>
-                <div>Desenvolvido por: <a href="https://se.linkedin.com/in/calexandru2018/en" target="_blank">Alexandru Cheltuitor</a></div>
+                <div><?php echo $langArray['footerDevBy']; ?> <a href="https://se.linkedin.com/in/calexandru2018/en" target="_blank">Alexandru Cheltuitor</a></div>
             </div>
         </footer>
     </main>

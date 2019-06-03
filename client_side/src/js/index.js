@@ -134,14 +134,14 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
         .then(r => r.text())
         .then(data => {
             if(!data){
-                messageStatus.innerHTML = "Mensagem enviada &#10003;";
+                messageStatus.innerHTML = sendMessageResp.success;
                 messageStatus.style = "color: rgb(60, 179, 113)";
                 formCollector.forEach((el) => {
                     el.value = '';
                 });
                 timeout(3000, spinner, messageStatus, sendButton);
             }else{
-                messageStatus.innerText = "Occoreu um erro ao enviar a mensagem, tente novamente.";
+                messageStatus.innerText = sendMessageResp.fail;
                 messageStatus.style = "color: rgb(178, 34, 34)";
                 timeout(5000, spinner, messageStatus, sendButton);
             }
