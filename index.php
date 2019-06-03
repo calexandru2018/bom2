@@ -43,6 +43,10 @@
                 url: 'https://www.google.com/maps/dir/?api=1&destination=37.352141,-8.843425'
             }
         ];
+        const calenderConfig = {
+            locale: '<?php echo $LANG; ?>',
+            today: '<?php echo (($LANG == 'en') ? 'today':'hoje'); ?>'
+        }
     </script>
 <link href="assets/css/vendors~index.css?818e20abaae123fdbd40" rel="stylesheet"><link href="assets/css/index.css?818e20abaae123fdbd40" rel="stylesheet"></head>
 <body>

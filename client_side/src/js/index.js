@@ -46,12 +46,12 @@ feed.run();
 
 var calendar = new Calendar(calendarEl, {
     defaultView: 'month',
-    locale: 'pt',
+    locale: calenderConfig.locale,
     height: 'parent',
     firstDay: 1,
     navLinks: false, //will change to true  so people can ask for events
     buttonText: {
-        today:  'hoje'
+        today:  calenderConfig.today
     },
     events,
     eventClick: (info) => {
