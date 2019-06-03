@@ -9,10 +9,15 @@
         $LANG = 'en';
 
     include_once('./assets/lang/_'.$LANG.'.php');
+    include_once('./models/db.php');
+    $CONN = new Database();
+
+    $queryToken = $CONN->db->query('SELECT * FROM config');
+    $fetchToken = $queryToken->fetch_assoc();
     
 ?> 
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="<?php echo $LANG; ?>">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +26,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/brands.css" integrity="sha384-BCEeiNUiLzxxoeYaIu7jJqq0aVVz2O2Ig4WbWEmRQ2Dx/AAxNV1wMDBXyyrxw1Zd" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css" integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ" crossorigin="anonymous">
     <script>
-        const instagramToken =  '5673767342.34e4dc1.74c0ab47e61c4079a6fb028428fe32e7';
+        const instagramToken =  '<?php echo $fetchToken['ig_access_token']; ?>';
         const events = [
             {
                 title: 'Albufeira22',
@@ -93,8 +98,8 @@
                 <div class="calendar-language-delimiter">
                     <a id="show-locator" href="#" class="btn" style="align-self: end;">Onde estamos ? <span style="text-decoration: underline">Clique aqui</span></a>
                     <select class="custom-select" id="lang-selector">
-                        <option value="pt" <?php echo ((!isset($_GET['lang'])|| $_GET['lang']=="pt") ? 'selected':'');  ?> >PT</option>
-                        <option value="en" <?php echo (($_GET['lang']=="en") ? 'selected':'');  ?> >EN</option>
+                        <option value="pt" <?php echo ((!isset($_GET['lang']) || $_GET['lang']=="pt") ? 'selected':'');  ?> >PT</option>
+                        <option value="en" <?php echo ((isset($_GET['lang']) && $_GET['lang']=="en") ? 'selected':'');  ?> >EN</option>
                     </select>
                 </div>
             </div>
