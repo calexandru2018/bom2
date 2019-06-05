@@ -1,7 +1,7 @@
 <div class="cookie-modal">
-    <p>Ao continuar a usar este site, você concorda com o uso de cookies.</p>
+    <p><?php echo $langArray['cookie']['text']; ?></p>
     <div>
-        <button class="btn btn-send cookie-resp" data-cookie-resp="1">Aceito</button>
-        <button class="btn btn-send cookie-resp" data-cookie-resp="0">Não</button>
+        <button class="btn btn-send cookie-resp" data-cookie-resp="1"><?php echo $langArray['cookie']['btnAccept']; ?></button>
+        <button class="btn btn-send cookie-resp" data-cookie-resp="0"><?php echo $langArray['cookie']['btnDeny']; ?></button>
     </div>
 </div>

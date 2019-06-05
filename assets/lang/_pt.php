@@ -100,6 +100,11 @@ $langArray = [
                 'fillAllFieldsMsg' => 'Todos os campos tem que ser preenchidos e aceite os termos.',
             ]
         ],
-        'footerDevBy' => 'Desenvolvido por:'
+        'footerDevBy' => 'Desenvolvido por:',
+        'cookie' => [
+            'text' => 'Ao continuar a usar este site, você concorda com o uso de cookies.',
+            'btnAccept' => 'Aceito',
+            'btnDeny' => 'Não'
+        ],
     ]
 ?>

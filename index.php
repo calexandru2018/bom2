@@ -8,8 +8,8 @@
     if(isset($_GET['lang']) && $_GET['lang']=='en')
         $LANG = 'en';
 
-    include_once('./assets/lang/_'.$LANG.'.php');
-    include_once('./models/db.php');
+    require('./assets/lang/_'.$LANG.'.php');
+    require_once('./models/db.php');
     $CONN = new Database();
 
     $queryToken = $CONN->db->query('SELECT * FROM config');

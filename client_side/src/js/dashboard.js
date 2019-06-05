@@ -168,7 +168,7 @@ const insertNewItem = function(targetID){
     targetID.classList.add('hide');
     targetIDParent.appendChild(spinner);
 
-    fetch('path/to/async/file', {
+    fetch('./async/create.php', {
         method: 'POST',
         body: valueHolder
     })
@@ -191,6 +191,7 @@ const insertNewItem = function(targetID){
             }, 5000)
             
         }, 3000);
+        console.log(data);
     })
     .catch((error) =>{
         console.log(error);
@@ -237,7 +238,7 @@ const editItem = function(targetID){
     targetID.classList.add('hide');
     targetIDParent.appendChild(spinner);
 
-    fetch('path/to/async/file', {
+    fetch('./async/edit.php', {
         method: 'POST',
         body: valueHolder
     })
@@ -295,7 +296,7 @@ const deleteItem = function(targetID){
         console.log(pair[0]+ ', ' + pair[1]); 
     }
 
-    fetch('path/to/async/file', {
+    fetch('./async/delete.php', {
         method: 'POST',
         body: valueHolder
     })

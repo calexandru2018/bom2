@@ -39,6 +39,8 @@ label{
 .login-form input{
     border-radius: 5px;
     border: none;
+    padding:5px;
+    line-height: 5px;
 }
 img{
     width: 200px;
