@@ -273,7 +273,6 @@ button.add-col-2{
     display: none;
     grid-auto-rows: min-content;
     margin: 1.5rem 1rem;
-    width: 600px;
     margin: auto;
 }
 .sub-choice form{
@@ -389,3 +388,17 @@ button.add-col-2{
   }
 
 /* SPINNER END*/
+
+/* MEDIA QUERIES START*/
+@media (min-width: 720px) {
+    .sub-choice{
+        width: 450px;
+    }
+}
+@media (min-width: 992px) {
+    .sub-choice{
+        width: 600px;
+    }
+}
+/* MEDIA QUERIES END*/
+
