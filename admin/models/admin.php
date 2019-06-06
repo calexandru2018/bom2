@@ -15,7 +15,7 @@
             '".$admin['name']."',
             '".$admin['email']."',
             '".$pwd."'
-            ".(($admin['phoneNumber']) ? ",'".$admin['phoneNumber'].".":'')."
+            ".(($admin['phoneNumber']) ? ",'".$admin['phoneNumber']."'":'')."
         )";
         $query = $dbConn->query($sql);
         if($dbConn->affected_rows === 1)
