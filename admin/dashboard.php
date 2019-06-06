@@ -111,17 +111,45 @@
                 </div>
                 <div class="places columns-4-of-4">
                     <button class="btn btn-primary self-center" id="places-menu-btn">Destinos</button>
-                    <div class="sub-choice">
+                    <div class="sub-choice" style="display:grid">
                     <button class="btn btn-secondary self-center" id="places-show-btn">Ver Destinos</button>
-                        <div class="table-col-5">
+                   
+                    <div class="table-col-5" style="display:grid">
                             <!-- <span class="table-header">ID</span> -->
                             <span class="table-header">Destino</span>
                             <span class="table-header">Desde</span>
                             <span class="table-header">Ate</span>
                             <span class="table-header">Mapa</span>
                             <span class="table-header">Accoes</span>
+                            <?php
+                                require('./functions/place.php');
+                                $places = getAllPlaces($CONN->db);
+                                for($i = 0; $i < sizeof($places); $i++){
+                                    echo "<span>".$places[$i]['name']['placePT']."</span>";
+                                    echo "<span>".$places[$i]['duration']['startDate']."</span>";
+                                    echo "<span>".$places[$i]['duration']['endDate']."</span>";
+                                    echo "<span>
+                                            <a href='https://www.google.com/maps/dir/?api=1&destination=".$places[$i]['gps']['latitude'].",".$places[$i]['gps']['longitude']."' onclick=window.open(this.href,'_blank')>
+                                                Ver</a>
+                                            </span>";
+                                    echo "<span class='action-icons'>
+                                            <a class='edit-form' data-category='place' data-place-id='".$places[$i]['id']['id']."'>
+                                                <img src='assets/img/edit.svg' alt='' srcset=''>
+                                            </a>
+                                            <a class='delete-data' data-category='place' data-place-id='".$places[$i]['id']['id']."'>
+                                                <img src='assets/img/remove.svg' alt='' srcset=''>
+                                            </a>
+                                        </span>";
+                                    // print("<pre>".print_r($places[$i]['id']['id'],true)."</pre>");
+                                    // print("<pre>".print_r($places[$i]['name']['placePT'],true)."</pre>");
+                                    // print("<pre>".print_r($places[$i]['duration']['startDate'],true)."</pre>");
+                                    // print("<pre>".print_r($places[$i]['duration']['endDate'],true)."</pre>");
+                                    // print("<pre>".print_r($places[$i]['gps']['latitude'],true)."</pre>");
+                                    // print("<pre>".print_r($places[$i]['gps']['longitude'],true)."</pre>");
+                                }
+                            ?> 
                             <!-- <span>1</span> -->
-                            <span>Aljezur</span>
+                            <!-- <span>Aljezur</span>
                             <span>2018-01-01</span>
                             <span>2018-12-31</span>
                             <span><a href="https://www.google.com/maps/dir/?api=1&destination=37.352141,-8.843425" onclick="window.open(this.href,'_blank')">Ver</a></span>
@@ -132,9 +160,9 @@
                                 <a class="delete-data" data-category="place" data-place-id="1">
                                     <img src="assets/img/remove.svg" alt="" srcset="">
                                 </a>
-                            </span>
+                            </span> -->
                             <!-- <span>2</span> -->
-                            <span>Albufeira</span>
+                            <!-- <span>Albufeira</span>
                             <span>2018-01-01</span>
                             <span>2018-12-31</span>
                             <span><a href="https://www.google.com/maps/dir/?api=1&destination=37.015578,-7.920545" onclick="window.open(this.href,'_blank')">Ver</a></span>
@@ -145,7 +173,7 @@
                                 <a class="delete-data" data-category="place" data-place-id="2">
                                     <img src="assets/img/remove.svg" alt="" srcset="">
                                 </a>
-                            </span>
+                            </span> -->
                         </div>
                         <button class="btn btn-secondary self-center" id="places-showform-btn">Novo</button>  
                         <form>
@@ -269,6 +297,9 @@
         </div>
     <script type="text/javascript" src="assets/js/vendors~index.js?818e20abaae123fdbd40"></script><script type="text/javascript" src="assets/js/dashboard.js?818e20abaae123fdbd40"></script></body>
     </html>
-<?php }
+<?php
+    $CONN->db->close();
+}else{
     header('Location: ./index.php');
+}
 ?>
