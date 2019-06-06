@@ -268,12 +268,14 @@ button.add-col-2{
 }
 .places, .flavours, .products{
     display: grid;
+    justify-items: center;
 }
 .sub-choice{
     display: none;
     grid-auto-rows: min-content;
     margin: 1.5rem 1rem;
-    margin: auto;
+    /* margin: auto; */
+    width: 300px;
 }
 .sub-choice form{
     /* display: grid; */
@@ -292,6 +294,10 @@ button.add-col-2{
     margin-right: auto;
     padding: 2px 5px;
 }
+.darken-table-row{
+    background-color: rgba(112, 128, 144, 0.2);
+}
+
 
 /* SPINNER START*/
 
