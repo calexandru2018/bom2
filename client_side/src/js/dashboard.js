@@ -175,7 +175,7 @@ const insertNewItem = function(targetID){
     .then(response => response.text())
     .then(data => {
         setTimeout(function(){ 
-            if(data){
+            if(!data){
                 statusMessageEl.innerHTML = 'Informacao inserida!';
                 statusMessageEl.style.color = 'green';
             }else{
@@ -245,7 +245,7 @@ const editItem = function(targetID){
     .then(response => response.text())
     .then(data => {
         setTimeout(function(){ 
-            if(data){
+            if(!data){
                 statusMessageEl.innerHTML = 'Informacao actualizada!';
                 statusMessageEl.style.color = 'green';
             }else{
@@ -264,6 +264,7 @@ const editItem = function(targetID){
             }, 3000)
             
         }, 1500);
+        console.log(data);
     })
     .catch((error) =>{
         statusMessageEl.innerHTML = 'Houve um erro ao actualizar!';
@@ -292,9 +293,9 @@ const deleteItem = function(targetID){
     valueHolder.append(id, 'id');
     valueHolder.append(categoryType, 'category');
 
-    for (var pair of valueHolder.entries()) {
-        console.log(pair[0]+ ', ' + pair[1]); 
-    }
+    // for (var pair of valueHolder.entries()) {
+    //     console.log(pair[0]+ ', ' + pair[1]); 
+    // }
 
     fetch('./async/delete.php', {
         method: 'POST',
@@ -302,7 +303,6 @@ const deleteItem = function(targetID){
     })
     .then(response => response.text())
     .then(data => {
-        // alert('Action accomplished');
         var i;
         var parentSpan = targetID.closest('span');
         var previousParent;
@@ -313,12 +313,15 @@ const deleteItem = function(targetID){
             i = 2;
         else if(categoryType == 'admin')
             i = 3;        
-
-        for(var c = 0; c < i; c++){
-            previousParent = parentSpan.previousElementSibling;
-            parentSpan.remove();
-            parentSpan = previousParent;
-        }        
+        if(!data){
+            for(var c = 0; c < i; c++){
+                previousParent = parentSpan.previousElementSibling;
+                parentSpan.remove();
+                parentSpan = previousParent;
+            }     
+        }else{
+            console.log(data);
+        }   
     })
     .catch((error) =>{
         console.log(error);
@@ -328,13 +331,17 @@ const fetchItemToEdit = (contentType, contentID) => {
     const valueHolder = new FormData();
     valueHolder.append('contentType', contentType);
     valueHolder.append('contentID', contentID);
-    fetch('path/to/file', {
+    fetch('./async/fetch-to-edit.php', {
         method: 'POST',
         body: valueHolder
     })
     .then((response) => response.text())
     .then((data) => {
-        return data;
+        if(data != 99){
+            return data;
+        }else{    
+            console.log(data);
+        }
     })
     .catch((error) => {console.log(error)});
 };
