@@ -6,8 +6,10 @@
             require('../models/admin.php');
             echo createAdmin($_POST, $CONN->db);
         }
-        else 
-            echo 'no admin';
+        if($_POST['categoryType'] === 'place'){
+            require('../models/place.php');
+            echo createPlace($_POST, $CONN->db);
+        }
     }
     // var_dump($_POST);
 ?>

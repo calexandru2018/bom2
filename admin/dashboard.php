@@ -149,12 +149,14 @@
                         </div>
                         <button class="btn btn-secondary self-center" id="places-showform-btn">Novo</button>  
                         <form>
-                            <label for="">Cidade</label>
-                            <input type="text" name="name" data-category="place-add-input">
+                            <label for="">Cidade PT</label>
+                            <input type="text" name="namePT" data-category="place-add-input">
+                            <label for="">Cidade EN</label>
+                            <input type="text" name="nameEN" data-category="place-add-input">
                             <label for="">Desde</label>
-                            <input type="date" name="startDate" data-category="place-add-input">
+                            <input type="date" name="startDate" data-category="place-add-input" max="2030-12-31" min="2019-01-01">
                             <label for="">Ate</label>
-                            <input type="date" name="endDate" data-category="place-add-input">
+                            <input type="date" name="endDate" data-category="place-add-input" max="2030-12-31" min="2019-01-01">
                             <label for="">Latitude</label>
                             <input type="text" name="latitude" data-category="place-add-input">
                             <label for="">Longitude</label>
