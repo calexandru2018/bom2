@@ -1,12 +1,14 @@
 <?php 
     $debuggModeOn = true;
     function createPlace(Array $place, $dbConn){
-        $eventDurationID = insertEventDuration($place, $dbConn);
-        $placeGPSID = insertPlaceGPS($place, $dbConn);
-        $placeNameID = insertPlaceName($place, $dbConn);
+        global $debuggModeOn;
+
+        $eventDurationID = createEventDuration($place, $dbConn);
+        $placeGPSID = createPlaceGPS($place, $dbConn);
+        $placeNameID = createPlaceName($place, $dbConn);
 
         if((int)$eventDurationID && (int)$placeGPSID && (int)$placeNameID){
-            if(insertEventDescription($eventDurationID, $placeGPSID, $placeNameID, $dbConn))
+            if(createEventDescription($eventDurationID, $placeGPSID, $placeNameID, $dbConn))
                 echo 1;
             else
                 return $debuggModeOn ? mysqli_error($dbConn):0;
@@ -16,7 +18,9 @@
         
 
     }
-    function insertEventDuration(Array $place, $dbConn){
+    function createEventDuration(Array $place, $dbConn){
+        global $debuggModeOn;
+
         $sql = "
             insert into event_duration (
                 startDate, 
@@ -35,7 +39,9 @@
         }
         
     }
-    function insertPlaceGPS(Array $place, $dbConn){
+    function createPlaceGPS(Array $place, $dbConn){
+        global $debuggModeOn;
+
         $sql = "
             insert into place_gps (
                 longitude, 
@@ -54,7 +60,9 @@
         }
     }
 
-    function insertPlaceName(Array $place, $dbConn){
+    function createPlaceName(Array $place, $dbConn){
+        global $debuggModeOn;
+
         $sql = "
             insert into place_name (
                 placePT, 
@@ -73,7 +81,9 @@
         }
     }
 
-    function insertEventDescription(int $eventDurationID, int $placeGPSID, int $placeNameID, $dbConn){
+    function createEventDescription(int $eventDurationID, int $placeGPSID, int $placeNameID, $dbConn){
+        global $debuggModeOn;
+
         $sql = "
             insert into event_description (
                 place_nameID,

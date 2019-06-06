@@ -149,9 +149,9 @@
                         </div>
                         <button class="btn btn-secondary self-center" id="places-showform-btn">Novo</button>  
                         <form>
-                            <label for="">Cidade PT</label>
+                            <label for="">Cidade em PT</label>
                             <input type="text" name="namePT" data-category="place-add-input">
-                            <label for="">Cidade EN</label>
+                            <label for="">Cidade em EN</label>
                             <input type="text" name="nameEN" data-category="place-add-input">
                             <label for="">Desde</label>
                             <input type="date" name="startDate" data-category="place-add-input" max="2030-12-31" min="2019-01-01">
@@ -206,9 +206,9 @@
                         </div>                
                         <button class="btn btn-secondary self-center" id="flavours-showform-btn">Novo</button>
                         <form>
-                            <label for="">Sabor em Portugues</label>
+                            <label for="">Sabor em PT</label>
                             <input type="text" name="flavours_PT" data-category="flavours-add-input">
-                            <label for="">Sabor em Ingles</label>
+                            <label for="">Sabor em EN</label>
                             <input type="text" name="flavours_EN" data-category="flavours-add-input">
                             
                             <div class="insert-btns_non-admin">
@@ -246,9 +246,9 @@
                         </div>             
                         <button class="btn btn-secondary self-center" id="product-showform-btn">Novo</button>
                         <form>
-                            <label for="">Produto em Portugues</label>
+                            <label for="">Produto em PT</label>
                             <input type="text" name="product_PT" data-category="product-add-input">
-                            <label for="">Produto em Ingles</label>
+                            <label for="">Produto em EN</label>
                             <input type="text" name="product_EN" data-category="product-add-input">
                             <label for="flavourList">Sabores</label>
                             <select name="flavour_1" data-category="product-add-input_1">

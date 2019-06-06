@@ -1,5 +1,8 @@
 <?php 
+    $debuggModeOn = true;
     function createAdmin(Array $admin, $dbConn){
+        global $debuggModeOn;
+        
         $pwd = password_hash(mysqli_real_escape_string($dbConn, $admin['pwd']), PASSWORD_BCRYPT);
         $sql = "
         insert into admin (
@@ -18,6 +21,6 @@
         if($dbConn->affected_rows === 1)
             return 1;
         else    
-            return mysqli_error($dbConn).$sql;
+            return $debuggModeOn ? mysqli_error($dbConn):0;
     }
 ?>

@@ -10,6 +10,14 @@
             require('../models/place.php');
             echo createPlace($_POST, $CONN->db);
         }
+        if($_POST['categoryType'] === 'flavours'){
+            require('../models/flavour.php');
+            echo createFlavour($_POST, $CONN->db);
+        }
+        if($_POST['categoryType'] === 'product'){
+            require('../models/product.php');
+            echo createProductFlavour($_POST, $CONN->db);
+        }
     }
     // var_dump($_POST);
 ?>
