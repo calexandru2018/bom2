@@ -4,19 +4,23 @@
     if($_POST['actionType'] === 'add'){
         if($_POST['categoryType'] === 'admin'){
             require('../models/admin.php');
-            echo createAdmin($_POST, $CONN->db);
+            $response = createAdmin($_POST, $CONN->db);
+            echo $response!=1 ? $response:'';
         }
         if($_POST['categoryType'] === 'place'){
             require('../models/place.php');
-            echo createPlace($_POST, $CONN->db);
+            $response = createPlace($_POST, $CONN->db);
+            echo $response!=1 ? $response:'';
         }
         if($_POST['categoryType'] === 'flavours'){
             require('../models/flavour.php');
-            echo createFlavour($_POST, $CONN->db);
+            $response = createFlavour($_POST, $CONN->db);
+            echo $response!=1 ? $response:'';
         }
         if($_POST['categoryType'] === 'product'){
             require('../models/product.php');
-            echo createProductFlavour($_POST, $CONN->db);
+            $response = createProductFlavour($_POST, $CONN->db);
+            echo $response!=1 ? $response:'';
         }
     }
     // var_dump($_POST);

@@ -102,6 +102,8 @@ content{
     margin: .5rem 0;
     text-align: center;
     font-weight: bold;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 .edit-btns{
     display: grid; 

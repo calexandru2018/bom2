@@ -269,4 +269,6 @@
         </div>
     <script type="text/javascript" src="assets/js/vendors~index.js?818e20abaae123fdbd40"></script><script type="text/javascript" src="assets/js/dashboard.js?818e20abaae123fdbd40"></script></body>
     </html>
-<?php }?>
+<?php }
+    header('Location: ./index.php');
+?>

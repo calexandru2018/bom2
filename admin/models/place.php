@@ -9,7 +9,7 @@
 
         if((int)$eventDurationID && (int)$placeGPSID && (int)$placeNameID){
             if(createEventDescription($eventDurationID, $placeGPSID, $placeNameID, $dbConn))
-                echo 1;
+                return 1;
             else
                 return $debuggModeOn ? mysqli_error($dbConn):0;
         }else{
