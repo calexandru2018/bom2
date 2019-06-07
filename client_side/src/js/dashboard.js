@@ -384,26 +384,26 @@ const addNewFlavourToProduct = function(target){
     const categoryType = previousEl.getAttribute('data-category').split('-');
      
     newNode.setAttribute('data-category', 'product-' + categoryType[1] + '-input_' + flavourCounter);
-/*         
-    ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+         
+    /*___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
 
-    Gets the flavours from the DB and shows them in the select
+    Gets the flavours from the DB and shows them in the select*/
 
-    fetch('path/to/file/to/get/flavours', {
+    fetch('./async/fetch-flavours-list.php', {
         method: 'GET'
     })
     .then((response) => response.text())
     .then((data) => {
-        // newNode.innerHTML = data;
+        newNode.innerHTML = data;
+        parentEl.insertBefore(newNode, previousEl.nextSibling);
         console.log('worked');
     })
     .catch((error) =>{
         console.log(error);
     }); 
-*/
-    newNode.innerHTML = `
-        <option value="1">Nutella</option>
-        <option value="2">Chocolate</option>
-    `;
-    parentEl.insertBefore(newNode, previousEl.nextSibling);
+
+    // newNode.innerHTML = `
+    //     <option value="1">Nutella</option>
+    //     <option value="2">Chocolate</option>
+    // `;
 }

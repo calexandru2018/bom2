@@ -238,11 +238,15 @@
                             <label for="flavourList">Sabores</label>
                             <select name="flavour_1" data-category="product-add-input_1">
                                 <option selected disabled>Selecione um sabor</option>
-                                <option value="1">Nutella</option>
-                                <option value="2">Chocolate</option>
+                                <?php 
+                                    for($i = 0; $i < sizeof($flavours); $i++){
+                                        echo "
+                                            <option value='".$flavours[$i]['id']."'>".$flavours[$i]['name']."</option>
+                                        ";
+                                    }
+                                ?>
                             </select>
                             <a class="add-new-flavour" style="width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed">Adicionar novo ?</a>
-
                             <div class="insert-btns_non-admin">
                                 <div></div>
                                 <button type="submit" class="btn-form-insert add-data btn-col-right" id="product-add-input">Adicionar</button> 
