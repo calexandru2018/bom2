@@ -140,9 +140,8 @@
         <section class="section static card-background-dark" id="products">
             <h1><?php echo $langArray['productsTitle']; ?></h1>
             <div class="flip-card-grid">
-                <!-- Waffle no palito -->
                 <?php 
-                    print("<pre>".print_r($allProducts,true)."</pre>");
+                    //print("<pre>".print_r($allProducts,true)."</pre>");
                     for($i = 0; $i < sizeof($allProducts); $i++){
                         echo "
                             <div class='col' ontouchstart='this.classList.toggle('hover');'>
