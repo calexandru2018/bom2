@@ -76,13 +76,12 @@
                 <button class="btn btn-primary self-center" id="show-instagram-menu">Instagram</button>
                 <form class="admin-add-new ig-access-form">
                     <div class="generate-token">
-                        <a class="btn-form-insert self-center" href="https://www.instagram.com/oauth/authorize/?client_id=34e4dc127ef64f86b2e8a1f2708948aa&redirect_uri=https://www.bomaoquadrado.pt&response_type=token" onclick="window.open(this.href,'_blank')">
-                            Novo
-                        </a>
                         <input type="text" name="access_token" data-category="token-add-input" placeholder="Novo token">
                     </div>
                     <div class="insert-btns">
-                        <div></div>
+                        <a class="btn-form-insert self-left" style="background-color: var(--card-light-dark-color);" href="https://www.instagram.com/oauth/authorize/?client_id=34e4dc127ef64f86b2e8a1f2708948aa&redirect_uri=https://www.bomaoquadrado.pt&response_type=token" onclick="window.open(this.href,'_blank')">
+                            Novo token
+                        </a>
                         <button class="btn-form-insert add-data" id="token-add-input">Adicionar</button> 
                     </div>
                 </form>
@@ -111,10 +110,10 @@
                 </div>
                 <div class="places columns-4-of-4">
                     <button class="btn btn-primary self-center" id="places-menu-btn">Destinos</button>
-                    <div class="sub-choice" style="display:grid">
+                    <div class="sub-choice">
                     <button class="btn btn-secondary self-center" id="places-show-btn">Ver Destinos</button>
                    
-                    <div class="table-col-5" style="display:grid">
+                    <div class="table-col-5">
                             <!-- <span class="table-header">ID</span> -->
                             <span class="table-header">Destino</span>
                             <span class="table-header">Desde</span>

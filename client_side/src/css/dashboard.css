@@ -62,7 +62,7 @@ label{
 }
 .ig-access-form .generate-token{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
 }
 content{
     display: none; /*change to debugg*/
@@ -81,14 +81,13 @@ content{
     z-index: 2;
 }
 .edit-form-layout{
-    position: fixed;
+    position: relative;
     top: 15%;
-    left: 10%;
     background-color: white;
     width: 80%;
+    margin: auto auto;
     height: fit-content;
     max-height: 480px;
-    
     border-radius: 5px;
     padding: 1rem;
 }
@@ -104,6 +103,13 @@ content{
     font-weight: bold;
     grid-column-start: 1;
     grid-column-end: 3;
+}
+.status-message-two-column{
+    margin: .5rem 0;
+    text-align: center;
+    font-weight: bold;
+    grid-column-start: 1;
+    grid-column-end: 2;
 }
 .edit-btns{
     display: grid; 
@@ -402,10 +408,16 @@ button.add-col-2{
     .sub-choice{
         width: 450px;
     }
+    .edit-form-layout{
+        max-width: 300px;
+    }
 }
 @media (min-width: 992px) {
     .sub-choice{
         width: 600px;
+    }
+    .edit-form-layout{
+        max-width: 550px;
     }
 }
 /* MEDIA QUERIES END*/

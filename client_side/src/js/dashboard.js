@@ -26,7 +26,7 @@ const editAdmin = `
                 <button type="submit" class="btn-form-insert edit-data" id="admin-edit-input" data-admin-edit-id="1">Editar</button> 
             </div>
         </form>
-        <div class="hide status-message"></div>
+        <div class="hide status-message-two-column"></div>
     </div>
 `;
 const editPlace = `
@@ -49,7 +49,7 @@ const editPlace = `
                 <button type="submit" class="btn-form-insert edit-data" id="place-edit-input" data-place-edit-id="1">Editar</button> 
             </div>
         </form>
-        <div class="hide status-message"></div>
+        <div class="hide status-message-two-column"></div>
     </div>
     
 `;
@@ -67,7 +67,7 @@ const editFlavour = `
                 <button type="submit" class="btn-form-insert edit-data" id="flavour-edit-input" data-flavour-edit-id="1">Editar</button> 
             </div>
         </form>
-        <div class="hide status-message"></div>
+        <div class="hide status-message-two-column"></div>
     </div>
 `;
 const editProduct = `
@@ -91,7 +91,7 @@ const editProduct = `
                 <button type="submit" class="btn-form-insert edit-data" id="product-edit-input" data-product-edit-id="1">Editar</button> 
             </div>
         </form>        
-        <div class="hide status-message"></div>
+        <div class="hide status-message-two-column"></div>
     </div>
 `;
 /* Listenes to all clicks */
@@ -136,12 +136,14 @@ document.addEventListener('click',function(e){
 });
 /* Collects and creates a new item */
 const insertNewItem = function(targetID){
+    let x = 'status-message';
     const targetIDParent = targetID.closest('div');
     let statusMessageEl = document.createElement('div')
     targetIDParent.after(statusMessageEl);
-    statusMessageEl.classList.add('hide', 'status-message');
     const formCollector = document.querySelectorAll(`[data-category^=${targetID.id}`)
     const categoryType = targetID.id.split('-');
+    categoryType[0] === 'admin' ? x = 'status-message-two-column':'';
+    statusMessageEl.classList.add('hide',  x);
     const valueHolder = new FormData();
 
     formCollector.forEach((el) => {
@@ -207,7 +209,7 @@ const editItem = function(targetID){
     const targetIDParent = targetID.closest('div');
     let statusMessageEl = document.createElement('div')
     targetIDParent.after(statusMessageEl);
-    statusMessageEl.classList.add('hide', 'status-message');  
+    statusMessageEl.classList.add('hide', 'status-message-two-column');  
     const formCollector = document.querySelectorAll(`[data-category^=${targetID.id}`)
     const holder = targetID.id.split('-');
     const modifiedTargetID = `${holder[0]}-${holder[1]}-id`;
