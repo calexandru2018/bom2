@@ -281,7 +281,7 @@ button.add-col-2{
 .sub-choice{
     display: none;
     grid-auto-rows: min-content;
-    margin: 1.5rem 1rem;
+    margin: 1.5rem 0rem;
     /* margin: auto; */
     width: 300px;
 }

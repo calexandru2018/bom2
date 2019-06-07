@@ -38,26 +38,25 @@
                     <span class="table-header">Nome</span>
                     <span class="table-header">Telefone</span>
                     <span class="table-header">Accoes</span>
-                    <span>David Simoes</span>
-                    <span>123 456 789</span>
-                    <span class="action-icons">
-                        <a class="edit-form" data-category="admin" data-admin-id="1">
-                            <img src="assets/img/edit.svg" alt="" srcset="">
-                        </a>
-                        <a class="delete-data" data-category="admin" data-admin-id="1">
-                            <img src="assets/img/remove.svg" alt="" srcset="">
-                        </a>
-                    </span>
-                    <span>Catarina Lourenço</span>
-                    <span>987 654 321</span>
-                    <span class="action-icons">
-                            <a class="edit-form" data-category="admin" data-admin-id="2">
-                                <img src="assets/img/edit.svg" alt="" srcset="">
-                            </a>
-                            <a class="delete-data" data-category="admin" data-admin-id="2">
-                                <img src="assets/img/remove.svg" alt="" srcset="">
-                            </a>
-                        </span>
+                    <?php 
+                        require('./functions/admin.php');
+                        $admins = getAllAdmins($CONN->db);
+                        // print("<pre>".print_r($admins,true)."</pre>");
+                        for($i = 0; $i < sizeof($admins); $i++){
+                            echo "
+                                <span>".$admins[$i]['name']."</span>
+                                <span>".(!$admins[$i]['pn'] ? 'Nenhum':$admins[$i]['pn'])."</span>
+                                <span class='action-icons'>
+                                    <a class='edit-form' data-category='admin' data-admin-id='".$admins[$i]['id']."'>
+                                        <img src='assets/img/edit.svg' alt='' srcset=''>
+                                    </a>
+                                    <a class='delete-data' data-category='admin' data-admin-id='".$admins[$i]['id']."'>
+                                        <img src='assets/img/remove.svg' alt='' srcset=''>
+                                    </a>
+                                </span>
+                            ";
+                        }
+                    ?>
                 </div>
                 <button class="btn btn-primary self-center" id="show-admin-list">Alterar Password</button>
                 <form class="change-password-form" style="display: none">
@@ -139,40 +138,8 @@
                                                 <img src='assets/img/remove.svg' alt='' srcset=''>
                                             </a>
                                         </span>";
-                                    // print("<pre>".print_r($places[$i]['id']['id'],true)."</pre>");
-                                    // print("<pre>".print_r($places[$i]['name']['placePT'],true)."</pre>");
-                                    // print("<pre>".print_r($places[$i]['duration']['startDate'],true)."</pre>");
-                                    // print("<pre>".print_r($places[$i]['duration']['endDate'],true)."</pre>");
-                                    // print("<pre>".print_r($places[$i]['gps']['latitude'],true)."</pre>");
-                                    // print("<pre>".print_r($places[$i]['gps']['longitude'],true)."</pre>");
                                 }
                             ?> 
-                            <!-- <span>1</span> -->
-                            <!-- <span>Aljezur</span>
-                            <span>2018-01-01</span>
-                            <span>2018-12-31</span>
-                            <span><a href="https://www.google.com/maps/dir/?api=1&destination=37.352141,-8.843425" onclick="window.open(this.href,'_blank')">Ver</a></span>
-                            <span class="action-icons">
-                                <a class="edit-form" data-category="place" data-place-id="1">
-                                    <img src="assets/img/edit.svg" alt="" srcset="">
-                                </a>
-                                <a class="delete-data" data-category="place" data-place-id="1">
-                                    <img src="assets/img/remove.svg" alt="" srcset="">
-                                </a>
-                            </span> -->
-                            <!-- <span>2</span> -->
-                            <!-- <span>Albufeira</span>
-                            <span>2018-01-01</span>
-                            <span>2018-12-31</span>
-                            <span><a href="https://www.google.com/maps/dir/?api=1&destination=37.015578,-7.920545" onclick="window.open(this.href,'_blank')">Ver</a></span>
-                            <span class="action-icons">
-                                <a class="edit-form" data-category="place" data-place-id="2">
-                                    <img src="assets/img/edit.svg" alt="" srcset="">
-                                </a>
-                                <a class="delete-data" data-category="place" data-place-id="2">
-                                    <img src="assets/img/remove.svg" alt="" srcset="">
-                                </a>
-                            </span> -->
                         </div>
                         <button class="btn btn-secondary self-center" id="places-showform-btn">Novo</button>  
                         <form>
@@ -203,33 +170,24 @@
                         <div class="table-col-2">
                                 <span class="table-header">Sabor</span>
                                 <span class="table-header">Accoes</span>
-                                <span>Morango</span>
-                                <span class="action-icons">
-                                    <a class="edit-form" data-category="flavour" data-flavour-id="1">
-                                        <img src="assets/img/edit.svg" alt="" srcset="">
-                                    </a>
-                                    <a class="delete-data" data-category="flavour" data-flavour-id="1">
-                                        <img src="assets/img/remove.svg" alt="" srcset="">
-                                    </a>
-                                </span>
-                                <span>Chocolate</span>
-                                <span class="action-icons">
-                                    <a class="edit-form" data-category="flavour" data-flavour-id="2">
-                                        <img src="assets/img/edit.svg" alt="" srcset="">
-                                    </a>
-                                    <a class="delete-data" data-category="flavour" data-flavour-id="2">
-                                        <img src="assets/img/remove.svg" alt="" srcset="">
-                                    </a>
-                                </span>
-                                <span>Nutella</span>
-                                <span class="action-icons">
-                                    <a class="edit-form" data-category="flavour" data-flavour-id="3">
-                                        <img src="assets/img/edit.svg" alt="" srcset="">
-                                    </a>
-                                    <a class="delete-data" data-category="flavour" data-flavour-id="3">
-                                        <img src="assets/img/remove.svg" alt="" srcset="">
-                                    </a>
-                                </span>
+                                <?php 
+                                    require('./functions/flavour.php');
+                                    $flavours = getAllFlavours($CONN->db);
+                                    // print("<pre>".print_r($flavours,true)."</pre>");
+                                    for($i = 0; $i < sizeof($flavours); $i++){
+                                        echo "
+                                            <span>".$flavours[$i]['name']."</span>
+                                            <span class='action-icons'>
+                                                <a class='edit-form' data-category='flavour' data-flavour-id='".$flavours[$i]['id']."'>
+                                                    <img src='assets/img/edit.svg' alt='' srcset=''>
+                                                </a>
+                                                <a class='delete-data' data-category='flavour' data-flavour-id='".$flavours[$i]['id']."'>
+                                                    <img src='assets/img/remove.svg' alt='' srcset=''>
+                                                </a>
+                                            </span>
+                                        ";
+                                    }
+                                ?>
                         </div>                
                         <button class="btn btn-secondary self-center" id="flavours-showform-btn">Novo</button>
                         <form>
@@ -252,24 +210,24 @@
                         <div class="table-col-2">
                             <span class="table-header">Produto</span>
                             <span class="table-header">Accoes</span>
-                            <span>Crepes</span>
-                            <span class="action-icons">
-                                <a class="edit-form" data-category="product" data-product-id="1">
-                                    <img src="assets/img/edit.svg" alt="" srcset="">
-                                </a>
-                                <a class="delete-data" data-category="product" data-product-id="1">
-                                    <img src="assets/img/remove.svg" alt="" srcset="">
-                                </a>
-                            </span>
-                            <span>Waffles</span>
-                            <span class="action-icons">
-                                <a class="edit-form"-data" data-category="product" data-product-id="2">
-                                    <img src="assets/img/edit.svg" alt="" srcset="">
-                                </a>
-                                <a class="delete-data" data-category="product" data-product-id="2">
-                                    <img src="assets/img/remove.svg" alt="" srcset="">
-                                </a>
-                            </span>
+                            <?php 
+                                require('./functions/product.php');
+                                $products = getAllProducts($CONN->db);
+                                // print("<pre>".print_r($products,true)."</pre>");
+                                for($i = 0; $i < sizeof($products); $i++){
+                                    echo "
+                                        <span>".$products[$i]['name']."</span>
+                                        <span class='action-icons'>
+                                            <a class='edit-form'-data' data-category='product' data-product-id='".$products[$i]['id']."'>
+                                                <img src='assets/img/edit.svg' alt='' srcset=''>
+                                            </a>
+                                            <a class='delete-data' data-category='product' data-product-id='".$products[$i]['id']."'>
+                                                <img src='assets/img/remove.svg' alt='' srcset=''>
+                                            </a>
+                                        </span>
+                                    ";
+                                }
+                            ?>
                         </div>             
                         <button class="btn btn-secondary self-center" id="product-showform-btn">Novo</button>
                         <form>
