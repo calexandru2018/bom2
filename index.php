@@ -9,11 +9,15 @@
         $LANG = 'en';
 
     require('./assets/lang/_'.$LANG.'.php');
+    require('./functions/place.php');
     require_once('./models/db.php');
+
     $CONN = new Database();
+    $allEvents = getAllPlaces($CONN->db);
 
     $queryToken = $CONN->db->query('SELECT * FROM config');
     $fetchToken = $queryToken->fetch_assoc();
+
     
 ?> 
 <!DOCTYPE html>
@@ -28,20 +32,16 @@
     <script>
         const instagramToken =  '<?php echo $fetchToken['ig_access_token']; ?>';
         const events = [
-            {
-                title: 'Albufeira22',
-                start: '2019-06-01',
-                end: '2019-06-07',
-                description: 'This is a cool event',
-                url: 'https://www.google.com/maps/dir/?api=1&destination=37.015578,-7.920545'
-            },
-            {
-                title: 'Aljezur',
-                start: '2018-12-07',
-                end: '2018-12-10',
-                description: 'This is a cool event',
-                url: 'https://www.google.com/maps/dir/?api=1&destination=37.352141,-8.843425'
-            }
+            <?php 
+                for($i = 0; $i < sizeof($allEvents); $i++){
+                    echo "{
+                        title: \"".$allEvents[$i]['name']['placePT']."\",
+                        start: \"".$allEvents[$i]['duration']['startDate']."\",
+                        end: \"".$allEvents[$i]['duration']['endDate']."\",
+                        url: \"https://www.google.com/maps/dir/?api=1&destination=".$allEvents[$i]['gps']['latitude'].",".$allEvents[$i]['gps']['longitude']."\"
+                    },";
+                }    
+            ?>
         ];
         const calenderConfig = {
             locale: '<?php echo $LANG; ?>',
@@ -54,6 +54,7 @@
     </script>
 <link href="assets/css/vendors~index.css?818e20abaae123fdbd40" rel="stylesheet"><link href="assets/css/index.css?818e20abaae123fdbd40" rel="stylesheet"></head>
 <body>
+    <?php //print("<pre>".json_encode($allEvents,true)."</pre>");?>
     <?php 
         if(!isset($_COOKIE['accept_cookie']) || (isset($_COOKIE['accept_cookie']) && $_COOKIE['accept_cookie'] == md5(0))){
             include('_include/cookie-prompt.php');
