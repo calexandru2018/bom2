@@ -9,16 +9,16 @@
         $LANG = 'en';
 
     require('./assets/lang/_'.$LANG.'.php');
-    require('./functions/place.php');
     require_once('./models/db.php');
+    require('./functions/place.php');
+    require('./functions/product.php');
 
     $CONN = new Database();
     $allEvents = getAllPlaces($CONN->db);
+    $allProducts = getAllProducts($CONN->db);
 
     $queryToken = $CONN->db->query('SELECT * FROM config');
     $fetchToken = $queryToken->fetch_assoc();
-
-    
 ?> 
 <!DOCTYPE html>
 <html lang="<?php echo $LANG; ?>">
@@ -141,108 +141,34 @@
             <h1><?php echo $langArray['productsTitle']; ?></h1>
             <div class="flip-card-grid">
                 <!-- Waffle no palito -->
-                <div class="col" ontouchstart="this.classList.toggle('hover');">
-                    <div class="container">
-                        <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
-                            <div class="inner">
-                                <p>Waffle no palito</p>
-                                <!-- <span>no palito</span> -->
+                <?php 
+                    print("<pre>".print_r($allProducts,true)."</pre>");
+                    for($i = 0; $i < sizeof($allProducts); $i++){
+                        echo "
+                            <div class='col' ontouchstart='this.classList.toggle('hover');'>
+                                <div class='container'>
+                                    <div class='front' style='background-image: url(https://unsplash.it/500/500/)'>
+                                        <div class='inner'>
+                                            <p>".$allProducts[$i]['name']."</p>
+                                        </div>
+                                    </div>
+                                    <div class='back'>
+                                        <div class='inner back-inner-padding product-grid'>";
+                                    for($c = 0; $c < sizeof($allProducts[$i]['flavours']); $c++){
+                                        echo "
+                                            <div>
+                                                ".$allProducts[$i]['flavours'][$c]['name'.strtoupper($LANG)]."
+                                            </div>
+                                        ";
+                                    }
+                                    echo "
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="back">
-                            <div class="inner back-inner-padding product-grid">
-                                <div>Nutella</div>
-                                <div>Chocolate de Leite</div>
-                                <div>Banana e Nutela</div>
-                                <div>Morangos e Nutella</div>
-                                <div>Kinder Chocolate</div>
-                                <div>Twix</div>
-                                <div>Doce de Ovos</div>
-                                <div>Doce de Morango</div>
-                                <div>Mel e Canela</div>
-                                <div>Açucar e canela</div>
-                                <div>Maçã e canela</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Crepes tradicionais -->
-                <div class="col" ontouchstart="this.classList.toggle('hover');">
-                    <div class="container">
-                        <div class="front" style="background-image:url(https://unsplash.it/511/511/)">
-                            <div class="inner">
-                                <p>Crepes tradicionais</p>
-                                <!-- <span></span> -->
-                            </div>
-                        </div>
-                        <div class="back">
-                            <div class="inner back-inner-padding product-grid">
-                                <div>Nutella</div>
-                                <div>Chocolate de Leite</div>
-                                <div>Banana e Nutela</div>
-                                <div>Morangos e Nutella</div>
-                                <div>Kinder Bueno</div>
-                                <div>Kinder Chocolate</div>
-                                <div>Oreo</div>
-                                <div>Twix</div>
-                                <div>Doce de Ovos</div>
-                                <div>Doce de Morango</div>
-                                <div>Mel e Canela</div>
-                                <div>Açucar e canela</div>
-                                <div>Maçã e canela</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Mini panquecas -->
-                <div class="col" ontouchstart="this.classList.toggle('hover');">
-                    <div class="container">
-                        <div class="front" style="background-image: url(https://unsplash.it/502/502/)">
-                            <div class="inner">
-                                <p>Mini panquecas</p>
-                                <!-- <span>panquecas</span> -->
-                            </div>
-                        </div>
-                        <div class="back">
-                            <div class="inner back-inner-padding product-grid">
-                                <div>Nutella</div>
-                                <div>Chocolate de Leite</div>
-                                <div>Banana e Nutela</div>
-                                <div>Morangos e Nutella</div>
-                                <div>Kinder Bueno</div>
-                                <div>Kinder Chocolate</div>
-                                <div>Oreo</div>
-                                <div>Twix</div>
-                                <div>Doce de Ovos</div>
-                                <div>Doce de Morango</div>
-                                <div>Mel e Canela</div>
-                                <div>Açucar e canela</div>
-                                <div>Maçã e canela</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Churritos -->
-                <div class="col" ontouchstart="this.classList.toggle('hover');">
-                    <div class="container">
-                        <div class="front" style="background-image: url(https://unsplash.it/503/503/)">
-                            <div class="inner">
-                                <p>Churritos</p>
-                                <!-- <span>Lorem ipsum</span> -->
-                            </div>
-                        </div>
-                        <div class="back">
-                            <div class="inner back-inner-padding product-grid">
-                                <div>Nutella</div>
-                                <div>Chocolate de Leite</div>
-                                <div>Mel e Canela</div>
-                                <div>Açucar e canela</div>
-                                <div>Doce de Ovos</div>
-                                <div>Doce de Morango</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        ";
+                    }
+                ?>
             </div>
         </section>
         <section class="section parallax bg3">
