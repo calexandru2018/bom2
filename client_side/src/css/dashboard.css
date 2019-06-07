@@ -27,7 +27,7 @@ label{
     display: none; /*change to debugg*/
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
-    height: 200%;
+    height: 250%;
     width: 100%;
     z-index: 1;
 }
@@ -42,6 +42,7 @@ label{
     grid-auto-rows: min-content;
     grid-gap: 0.5rem;
     border-radius: 5px;
+    justify-items: center;
 }
 .admin-settings > button {
     margin-top: 2rem;
@@ -411,6 +412,9 @@ button.add-col-2{
     .edit-form-layout{
         max-width: 300px;
     }
+    .admin-settings > div, .admin-settings > form {
+        width: 50%
+    }
 }
 @media (min-width: 992px) {
     .sub-choice{
@@ -418,6 +422,9 @@ button.add-col-2{
     }
     .edit-form-layout{
         max-width: 550px;
+    }
+    .admin-settings > div, .admin-settings > form {
+        width: 65%
     }
 }
 /* MEDIA QUERIES END*/
