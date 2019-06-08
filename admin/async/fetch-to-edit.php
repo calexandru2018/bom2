@@ -2,99 +2,15 @@
     $debuggModeOn = true;
     require_once('../models/db.php');
     $CONN = new Database();
-    $editAdmin = "
-        <div class='edit-form-layout'>
-            <form action='#'>
-                <h2>Editar Administrador</h2>
-                <label for='email'>E-mail*</label>
-                <input type='email' name='email' data-category='admin-edit-input'>
-                <label for='password'>Palavra Passe*</label>
-                <input type='passwird' name='pwd' data-category='admin-edit-input'>
-                <label for='name'>Nome*</label>
-                <input type='text' name='name' data-category='admin-edit-input'>
-                <label for='phoneNumber'>Telefone</label>
-                <input type='tel' name='phoneNumber' data-category='admin-edit-input'>
-                <div class='edit-btns'>
-                    <a class='close-edit self-left'>Voltar</a>
-                    <button type='submit' class='btn-form-insert edit-data' id='admin-edit-input' data-admin-edit-id='1'>Editar</button> 
-                </div>
-            </form>
-            <div class='hide status-message-two-column'></div>
-        </div>
-    ";
 
-    $editPlace = "
-        <div class='edit-form-layout'>
-            <form action='#'>
-                <h2>Editar Destino</h2>
-                <label for=''>Cidade</label>
-                <input type='text' name='city' data-category='place-edit-input'>
-                <label for=''>Desde</label>
-                <input type='date' name='start' data-category='place-edit-input'>
-                <label for=''>Ate</label>
-                <input type='date' name='end' data-category='place-edit-input'>
-                <label for=''>Latitude</label>
-                <input type='text' name='latitude' data-category='place-edit-input'>
-                <label for=''>Longitude</label>
-                <input type='text' name='longitude' data-category='place-edit-input'>
-
-                <div class='edit-btns'>
-                    <a class='close-edit self-left'>Voltar</a>
-                    <button type='submit' class='btn-form-insert edit-data' id='place-edit-input' data-place-edit-id='1'>Editar</button> 
-                </div>
-            </form>
-            <div class='hide status-message-two-column'></div>
-        </div>
-    ";
-    $editFlavour = "
-    <div class='edit-form-layout'>
-        <form action='#'>
-            <h2>Editar Sabor</h2>
-            <label for=''>Portugues</label>
-            <input type='text' name='flavours_PT' data-category='flavour-edit-input'>
-            <label for=''>Ingles</label>
-            <input type='text' name='flavours_EN' data-category='flavour-edit-input'>
-
-            <div class='edit-btns'>
-                <a class='close-edit self-left'>Voltar</a>
-                <button type='submit' class='btn-form-insert edit-data' id='flavour-edit-input' data-flavour-edit-id='1'>Editar</button> 
-            </div>
-        </form>
-        <div class='hide status-message-two-column'></div>
-    </div>
-    ";
-    $editProduct = "
-    <div class='edit-form-layout'> 
-        <form action='#'>
-            <h2>Editar Produto</h2>
-            <label for=''>Portugues</label>
-            <input type='text' name='flavours_PT' data-category='product-edit-input'>
-            <label for=''>Ingles</label>
-            <input type='text' name='flavours_EN' data-category='product-edit-input'>
-            <label for='editFlavourList'>Sabores</label>
-            <select name='flavour_1' data-category='product-edit-input_1'>
-                <option value='1' selected>Nutella</option>
-                <option value='2'>Chocolate</option>
-            </select>
-            <a class='add-new-flavour' style='width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed'>Adicionar novo ?</a>
-
-            <div class='edit-btns'>
-                <a class='close-edit self-left'>Voltar</a>
-
-                <button type='submit' class='btn-form-insert edit-data' id='product-edit-input' data-product-edit-id='1'>Editar</button> 
-            </div>
-        </form>        
-        <div class='hide status-message-two-column'></div>
-    </div>
-    ";
     switch ($_POST['contentType']) {
         case 'admin': return getAdmin((int)$_POST['contentID'], $CONN->db);
             break;
-        case 'place': echo $editPlace;
+        case 'place': return getPlace((int)$_POST['contentID'], $CONN->db);
             break;
         case 'flavour': return getFlavour((int)$_POST['contentID'], $CONN->db);
             break;
-        case 'product': echo $editProduct;
+        case 'product': return getProduct((int)$_POST['contentID'], $CONN->db);
             break;
         default: return 99;
             break;
@@ -142,31 +58,41 @@
         global $debuggModeOn;
         $sql = "
             select 
-                name,
-                email,
-                phone_number
+                place_nameID,
+                event_durationID,
+                place_gpsID
             from
-                admin
+                event_description
             where
-                adminID = ".$id."
+                event_descriptionID = ".$id."
         ";
         if($query = $dbConn->query($sql)){
             $result = $query->fetch_assoc();
+
+            $placeName = getPlaceName($result['place_nameID'], $dbConn);
+            $eventDuration = getEventDuration($result['event_durationID'], $dbConn);
+            $eventLocation = getPlaceGPS($result['place_gpsID'], $dbConn);
+
             echo "
                 <div class='edit-form-layout'>
                     <form action='#'>
-                        <h2>Editar Administrador</h2>
-                        <label for='email'>E-mail*</label>
-                        <input type='email' name='email' data-category='admin-edit-input' value='".$result['email']."'>
-                        <label for='password'>Palavra Passe*</label>
-                        <input type='password' name='pwd' data-category='admin-edit-input'>
-                        <label for='name'>Nome*</label>
-                        <input type='text' name='name' data-category='admin-edit-input' value='".$result['name']."'>
-                        <label for='phoneNumber'>Telefone</label>
-                        <input type='tel' name='phoneNumber' data-category='admin-edit-input' value='".$result['phone_number']."'>
+                        <h2>Editar Destino</h2>
+                        <label for=''>Cidade PT</label>
+                        <input type='text' name='namePT' data-category='place-edit-input' value='".$placeName['placePT']."'>
+                        <label for=''>Cidade EN</label>
+                        <input type='text' name='nameEN' data-category='place-edit-input' value='".$placeName['placeEN']."'>
+                        <label for=''>Desde</label>
+                        <input type='date' name='startDate' data-category='place-edit-input' value='".$eventDuration['startDate']."'>
+                        <label for=''>Ate</label>
+                        <input type='date' name='endDate' data-category='place-edit-input' value='".$eventDuration['endDate']."'>
+                        <label for=''>Latitude</label>
+                        <input type='text' name='latitude' data-category='place-edit-input' value='".$eventLocation['latitude']."'>
+                        <label for=''>Longitude</label>
+                        <input type='text' name='longitude' data-category='place-edit-input' value='".$eventLocation['longitude']."'>
+
                         <div class='edit-btns'>
                             <a class='close-edit self-left'>Voltar</a>
-                            <button type='submit' class='btn-form-insert edit-data' id='admin-edit-input' data-admin-edit-id='".$id."'>Editar</button> 
+                            <button type='submit' class='btn-form-insert edit-data' id='place-edit-input' data-place-edit-id='".$id."'>Editar</button> 
                         </div>
                     </form>
                     <div class='hide status-message-two-column'></div>
@@ -211,20 +137,139 @@
         }
     }
     function getProduct(int $id, $dbConn){
-        $flavoursList = getAllProductFlavours($id, $dbConn);
+        global $debuggModeOn;
+
+        $sql = "
+            select 
+                pr_namePT,
+                pr_nameEN
+            from
+                product
+            where
+                productID = ".$id."
+        ";
+        if($query = $dbConn->query($sql)){
+            $result = $query->fetch_assoc();
+            $flavoursList = getAllProductFlavours($id, $dbConn);
+
+            echo "
+                <div class='edit-form-layout'> 
+                    <form action='#'>
+                        <h2>Editar Produto</h2>
+                        <label for=''>Portugues</label>
+                        <input type='text' name='product_PT' data-category='product-edit-input' value='".$result['pr_namePT']."'>
+                        <label for=''>Ingles</label>
+                        <input type='text' name='product_EN' data-category='product-edit-input' value='".$result['pr_nameEN']."'>
+                        <label for='editFlavourList'>Sabores</label>
+                        <select name='flavour_1' data-category='product-edit-input_1'>
+                            <option value='1' selected>Nutella</option>
+                            <option value='2'>Chocolate</option>
+                        </select>
+                        <a class='add-new-flavour' style='width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed'>Adicionar novo ?</a>
+            
+                        <div class='edit-btns'>
+                            <a class='close-edit self-left'>Voltar</a>
+            
+                            <button type='submit' class='btn-form-insert edit-data' id='product-edit-input' data-product-edit-id='1'>Editar</button> 
+                        </div>
+                    </form>        
+                    <div class='hide status-message-two-column'></div>
+                </div>
+            ";
+        }else{
+            echo $debuggModeOn ? mysqli_error($dbConn):0;
+        }
     }
 
     function getPlaceName(int $id, $dbConn){
-        
+        global $debuggModeOn;
+        $dataHolder = [];
+        $sql = "
+            select 
+                placePT,
+                placeEN
+            from
+                place_name
+            where
+                place_nameID = ".$id."
+        ";
+        if($query = $dbConn->query($sql)){
+            $result =  $query->fetch_assoc();
+            $dataHolder['placePT'] = $result['placePT'];
+            $dataHolder['placeEN'] = $result['placeEN'];
+
+            return $dataHolder;
+        }else{
+            echo $debuggModeOn ? mysqli_error($dbConn):0;
+        }
     }
     function getEventDuration(int $id, $dbConn){
-        
-    }
-    function getEventGPS(int $id, $dbConn){
+        global $debuggModeOn;
+        $dataHolder = [];
+        $sql = "
+            select 
+                startDate,
+                endDate
+            from
+                event_duration
+            where
+                event_durationID = ".$id."
+        ";
+        if($query = $dbConn->query($sql)){
+            $result =  $query->fetch_assoc();
+            $dataHolder['startDate'] = $result['startDate'];
+            $dataHolder['endDate'] = $result['endDate'];
 
+            return $dataHolder;
+        }else{
+            echo $debuggModeOn ? mysqli_error($dbConn):0;
+        }
+    }
+    function getPlaceGPS(int $id, $dbConn){
+        global $debuggModeOn;
+        $dataHolder = [];
+        $sql = "
+            select 
+                longitude,
+                latitude
+            from
+                place_gps
+            where
+                place_gpsID = ".$id."
+        ";
+        if($query = $dbConn->query($sql)){
+            $result =  $query->fetch_assoc();
+            $dataHolder['longitude'] = $result['longitude'];
+            $dataHolder['latitude'] = $result['latitude'];
+
+            return $dataHolder;
+        }else{
+            echo $debuggModeOn ? mysqli_error($dbConn):0;
+        }
     }
 
     function getAllProductFlavours(int $id, $dbConn){
-
+        $dataHolder = [];
+        $i = 0;
+        $sql = "
+            select
+                flavour.flavourID,
+                fl_namePT
+            from
+                flavour
+            left join 
+                product_flavour
+            on
+                flavour.flavourID = product_flavour.flavourID
+            where
+                product_flavour.productID = ".$id." 
+        ";
+        $query = $dbConn->query($sql);
+        while ($row = $query->fetch_assoc()) {
+            $dataHolder[$i]['id'] = $row['flavourID'];
+            $dataHolder[$i]['namePT'] = $row['fl_namePT'];
+            $i += 1;
+        }
+        return $dataHolder;
     }
 ?>
