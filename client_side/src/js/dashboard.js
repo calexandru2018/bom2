@@ -7,7 +7,7 @@ import '../img/remove.svg';
 import '../img/settings.svg';
 import '../img/logout.svg';
 let flavourCounter = 1;
-const editContentContainer = document.getElementById('edit-content');
+let editContentContainer = document.getElementById('edit-content');
 const settingsOverlay = document.getElementById('settings-overlay');
 const editAdmin = `
     <div class="edit-form-layout">
@@ -207,7 +207,7 @@ const insertNewItem = function(targetID){
 /* Collects and post the updated data */
 const editItem = function(targetID){
     const targetIDParent = targetID.closest('div');
-    let statusMessageEl = document.createElement('div')
+    let statusMessageEl = document.createElement('div');
     targetIDParent.after(statusMessageEl);
     statusMessageEl.classList.add('hide', 'status-message-two-column');  
     const formCollector = document.querySelectorAll(`[data-category^=${targetID.id}`)
@@ -340,7 +340,9 @@ const fetchItemToEdit = (contentType, contentID) => {
     .then((response) => response.text())
     .then((data) => {
         if(data != 99){
-            return data;
+            console.log(data);
+            editContentContainer.innerHTML = data;
+            // return data;
         }else{    
             console.log(data);
         }
@@ -353,24 +355,24 @@ const showEditForm = function(targetID){
 
     if(dataType){
         /* 
-        ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+        ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___*/
 
-        editContentContainer.innerHTML = fetchItemToEdit(dataType, contentID);  
+        fetchItemToEdit(dataType, contentID);  
         
-        */
-        let contentToShow = '';
-        switch(dataType){
-            case 'admin': contentToShow = editAdmin;
-                break;
-            case 'place': contentToShow = editPlace;
-                break;
-            case 'flavour': contentToShow = editFlavour;
-                break;
-            case 'product': contentToShow = editProduct;
-                break;
-            default: contentToShow = '';
-        }
-        editContentContainer.innerHTML = contentToShow;
+        
+        // let contentToShow = '';
+        // switch(dataType){
+        //     case 'admin': contentToShow = editAdmin;
+        //         break;
+        //     case 'place': contentToShow = editPlace;
+        //         break;
+        //     case 'flavour': contentToShow = editFlavour;
+        //         break;
+        //     case 'product': contentToShow = editProduct;
+        //         break;
+        //     default: contentToShow = '';
+        // }
+        // editContentContainer.innerHTML = contentToShow;
     }
     editContentContainer.classList.toggle('show');
 }
