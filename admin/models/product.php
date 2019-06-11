@@ -2,7 +2,7 @@
     $debuggModeOn = true;
     function createProductFlavour(Array $product, $dbConn, $createNew = true) {
         global $debuggModeOn;
-        if(!$createNew){
+        if($createNew !== true){
             $dropProductFlavourList = dropProductFlavourList($product['itemID'], $dbConn);
             $updateProductName = updateProductName($product, $dbConn);
             $newRows = newRows($product, (int)$product['itemID'], $dbConn);
