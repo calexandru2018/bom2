@@ -254,9 +254,6 @@ const editItem = function(targetID){
                 statusMessageEl.innerHTML = 'Houve um erro ao actualizar!';
                 statusMessageEl.style.color = 'red';
             }
-            
-            statusMessageEl.innerHTML = 'Houve um erro ao actualizar!';
-            statusMessageEl.style.color = 'red';
             statusMessageEl.classList.remove('hide');
             targetID.classList.remove('hide');
             spinner.remove();

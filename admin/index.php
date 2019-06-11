@@ -29,14 +29,7 @@
             }
         }
         $query->close();
-    }else{
-        echo 0;
     }
-    // echo password_hash('test', PASSWORD_BCRYPT);
-    /*
-        password_hash(mysqli_real_escape_string($this->db, $value), PASSWORD_BCRYPT);
-        if(password_verify($pwd, $fetchAdminData->password)){    
-    */
 ?>
 <!DOCTYPE html>
 <html lang="pt">

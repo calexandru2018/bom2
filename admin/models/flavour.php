@@ -18,4 +18,22 @@
         else    
             return $debuggModeOn ? mysqli_error($dbConn):0;
     }
+
+    function updateFlavour(Array $flavour, $dbConn){
+        global $debuggModeOn;
+
+        $sql = "
+            update flavour
+                set
+                    fl_namePT = '".$flavour['flavours_PT']."',
+                    fl_nameEN = '".$flavour['flavours_EN']."'
+            where
+                flavourID = ".(int)$flavour['itemID']."
+        ";
+        $query = $dbConn->query($sql);
+        if($dbConn->affected_rows === 1)
+            return 1;
+        else    
+            return $debuggModeOn ? mysqli_error($dbConn):0;
+    }
 ?>
