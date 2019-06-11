@@ -167,7 +167,7 @@
                                 <div class='container'>
                                     <div class='front' style='background-image: url(https://unsplash.it/500/500/)'>
                                         <div class='inner'>
-                                            <p>".$allProducts[$i]['name']."</p>
+                                            <p>".$allProducts[$i]['name'.strtoupper($LANG)]."</p>
                                         </div>
                                     </div>
                                     <div class='back'>

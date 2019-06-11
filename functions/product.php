@@ -5,13 +5,15 @@
         $sql = "
             select 
                 productID,
-                pr_namePT
+                pr_namePT,
+                pr_nameEN
             from
                 product
         ";
         $query = $dbConn->query($sql);
         while ($row = $query->fetch_assoc()) {
-            $dataHolder[$i]['name'] = $row['pr_namePT'];
+            $dataHolder[$i]['namePT'] = $row['pr_namePT'];
+            $dataHolder[$i]['nameEN'] = $row['pr_nameEN'];
             $dataHolder[$i]['flavours'] = getAllFlavours($row['productID'], $dbConn);
             $i += 1;
         }
