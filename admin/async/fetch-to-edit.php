@@ -140,6 +140,7 @@
         require('../functions/flavour.php');
         global $debuggModeOn;
         $checkedFlavours = [];
+        $selectCounter = 1;
 
         $sql = "
             select 
@@ -165,17 +166,18 @@
                         <input type='text' name='product_EN' data-category='product-edit-input' value='".$result['pr_nameEN']."'>
                         <label for='editFlavourList'>Sabores</label>";
                         for($pfl = 0; $pfl < sizeof($productFlavoursList); $pfl++){
-                            echo "<select name='flavour_1' data-category='product-edit-input_1'>";
-                            for($fl = 0; $fl < sizeof($flavoursList); $fl++){
-                                if($flavoursList[$fl]['id'] === $productFlavoursList[$fl]['id'] && !in_array($flavoursList[$fl]['id'], $productFlavoursList)){
-                                    echo '<option value="'.$flavoursList[$fl]['id'].'" selected>'.$flavoursList[$fl]['name'].'</option>';
-                                    array_push($checkedFlavours, flavoursList[$fl]['id']);
-                                }else{    
-                                    echo '<option value="'.$flavoursList[$fl]['id'].'">'.$flavoursList[$fl]['name'].'</option>';
+                            echo "<select name='flavour_".$selectCounter."' data-category='product-edit-input_".$selectCounter."'>";
+                                for($fl = 0; $fl < sizeof($flavoursList); $fl++){
+                                    if(($productFlavoursList[$pfl] === $flavoursList[$fl]['id'])){
+                                        echo "<option value='".$flavoursList[$fl]['id']."' selected>".$flavoursList[$fl]['name']."</option>";
+                                        array_push($checkedFlavours, $flavoursList[$fl]['id']);
+                                    }else{
+                                        echo "<option value='".$flavoursList[$fl]['id']."'>".$flavoursList[$fl]['name']."</option>";
+                                    }
                                 }
-                            }
                             echo "</select>";
-                        }                        
+                            $selectCounter += 1;
+                        }                          
                         echo "<a class='add-new-flavour' style='width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed'>Adicionar novo ?</a>
                         <div class='edit-btns'>
                             <a class='close-edit self-left'>Voltar</a>
@@ -275,8 +277,7 @@
         ";
         $query = $dbConn->query($sql);
         while ($row = $query->fetch_assoc()) {
-            $dataHolder[$i]['id'] = $row['flavourID'];
-            $dataHolder[$i]['name'] = $row['fl_namePT'];
+            $dataHolder[$i] = $row['flavourID'];
             $i += 1;
         }
         return $dataHolder;
