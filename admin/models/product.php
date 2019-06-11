@@ -6,7 +6,7 @@
             $dropProductFlavourList = dropProductFlavourList($product['itemID'], $dbConn);
             $updateProductName = updateProductName($product, $dbConn);
             $newRows = newRows($product, (int)$product['itemID'], $dbConn);
-            if($dropProductFlavourList == true && $updateProductName == true && $newRows == true)
+            if($dropProductFlavourList == true || $updateProductName == true || $newRows == true)
                 return 1;
             else    
                 return $debuggModeOn ? 'Unable to edit-'.$dropProductFlavourList."-".$updateProductName."-".$newRows:0;
