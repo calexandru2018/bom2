@@ -166,7 +166,7 @@
                         <input type='text' name='product_EN' data-category='product-edit-input' value='".$result['pr_nameEN']."'>
                         <label for='editFlavourList'>Sabores</label>";
                         for($pfl = 0; $pfl < sizeof($productFlavoursList); $pfl++){
-                            echo "<select name='flavour_".$selectCounter."' data-category='product-edit-input_".$selectCounter."'>";
+                            echo "<select name='flavour_".$selectCounter."_loaded' data-category='product-edit-input_".$selectCounter."'>";
                                 for($fl = 0; $fl < sizeof($flavoursList); $fl++){
                                     if(($productFlavoursList[$pfl] === $flavoursList[$fl]['id'])){
                                         echo "<option value='".$flavoursList[$fl]['id']."' selected>".$flavoursList[$fl]['name']."</option>";
