@@ -88,7 +88,7 @@ content{
     width: 80%;
     margin: auto auto;
     height: fit-content;
-    max-height: 480px;
+    max-height: fit-content;
     border-radius: 5px;
     padding: 1rem;
 }

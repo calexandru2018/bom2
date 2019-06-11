@@ -19,9 +19,9 @@
         }
         if($_POST['categoryType'] === 'product'){
             require('../models/product.php');
-            // $response = updateProductFlavour($_POST, $CONN->db);
-            // echo $response!=1 ? $response:'';
+            $response = createProductFlavour($_POST, $CONN->db, false); //false means that we are specifying that the function is not insterting new product, its "updating" it instead
+            echo $response!=1 ? $response:'';
         }
     }
-    var_dump($_POST);
+    // var_dump($_POST);
 ?>

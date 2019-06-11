@@ -181,7 +181,7 @@
                         echo "<a class='add-new-flavour' style='width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed'>Adicionar novo ?</a>
                         <div class='edit-btns'>
                             <a class='close-edit self-left'>Voltar</a>
-                            <button type='submit' class='btn-form-insert edit-data' id='product-edit-input' data-product-edit-id='1'>Editar</button> 
+                            <button type='submit' class='btn-form-insert edit-data' id='product-edit-input' data-product-edit-id='".$id."'>Editar</button> 
                         </div>
                     </form>        
                     <div class='hide status-message-two-column'></div>

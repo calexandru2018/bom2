@@ -19,7 +19,7 @@
         }
         if($_POST['categoryType'] === 'product'){
             require('../models/product.php');
-            $response = createProductFlavour($_POST, $CONN->db);
+            $response = createProductFlavour($_POST, $CONN->db, true);
             echo $response!=1 ? $response:'';
         }
     }
