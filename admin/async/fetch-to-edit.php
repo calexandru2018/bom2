@@ -137,7 +137,9 @@
         }
     }
     function getProduct(int $id, $dbConn){
+        require('../functions/flavour.php');
         global $debuggModeOn;
+        $checkedFlavours = [];
 
         $sql = "
             select 
@@ -150,7 +152,8 @@
         ";
         if($query = $dbConn->query($sql)){
             $result = $query->fetch_assoc();
-            $flavoursList = getAllProductFlavours($id, $dbConn);
+            $productFlavoursList = getAllProductFlavours($id, $dbConn);
+            $flavoursList = getAllFlavours($dbConn);
 
             echo "
                 <div class='edit-form-layout'> 
@@ -160,16 +163,22 @@
                         <input type='text' name='product_PT' data-category='product-edit-input' value='".$result['pr_namePT']."'>
                         <label for=''>Ingles</label>
                         <input type='text' name='product_EN' data-category='product-edit-input' value='".$result['pr_nameEN']."'>
-                        <label for='editFlavourList'>Sabores</label>
-                        <select name='flavour_1' data-category='product-edit-input_1'>
-                            <option value='1' selected>Nutella</option>
-                            <option value='2'>Chocolate</option>
-                        </select>
-                        <a class='add-new-flavour' style='width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed'>Adicionar novo ?</a>
-            
+                        <label for='editFlavourList'>Sabores</label>";
+                        for($pfl = 0; $pfl < sizeof($productFlavoursList); $pfl++){
+                            echo "<select name='flavour_1' data-category='product-edit-input_1'>";
+                            for($fl = 0; $fl < sizeof($flavoursList); $fl++){
+                                if($flavoursList[$fl]['id'] === $productFlavoursList[$fl]['id'] && !in_array($flavoursList[$fl]['id'], $productFlavoursList)){
+                                    echo '<option value="'.$flavoursList[$fl]['id'].'" selected>'.$flavoursList[$fl]['name'].'</option>';
+                                    array_push($checkedFlavours, flavoursList[$fl]['id']);
+                                }else{    
+                                    echo '<option value="'.$flavoursList[$fl]['id'].'">'.$flavoursList[$fl]['name'].'</option>';
+                                }
+                            }
+                            echo "</select>";
+                        }                        
+                        echo "<a class='add-new-flavour' style='width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed'>Adicionar novo ?</a>
                         <div class='edit-btns'>
                             <a class='close-edit self-left'>Voltar</a>
-            
                             <button type='submit' class='btn-form-insert edit-data' id='product-edit-input' data-product-edit-id='1'>Editar</button> 
                         </div>
                     </form>        
@@ -267,7 +276,7 @@
         $query = $dbConn->query($sql);
         while ($row = $query->fetch_assoc()) {
             $dataHolder[$i]['id'] = $row['flavourID'];
-            $dataHolder[$i]['namePT'] = $row['fl_namePT'];
+            $dataHolder[$i]['name'] = $row['fl_namePT'];
             $i += 1;
         }
         return $dataHolder;
