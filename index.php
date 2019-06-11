@@ -14,11 +14,12 @@
         return $default;
     }
     $availableLanguages = ['pt', 'en'];
+    
     if(!isset($_COOKIE['accept_cookie'])){
         setcookie('accept_cookie', md5(0),  time()+60*60*24*30, "/bom2", '', false); //localhost
         // setcookie('accept_cookie', md5(0),  time()+60*60*24*30, '/', '', true);
     }
-    
+
     if(!isset($_GET['lang']))
         $LANG = get_client_language($availableLanguages, $default='en');
     elseif(isset($_GET['lang']) && $_GET['lang'] == 'pt')
