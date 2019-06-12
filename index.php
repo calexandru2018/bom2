@@ -165,7 +165,7 @@
                         echo "
                             <div class='col' ontouchstart='this.classList.toggle('hover');'>
                                 <div class='container'>
-                                    <div class='front' style='background-image: url(https://unsplash.it/500/500/)'>
+                                    <div class='front'>
                                         <div class='inner'>
                                             <p>".$allProducts[$i]['name'.strtoupper($LANG)]."</p>
                                         </div>

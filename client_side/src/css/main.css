@@ -740,6 +740,9 @@ __________
 	transform-style: preserve-3d;
 	/* perspective: 700; */
 }
+.front{
+    background-color: white;
+}
 .front,
 .back{
 	background-size: cover;
