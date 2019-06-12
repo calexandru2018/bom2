@@ -207,6 +207,7 @@ const insertNewItem = function(targetID){
 /* Collects and post the updated data */
 const editItem = function(targetID){
     const targetIDParent = targetID.closest('div');
+    console.log(targetID);
     let statusMessageEl = document.createElement('div');
     targetIDParent.after(statusMessageEl);
     statusMessageEl.classList.add('hide', 'status-message-two-column');  

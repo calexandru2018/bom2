@@ -61,15 +61,15 @@
                 <button class="btn btn-primary self-center" id="show-admin-list">Alterar Password</button>
                 <form class="change-password-form" style="display: none">
                     <label for="email">Passe Actual</label>
-                    <input type="password" name="actualPassword" data-category="admin-edit-password">
+                    <input type="password" name="actualPassword" data-category="password-edit-input">
                     <label for="name">Nova Passe*</label>
-                    <input type="passwrod" name="newPassword" data-category="admin-edit-password">
+                    <input type="passwrod" name="newPassword" data-category="password-edit-input">
                     <label for="name">Repita Passe*</label>
-                    <input type="passwrod" name="rePassword" data-category="admin-edit-password">
+                    <input type="passwrod" name="rePassword" data-category="password-edit-input">
 
                     <div class="insert-btns">
                         <div></div>
-                        <button class="btn-form-insert add-data" id="admin-edit-password">Adicionar</button> 
+                        <button class="btn-form-insert edit-data" id="password-edit-input" data-password-edit-id="<?php echo $_SESSION['admin_token']?>">Adicionar</button> 
                     </div>
                 </form>
                 <button class="btn btn-primary self-center" id="show-instagram-menu">Instagram</button>
@@ -81,7 +81,7 @@
                         <a class="btn-form-insert self-left" style="background-color: var(--card-light-dark-color);" href="https://www.instagram.com/oauth/authorize/?client_id=34e4dc127ef64f86b2e8a1f2708948aa&redirect_uri=https://www.bomaoquadrado.pt&response_type=token" onclick="window.open(this.href,'_blank')">
                             Novo token
                         </a>
-                        <button class="btn-form-insert add-data" id="token-add-input">Adicionar</button> 
+                        <button class="btn-form-insert add-data" id="token-edit-input">Adicionar</button> 
                     </div>
                 </form>
                 <button class="show-settings btn-auto btn-primary self-center">

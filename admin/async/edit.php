@@ -22,6 +22,11 @@
             $response = createProductFlavour($_POST, $CONN->db, false); //false means that we are specifying that the function is not insterting new product, its "updating" it instead
             echo $response!=1 ? $response:'';
         }
+        if($_POST['categoryType'] === 'password'){
+            require('../models/admin.php');
+            $response = updatePassword($_POST, $CONN->db);
+            echo $response!=1 ? $response:'';
+        }
     }
-    // var_dump($_POST);
+    // var_dump(1);
 ?>
