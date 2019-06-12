@@ -36,4 +36,20 @@
         else    
             return $debuggModeOn ? mysqli_error($dbConn):0;
     }
+
+    function deleteFlavour(int $id, $dbConn){
+        global $debuggModeOn;
+
+        $sql = "
+            delete from
+                flavour
+            where
+                flavourID = '".$id."'
+        ";
+        $query = $dbConn->query($sql);
+        if($dbConn->affected_rows === 1)
+            return 1;
+        else    
+            return $debuggModeOn ? mysqli_error($dbConn):0;
+    }
 ?>

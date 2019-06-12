@@ -289,8 +289,9 @@ const deleteItem = function(targetID){
     const valueHolder = new FormData();
     const categoryType = targetID.getAttribute('data-category');
     const id = targetID.getAttribute(`data-${categoryType}-id`);
-    valueHolder.append(id, 'id');
-    valueHolder.append(categoryType, 'category');
+    valueHolder.append('itemID', id);
+    valueHolder.append('categoryType', categoryType);
+    valueHolder.append('actionType', 'delete');
 
     // for (var pair of valueHolder.entries()) {
     //     console.log(pair[0]+ ', ' + pair[1]); 
