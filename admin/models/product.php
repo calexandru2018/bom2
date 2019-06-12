@@ -3,13 +3,13 @@
     function createProductFlavour(Array $product, $dbConn, $createNew = true) {
         global $debuggModeOn;
         if($createNew !== true){
-            $dropProductFlavourList = dropProductFlavourList($product['itemID'], $dbConn);
+            $deleteAllProductFlavourList = deleteAllProductFlavourList($product['itemID'], $dbConn);
             $updateProductName = updateProductName($product, $dbConn);
             $newRows = newRows($product, (int)$product['itemID'], $dbConn);
-            if($dropProductFlavourList == true || $updateProductName == true || $newRows == true)
+            if($deleteAllProductFlavourList == true || $updateProductName == true || $newRows == true)
                 return 1;
             else    
-                return $debuggModeOn ? 'Unable to edit-'.$dropProductFlavourList."-".$updateProductName."-".$newRows:0;
+                return $debuggModeOn ? 'Unable to edit-'.$deleteAllProductFlavourList."-".$updateProductName."-".$newRows:0;
         }else{
             $productID = createProductName($product, $dbConn);
             $newRows = newRows($product, $productID, $dbConn);
@@ -56,7 +56,22 @@
             return $debuggModeOn ? mysqli_error($dbConn):0;
     }
 
-    function dropProductFlavourList(int $id, $dbConn){
+    function deleteProduct(int $id, $dbConn){
+        global $debuggModeOn;
+        $sql = "
+            delete from
+                product
+            where
+                productID = '".$id."'
+        ";
+        $query = $dbConn->query($sql);
+        if($dbConn->affected_rows > 0)
+            return 1;
+        else    
+            return $debuggModeOn ? mysqli_error($dbConn):0;
+    }
+
+    function deleteAllProductFlavourList(int $id, $dbConn){
         global $debuggModeOn;
         $sql = "
             delete from

@@ -18,9 +18,10 @@
             echo $response!=1 ? $response:'';
         }
         if($_POST['categoryType'] === 'product'){
-            // require('../models/product.php');
-            // $response = createProductFlavour($_POST, $CONN->db, false); //false means that we are specifying that the function is not insterting new product, its "updating" it instead
-            // echo $response!=1 ? $response:'';
+            require('../models/product.php');
+            $response = deleteProduct($_POST['itemID'], $CONN->db); //false means that we are specifying that the function is not insterting new product, its "updating" it instead
+            echo $response!=1 ? $response:'worked';
+            // echo $response;
         }
     }
     // var_dump($_POST);
