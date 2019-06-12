@@ -75,13 +75,13 @@
                 <button class="btn btn-primary self-center" id="show-instagram-menu">Instagram</button>
                 <form class="admin-add-new ig-access-form">
                     <div class="generate-token">
-                        <input type="text" name="access_token" data-category="token-add-input" placeholder="Novo token">
+                        <input type="text" name="access_token" data-category="token-edit-input" placeholder="Novo token">
                     </div>
                     <div class="insert-btns">
                         <a class="btn-form-insert self-left" style="background-color: var(--card-light-dark-color);" href="https://www.instagram.com/oauth/authorize/?client_id=34e4dc127ef64f86b2e8a1f2708948aa&redirect_uri=https://www.bomaoquadrado.pt&response_type=token" onclick="window.open(this.href,'_blank')">
                             Novo token
                         </a>
-                        <button class="btn-form-insert add-data" id="token-edit-input">Adicionar</button> 
+                        <button class="btn-form-insert edit-data" id="token-edit-input">Adicionar</button> 
                     </div>
                 </form>
                 <button class="show-settings btn-auto btn-primary self-center">

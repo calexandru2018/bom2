@@ -27,6 +27,11 @@
             $response = updatePassword($_POST, $CONN->db);
             echo $response!=1 ? $response:'';
         }
+        if($_POST['categoryType'] === 'token'){
+            require('../models/page-config.php');
+            $response = updateInstagramToken($_POST, $CONN->db);
+            echo $response!=1 ? $response:'';
+        }
     }
-    // var_dump(1);
+    // var_dump($_POST);
 ?>
