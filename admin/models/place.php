@@ -177,5 +177,83 @@
             return $debuggModeOn ? mysqli_error($dbConn):0;
         }
     }
+
+    function deleteEventDescription(int $id, $dbConn){
+        global $debuggModeOn;
+
+        $sql = "
+        select 
+            * 
+        from
+            event_description
+        where
+            event_descriptionID = '".$id."'
+        ";
+        $query = $dbConn->query($sql);
+        $result = $query->fetch_assoc(); 
+        $deleteEventDuration = deleteEventDuration($result['event_durationID'], $dbConn);
+        $deletePlaceGPS = deletePlaceGPS($result['place_gpsID'], $dbConn);
+        $deletePlaceName = deletePlaceName($result['place_nameID'], $dbConn);
+
+        if($deleteEventDuration == true && $deletePlaceGPS == true && $deletePlaceName == true){
+            $queryCheck = $dbConn->query($sql);
+            if($queryCheck->num_rows === 0)
+                return 1;
+            else    
+                return $debuggModeOn ? 'Rows still exist':0;
+        }else{
+            return $debuggModeOn ? 'Issues while deleting from a table':0;
+        }
+
+    }
+
+    function deleteEventDuration(int $id, $dbConn){
+        global $debuggModeOn;
+
+        $sql = "
+            delete from
+                event_duration
+            where
+                event_durationID = '".$id."'
+        ";
+        $query = $dbConn->query($sql);
+        if($dbConn->affected_rows === 1){
+            return 1;
+        }else{
+            return $debuggModeOn ? mysqli_error($dbConn):0;
+        }
+    }
+    function deletePlaceGPS(int $id, $dbConn){
+        global $debuggModeOn;
+
+        $sql = "
+            delete from
+                place_gps
+            where
+                place_gpsID = '".$id."'
+        ";
+        $query = $dbConn->query($sql);
+        if($dbConn->affected_rows === 1){
+            return 1;
+        }else{
+            return $debuggModeOn ? mysqli_error($dbConn):0;
+        }
+    }
+    function deletePlaceName(int $id, $dbConn){
+        global $debuggModeOn;
+
+        $sql = "
+            delete from
+                place_name
+            where
+                place_nameID = '".$id."'
+        ";
+        $query = $dbConn->query($sql);
+        if($dbConn->affected_rows === 1){
+            return 1;
+        }else{
+            return $debuggModeOn ? mysqli_error($dbConn):0;
+        }
+    }
     // var_dump($_POST);
 ?>

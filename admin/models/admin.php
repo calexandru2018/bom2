@@ -43,4 +43,20 @@
         else    
             return $debuggModeOn ? mysqli_error($dbConn):0;
     }
+
+    function deleteAdmin(int $id, $dbConn){
+        global $debuggModeOn;
+
+        $sql = "
+            delete from
+                admin
+            where
+                adminID = '".$id."'
+        ";
+        $query = $dbConn->query($sql);
+        if($dbConn->affected_rows === 1)
+            return 1;
+        else    
+            return $debuggModeOn ? mysqli_error($dbConn):0;
+    }
 ?>
