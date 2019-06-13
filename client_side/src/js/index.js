@@ -39,7 +39,7 @@ const feed = new Instafeed({
                 </a>`,
     filter: function(image) {
         // console.log(image);
-        return image.tags.indexOf('testebom2') >= 0;
+        return image.tags.indexOf('2017') >= 0;
     }
 });
 feed.run();
