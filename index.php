@@ -126,8 +126,8 @@
                 <div class="calendar-language-delimiter">
                     <a id="show-locator" href="#" class="btn" style="align-self: end;"><?php echo $langArray['calender']['showBtn1']; ?> <span style="text-decoration: underline"><?php echo $langArray['calender']['showBtn2']; ?></span></a>
                     <select class="custom-select" id="lang-selector">
-                        <option value="pt" <?php echo ((!isset($_GET['lang']) || $_GET['lang']=="pt") ? 'selected':'');  ?> >PT</option>
-                        <option value="en" <?php echo ((isset($_GET['lang']) && $_GET['lang']=="en") ? 'selected':'');  ?> >EN</option>
+                        <option value="pt" <?php echo ($LANG == 'pt' ? 'selected':''); ?> >PT</option>
+                        <option value="en" <?php echo ($LANG == 'en' ? 'selected':'');  ?> >EN</option>
                     </select>
                 </div>
             </div>

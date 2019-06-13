@@ -51,7 +51,7 @@ if(isset($_POST) && !empty($_POST)){
         $mail->AddReplyTo($receiverEmail, $name);
         $mail->SetFrom($email);
         $mail->Subject = $subject;
-        $mail->Body = ((empty($name)) ? '':''.$name.'<br/><br/>').$_POST['form-message'];
+        $mail->Body = $_POST['form-message'];
         $mail->AddAddress($email);
 
         if(!$mail->Send()) {

@@ -75,7 +75,7 @@ document.querySelectorAll('.cookie-resp').forEach((el) => {
         // if(!debuggON){
             fd.append('cookie-resp', parseInt(el.getAttribute('data-cookie-resp')));
             // fetch('./async/update-cookie.php', {
-            fetch('some/path', {
+            fetch('./async/update-cookie.php', {
                 method: 'POST',
                 body: fd
             })
@@ -86,9 +86,10 @@ document.querySelectorAll('.cookie-resp').forEach((el) => {
                     setTimeout(()=>{
                         el.closest('.cookie-modal').remove();
                     }, 1000)
-                }else{
-                    console.log('error', data);
                 }
+                // else{
+                //     console.log('error', data);
+                // }
             })
         // }else{
         //     el.closest('.cookie-modal').style.opacity = 0;
@@ -125,7 +126,7 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
     if(!errorCollector){
         sendButton.classList.add('hide');
         spinner.classList.remove('hide');
-        console.log('Message is sent');
+        // console.log('Message is sent');
         errorMsg.classList.add('hide');
         fetch('./async/send-message.php', {
             method: 'POST',
@@ -193,7 +194,7 @@ function scrollTo(el, navigationBtnPressed, isDesktop){
     var top = el.getBoundingClientRect();
     var parent = window.pageYOffset || parallaxScroll.scrollTop || document.body.scrollTop;
     var scrollAmmount= ((el.id == 'homepage') ? 0 : top.top + parent);
-    console.log(el.id);
+    // console.log(el.id);
      parallaxScroll.scroll({
         top: scrollAmmount,
         left: 0,
