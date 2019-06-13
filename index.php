@@ -247,7 +247,7 @@
                         <div style="display: grid; grid-template-columns: 1fr 1fr;">
                                 <span>
                                     <label for="terms"><?php echo $langArray['contacts']['contactForm']['termsStart']; ?> <a href="#" style="text-decoration: underline !important"><?php echo $langArray['contacts']['contactForm']['termsLink']; ?></a></label>
-                                    <input type="checkbox" name="terms" class="form-input" style="vertical-align: middle; margin: 0 !important">
+                                    <input type="checkbox" name="terms" class="form-input" style="vertical-align: middle; margin: 0 !important; box-shadow: none;">
                                 </span>
                             <div id="lds-ellipsis" class="hide"><div></div><div></div><div></div><div></div></div>
                             <div id="message-status" class="hide"></div>
