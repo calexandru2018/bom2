@@ -127,7 +127,7 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
         spinner.classList.remove('hide');
         console.log('Message is sent');
         errorMsg.classList.add('hide');
-        fetch('path/to/message', {
+        fetch('./async/send-message.php', {
             method: 'POST',
             body: formData
         })
