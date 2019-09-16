@@ -1,2 +1,4 @@
 client_side/node_modules
 client_side/dist/
+dist/
+node_modules/
