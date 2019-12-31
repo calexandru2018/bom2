@@ -2,7 +2,7 @@
     $debuggModeOn = true;
     function createPlace(Array $place, $dbConn, $createNew = true){
         global $debuggModeOn;
-        if($createNew !== true){
+        if($createNew != true){
             $sql = "
                 select
                     place_nameID,
@@ -32,7 +32,7 @@
             $placeGPSID = createPlaceGPS($place, $dbConn);
 
             if((int)$eventDurationID && (int)$placeGPSID && (int)$placeNameID){
-                if(createEventDescription($eventDurationID, $placeGPSID, $placeNameID, $dbConn))
+                if(($resp = createEventDescription($eventDurationID, $placeGPSID, $placeNameID, $dbConn)))
                     return 1;
                 else
                     return $debuggModeOn ? 'Unable to create event description':0;
@@ -42,7 +42,6 @@
         }
         
     }
-
 
     function createEventDuration(Array $place, $dbConn){
         global $debuggModeOn;
@@ -63,7 +62,8 @@
             return $debuggModeOn ? mysqli_error($dbConn):0;
         }
         
-    }
+	}
+	
     function updateEventDuration(Array $place, int $id, $dbConn){
         global $debuggModeOn;
         $sql = "
@@ -76,7 +76,7 @@
         ";
         $query = $dbConn->query($sql);
         if($dbConn->affected_rows === 1){
-            return 1;
+            return true;
         }else{
             return $debuggModeOn ? mysqli_error($dbConn):0;
         }
@@ -112,7 +112,7 @@
         ";
         $query = $dbConn->query($sql);
         if($dbConn->affected_rows === 1){
-            return 1;
+            return true;
         }else{
             return $debuggModeOn ? mysqli_error($dbConn):0;
         }
@@ -149,7 +149,7 @@
         ";
         $query = $dbConn->query($sql);
         if($dbConn->affected_rows === 1){
-            return 1;
+            return true;
         }else{
             return $debuggModeOn ? mysqli_error($dbConn):0;
         }
@@ -165,9 +165,9 @@
                 place_gpsID
             )
             values (
+				'".$placeNameID."',
                 '".$eventDurationID."',
-                '".$placeGPSID."',
-                '".$placeNameID."'
+                '".$placeGPSID."'
             )
         ";
         $query = $dbConn->query($sql);
