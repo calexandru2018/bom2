@@ -7,7 +7,7 @@ import '../img/remove.svg';
 import '../img/settings.svg';
 import '../img/logout.svg';
 let flavourCounter = 1;
-const editContentContainer = document.getElementById('edit-content');
+let editContentContainer = document.getElementById('edit-content');
 const settingsOverlay = document.getElementById('settings-overlay');
 const editAdmin = `
     <div class="edit-form-layout">
@@ -26,7 +26,7 @@ const editAdmin = `
                 <button type="submit" class="btn-form-insert edit-data" id="admin-edit-input" data-admin-edit-id="1">Editar</button> 
             </div>
         </form>
-        <div class="hide status-message"></div>
+        <div class="hide status-message-two-column"></div>
     </div>
 `;
 const editPlace = `
@@ -43,13 +43,12 @@ const editPlace = `
             <input type="text" name="latitude" data-category="place-edit-input">
             <label for="">Longitude</label>
             <input type="text" name="longitude" data-category="place-edit-input">
-
             <div class="edit-btns">
                 <a class="close-edit self-left">Voltar</a>
                 <button type="submit" class="btn-form-insert edit-data" id="place-edit-input" data-place-edit-id="1">Editar</button> 
             </div>
         </form>
-        <div class="hide status-message"></div>
+        <div class="hide status-message-two-column"></div>
     </div>
     
 `;
@@ -61,13 +60,12 @@ const editFlavour = `
             <input type="text" name="flavours_PT" data-category="flavour-edit-input">
             <label for="">Ingles</label>
             <input type="text" name="flavours_EN" data-category="flavour-edit-input">
-
             <div class="edit-btns">
                 <a class="close-edit self-left">Voltar</a>
                 <button type="submit" class="btn-form-insert edit-data" id="flavour-edit-input" data-flavour-edit-id="1">Editar</button> 
             </div>
         </form>
-        <div class="hide status-message"></div>
+        <div class="hide status-message-two-column"></div>
     </div>
 `;
 const editProduct = `
@@ -84,14 +82,12 @@ const editProduct = `
                 <option value="2">Chocolate</option>
             </select>
             <a class="add-new-flavour" style="width: fit-content; background-color: transparent; border: none; outline: none; color: #6495ed">Adicionar novo ?</a>
-
             <div class="edit-btns">
                 <a class="close-edit self-left">Voltar</a>
-
                 <button type="submit" class="btn-form-insert edit-data" id="product-edit-input" data-product-edit-id="1">Editar</button> 
             </div>
         </form>        
-        <div class="hide status-message"></div>
+        <div class="hide status-message-two-column"></div>
     </div>
 `;
 /* Listenes to all clicks */
@@ -136,18 +132,21 @@ document.addEventListener('click',function(e){
 });
 /* Collects and creates a new item */
 const insertNewItem = function(targetID){
+    let x = 'status-message';
     const targetIDParent = targetID.closest('div');
     let statusMessageEl = document.createElement('div')
     targetIDParent.after(statusMessageEl);
-    statusMessageEl.classList.add('hide', 'status-message');
     const formCollector = document.querySelectorAll(`[data-category^=${targetID.id}`)
     const categoryType = targetID.id.split('-');
+    categoryType[0] === 'admin' ? x = 'status-message-two-column':'';
+    statusMessageEl.classList.add('hide',  x);
     const valueHolder = new FormData();
 
-    formCollector.forEach( (el) => {
+    formCollector.forEach((el) => {
         valueHolder.append(el.name, el.value);
         // console.log(el.name, el.value);
     });
+    
     valueHolder.append('categoryType', categoryType[0]);
     valueHolder.append('actionType', categoryType[1]);
     
@@ -167,14 +166,14 @@ const insertNewItem = function(targetID){
     targetID.classList.add('hide');
     targetIDParent.appendChild(spinner);
 
-    fetch('path/to/async/file', {
+    fetch('./async/create.php', {
         method: 'POST',
         body: valueHolder
     })
     .then(response => response.text())
     .then(data => {
         setTimeout(function(){ 
-            if(data){
+            if(!data){
                 statusMessageEl.innerHTML = 'Informacao inserida!';
                 statusMessageEl.style.color = 'green';
             }else{
@@ -190,6 +189,7 @@ const insertNewItem = function(targetID){
             }, 5000)
             
         }, 3000);
+        console.log(data);
     })
     .catch((error) =>{
         console.log(error);
@@ -203,9 +203,10 @@ const insertNewItem = function(targetID){
 /* Collects and post the updated data */
 const editItem = function(targetID){
     const targetIDParent = targetID.closest('div');
-    let statusMessageEl = document.createElement('div')
+    console.log(targetID);
+    let statusMessageEl = document.createElement('div');
     targetIDParent.after(statusMessageEl);
-    statusMessageEl.classList.add('hide', 'status-message');  
+    statusMessageEl.classList.add('hide', 'status-message-two-column');  
     const formCollector = document.querySelectorAll(`[data-category^=${targetID.id}`)
     const holder = targetID.id.split('-');
     const modifiedTargetID = `${holder[0]}-${holder[1]}-id`;
@@ -236,23 +237,20 @@ const editItem = function(targetID){
     targetID.classList.add('hide');
     targetIDParent.appendChild(spinner);
 
-    fetch('path/to/async/file', {
+    fetch('./async/edit.php', {
         method: 'POST',
         body: valueHolder
     })
     .then(response => response.text())
     .then(data => {
         setTimeout(function(){ 
-            if(data){
+            if(!data){
                 statusMessageEl.innerHTML = 'Informacao actualizada!';
                 statusMessageEl.style.color = 'green';
             }else{
                 statusMessageEl.innerHTML = 'Houve um erro ao actualizar!';
                 statusMessageEl.style.color = 'red';
             }
-            
-            statusMessageEl.innerHTML = 'Houve um erro ao actualizar!';
-            statusMessageEl.style.color = 'red';
             statusMessageEl.classList.remove('hide');
             targetID.classList.remove('hide');
             spinner.remove();
@@ -262,6 +260,7 @@ const editItem = function(targetID){
             }, 3000)
             
         }, 1500);
+        console.log(data);
     })
     .catch((error) =>{
         statusMessageEl.innerHTML = 'Houve um erro ao actualizar!';
@@ -287,20 +286,20 @@ const deleteItem = function(targetID){
     const valueHolder = new FormData();
     const categoryType = targetID.getAttribute('data-category');
     const id = targetID.getAttribute(`data-${categoryType}-id`);
-    valueHolder.append(id, 'id');
-    valueHolder.append(categoryType, 'category');
+    valueHolder.append('itemID', id);
+    valueHolder.append('categoryType', categoryType);
+    valueHolder.append('actionType', 'delete');
 
-    for (var pair of valueHolder.entries()) {
-        console.log(pair[0]+ ', ' + pair[1]); 
-    }
+    // for (var pair of valueHolder.entries()) {
+    //     console.log(pair[0]+ ', ' + pair[1]); 
+    // }
 
-    fetch('path/to/async/file', {
+    fetch('./async/delete.php', {
         method: 'POST',
         body: valueHolder
     })
     .then(response => response.text())
     .then(data => {
-        // alert('Action accomplished');
         var i;
         var parentSpan = targetID.closest('span');
         var previousParent;
@@ -311,12 +310,15 @@ const deleteItem = function(targetID){
             i = 2;
         else if(categoryType == 'admin')
             i = 3;        
-
-        for(var c = 0; c < i; c++){
-            previousParent = parentSpan.previousElementSibling;
-            parentSpan.remove();
-            parentSpan = previousParent;
-        }        
+        if(!data){
+            for(var c = 0; c < i; c++){
+                previousParent = parentSpan.previousElementSibling;
+                parentSpan.remove();
+                parentSpan = previousParent;
+            }     
+        }else{
+            console.log(data);
+        }   
     })
     .catch((error) =>{
         console.log(error);
@@ -326,13 +328,19 @@ const fetchItemToEdit = (contentType, contentID) => {
     const valueHolder = new FormData();
     valueHolder.append('contentType', contentType);
     valueHolder.append('contentID', contentID);
-    fetch('path/to/file', {
+    fetch('./async/fetch-to-edit.php', {
         method: 'POST',
         body: valueHolder
     })
     .then((response) => response.text())
     .then((data) => {
-        return data;
+        if(data != 99){
+            console.log(data);
+            editContentContainer.innerHTML = data;
+            // return data;
+        }else{    
+            console.log(data);
+        }
     })
     .catch((error) => {console.log(error)});
 };
@@ -342,24 +350,24 @@ const showEditForm = function(targetID){
 
     if(dataType){
         /* 
-        ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+        ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___*/
 
-        editContentContainer.innerHTML = fetchItemToEdit(dataType, contentID);  
+        fetchItemToEdit(dataType, contentID);  
         
-        */
-        let contentToShow = '';
-        switch(dataType){
-            case 'admin': contentToShow = editAdmin;
-                break;
-            case 'place': contentToShow = editPlace;
-                break;
-            case 'flavour': contentToShow = editFlavour;
-                break;
-            case 'product': contentToShow = editProduct;
-                break;
-            default: contentToShow = '';
-        }
-        editContentContainer.innerHTML = contentToShow;
+        
+        // let contentToShow = '';
+        // switch(dataType){
+        //     case 'admin': contentToShow = editAdmin;
+        //         break;
+        //     case 'place': contentToShow = editPlace;
+        //         break;
+        //     case 'flavour': contentToShow = editFlavour;
+        //         break;
+        //     case 'product': contentToShow = editProduct;
+        //         break;
+        //     default: contentToShow = '';
+        // }
+        // editContentContainer.innerHTML = contentToShow;
     }
     editContentContainer.classList.toggle('show');
 }
@@ -373,26 +381,25 @@ const addNewFlavourToProduct = function(target){
     const categoryType = previousEl.getAttribute('data-category').split('-');
      
     newNode.setAttribute('data-category', 'product-' + categoryType[1] + '-input_' + flavourCounter);
-/*         
-    ___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+         
+    /*___THIS SHOULD BE UNCOMMENTED WHEN SERVER IMPLEMENTATION IS DONE___
+    Gets the flavours from the DB and shows them in the select*/
 
-    Gets the flavours from the DB and shows them in the select
-
-    fetch('path/to/file/to/get/flavours', {
+    fetch('./async/fetch-flavours-list.php', {
         method: 'GET'
     })
     .then((response) => response.text())
     .then((data) => {
-        // newNode.innerHTML = data;
+        newNode.innerHTML = data;
+        parentEl.insertBefore(newNode, previousEl.nextSibling);
         console.log('worked');
     })
     .catch((error) =>{
         console.log(error);
     }); 
-*/
-    newNode.innerHTML = `
-        <option value="1">Nutella</option>
-        <option value="2">Chocolate</option>
-    `;
-    parentEl.insertBefore(newNode, previousEl.nextSibling);
+
+    // newNode.innerHTML = `
+    //     <option value="1">Nutella</option>
+    //     <option value="2">Chocolate</option>
+    // `;
 }
