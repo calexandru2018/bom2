@@ -210,7 +210,7 @@
                     <div id="instafeed"></div>
                 </div>
         </section>
-        <section class="section parallax bg4">
+        <section class="section parallax bg5">
         </section>
         <!-- Eventos -->
         <section class="section static card-background-light" id="events">
@@ -219,7 +219,7 @@
                 <?php echo $langArray['events']['description']; ?>                       
             </div>
         </section>
-        <section class="section parallax bg4">
+        <section class="section parallax bg6">
         </section>
         <!-- Contactos -->
         <section class="section static card-background-dark" id="contacts">
@@ -257,7 +257,7 @@
                 </div>
             </div>
         </section>
-        <section class="section parallax bg4">
+        <section class="section parallax bg7">
         </section>
         <footer class="section static footer">
             <div class="social-media-wrapper">
