@@ -15,74 +15,81 @@ $langArray = [
             'showBtn2' => 'Click here',
         ],
         'landingText' => [
-            'mainHeader' => 'Handmade Crepe',
-            'underHeader' => 'Those who taste, want even more!',
+            'mainHeader' => 'Homemade Creperie',
+            'underHeader' => 'Those who taste it keep coming for more!',
             'checkProductStart' => 'Click',
-            'checkProductsEnd' => 'to check out our products',
+            'checkProductsEnd' => 'to see our products',
             'checkProductsBtn' => 'here',
         ],
         'concept' => [
             'title' => 'Concept',
             'description' => '
-                <p>We are a traveling creperie known for the delicious waffles on the stick and traditional crepes. Always on the road, from one side to the other, the well-known pink minivan is located in the Algarve during the summer season and in Lisbon in the winter.</p>
+                <p>We are an itinerant Creperie known for our delicious waffles on a stick and traditional crepes. Always on the road, the already famous van is in the Algarve for summer time and in Lisbon during the winter.</p>
 
-                <p>Our waffles are characterized by their light and wet mass inside and crispy outside. They are stuffed and the choice of taste is at the discretion of the customer. In addition they come clinging to a toothpick to be easy to eat in progress without getting dirty.</p>
+                <p>Our waffles are specially recognised by a light and moist pastry on the inside and a crunchy taste on the outside. They are filled according to the client’s taste and come on a stick so you can eat and walk not getting dirty on your way.</p>
                 
-                <p>There are many traditional crepes, but ours are special. With much work and study we have discovered our secret recipe, a balanced mass with ingredients in the right proportion. It is characterized by being soft, thin and tender. They are served rolled with the filling inside making it practical to eat.</p>
+                <p>There are many traditional crepes but ours are special. Through hard work and research, we found out the secret recipe of a balanced pastry with ingredients in the right portions. It is soft, thin and tender. They are rolled up with the filling inside making them easily served and consumed.</p>
                 
-                <p>We even have mini pancakes and churritos without fry. And to accompany these specialties we have our drinks, such as hot chocolate, various teas, cappuccino, latte macchiato, lemonade or morangada and of course, a ginginha of Óbidos to complete this appetizing menu.</p>
+                <p>We also serve mini pancakes and non-fried churros. To go with these specialities there are many drinks available, such as hot chocolate, various teas, cappuccino, latte macchiato, lemonade or fresh strawberry juice and, of course, the typical liqueur “Ginginha de Óbidos” to complete the tasty menu.</p>
             ',
         ],
-        'productsTitle' => 'Products',
+        'productsTitle' => 'Our Products',
         'background' => [
             'title' => 'Background',
             'description' => '
-                <p>Catarina Lourenço and David Simões, graduated in Food Production in Catering at the Superior School of Hospitality and Tourism of Estoril.</p>
+                <p>Catarina Lourenço and David Simões, both with a degree in Cookery and Food Production by the Estoril Higher Institute for Tourism and Hotel Studies.</p>
 
-                <p>We worked in several hotel and restaurant kitchens. Highlights include the Bon Bon in Carvoeiro with a Michelin star, the 100 Ways in Lisbon from Chef Ljubomir, the Vila Vita Parc Resort & Spa in Porches, the Cascais Miragem Hotel in Cascais, the Pestana Colombos Premium in Porto Santo, among others.</p>
+                <p>We have worked in several hotel and restaurant kitchens. We point out the Bon Bon restaurant in Carvoeiro with a Michelin star, the 1000 Maneiras in Lisbon of the Chef Ljubomir, the Vila Vita Parc Resort & Spa in Porches, the Hotel Cascais Miragem in Cascais and the Pestana Colombus Premium in Porto Santo, Madeira, among others.</p>
                 
-                <p>There was an enthusiasm for starting our project. We were fascinated when we learned how to make bonbons with Chef Nelson Felix in the Pastry Chair. We decided to create a brand of candy. There was the Good (bonbon), two people who came together to do something good, so good that it is twice as good! We tested combinations and created incredible fillings hidden in the thin, crisp, crisp chocolate coating. 
-                We quickly started gaining customers, many orders came in for a small, handcrafted and rather elementary production capacity. Some complications appeared with the inability to invest in machines, air-conditioned production space and employees.</p>
+                <p>We increasingly felt the enthusiasm of creating our own business. Chef Nelson Félix and his pastry lessons fascinated us when we learned how to make chocolate bonbons. We decided then to create a registered brand of bonbons and so the Bom2 appeared. 
+                Double Bom for Bonbon and double for two people who got together to create something so tasty that was twice as tasty as anything else! From there on we tested diverse combinations and created incredible fillings hidden in the thin, crunchy and shiny chocolate cover. 
+                Clients started ordering in an astonishing rhythm which was too difficult to comply with a small, handmade and simple production capacity. It became difficult to respond without further investment in adequate machinery, climatized production space and employees.</p>
                 
-                <p>Summer was approaching, a very hot time to work the chocolate. In a conversation with friends, we talked about buying a Street Food van. We left the chocolates temporarily. New ideas began to emerge. We bought the van and then we decorated and arranged to our taste with the help of the company Porquê Design.</p>
+                <p>As the summer was waving in, it became too hot to work with chocolate. A friends’ chat led to the idea of buying a street food van. And so the bonbons production was temporarily out of the plans. New ideas started coming up. We bought the van and decorated it with the precious help of the designers of PorquêDesign.</p>
                 
-                <p>We decided to create something different and innovative, the original waffles stuffed in the toothpick appeared. The name was kept, but the concept changed. The need for a food that was practical to eat in progress led us to the creation of the waffle stuck in the toothpick. We unveiled this concept of Street Food in the Summer of 2017 in the Riverine Zone of Portimão. 
-                We quickly began to gain praise for the quality of our masses, eventually giving rise to our slogan "who proves more".</p>
+                <p>We decided to create something that was both different and new and that’s how the original filled waffles on a stick first appeared. The name remained although the concept had been changed. Thinking about the importance of something practical to walk while eating led us to the idea of that waffle on a stick. 
+                This street food concept was first presented in the summer of 2017 by the river walk in Portimão. 
+                We were rapidly recognised for having such tasty and quality pastry and that’s when the slogan came up “Those who taste it keep coming for more!”</p>
             ',
         ],
         'hashtag' => [
             'title' => '#bomaoquadrado',
             'description' => '
-                <p>Whenever you visit us publicly picture our crepes / waffles on your Instagram. identifies us @bomaoquadrado and uses the hashtags #bomaoquadrado and #quemprovaquermais.</p>
+                <p>If you are visiting us, please post a photo or our crepes/waffles in your Instagram identifying @bomaoquadrado and using the hashtags #bomaoquadrado and #quemprovaquermais (Those who taste it keep coming for more!).</p>
 
-                <p>If we repost your photo you will get a waffle / crepe of your choice.</p>
+                <p>If we repost your photo you get a free waffle/crepe at your choice.</p>
 
-                <p>Now you know how to make sweets!</p>
+                <p>Now you know how to get free tasty pastries!</p>
             ',
         ],
         'events' => [
             'title' => 'Events',
             'description' => '
-                <p>Is there going to be a party? The BOM² can make it delicious! We do all kinds of events.</p>
-                <p>Ask for your proposal today by specifying:</p> 
+                <p>Are you planning a party? BOM² can make it delicious! We cover all kind of events.</p>
+                <p>Request your proposal now and specify the following:</p> 
                 <ol> 
                     <li>Name</li> 
                     <li>Email</li> 
-                    <li>Mobile</li> 
+                    <li>Mobile phone</li> 
                     <li>Location</li> 
-                    <li>Event Type</li> 
+                    <li>Kind of event</li> 
                     <li>Duration of the event</li> 
                     <li>Date of the event</li> 
                     <li>Estimated number of people</li> 
                 </ol>
+                <p>And send an email to: <a href="mailto:info@bomaoquadrado.pt" target="_top">info@bomaoquadrado.pt</a></p>
             ',
         ],
         'contacts' => [
             'title' => 'Contacts',
             'description' => '
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae, sapiente, vel quod, eligendi tenetur consequuntur fugiat deserunt nesciunt voluptatem nisi ipsam amet eum excepturi ad deleniti. Eveniet natus ea vitae!</p>
+                <p>Don’t hesitate to contact us. We respond in the shortest time possible to any question!</p>
 
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae, sapiente, vel quod, eligendi tenetur consequuntur fugiat deserunt nesciunt voluptatem nisi ipsam amet eum excepturi ad deleniti. Eveniet natus ea vitae!</p>
+                <p>You can either fill in the form or contact us directly via:</p>
+                
+                <p><a href="tel:+351965838259" target="_top">+351 965 838 259</a></p>
+                <p><a href="tel:+351968167446" target="_top">+351 968 167 446</a></p>
+                <p><a href="mailto:info@bomaoquadrado.pt" target="_top">info@bomaoquadrado.pt</a></p>
             ',
             'contactForm' => [
                 'name' => 'Name',

@@ -33,7 +33,7 @@ $langArray = [
                 <p>Temos ainda mini panquecas e churritos sem fritura. E para acompanhar estas especialidades temos as nossas bebidas, como o chocolate quente, chás diversos, cappuccino, latte macchiato, limonada ou morangada e claro, uma ginginha de Óbidos para completar este apetitoso menu. </p>
             ',
         ],
-        'productsTitle' => 'Produtos',
+        'productsTitle' => 'Os Nossos Produtos',
         'background' => [
             'title' => 'História',
             'description' => '
