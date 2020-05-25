@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'antro-bold';
-    src: url('/dist/assets/fonts/Antro_Vectra_Bolder.otf');
+    src: url('/bom2/front_end/dist/assets/fonts/Antro_Vectra_Bolder.otf');
 }
 @import url('https://fonts.googleapis.com/css?family=Montserrat:600,600i|Roboto');
 :root {
@@ -620,25 +620,41 @@ section > div > p{
 }
 .bg1::after {
     left: -1%;
-    background: url('/dist/assets/img/bq.jpg') no-repeat center;
+    background: url('/bom2/front_end/dist/assets/img/bg_1.jpg') no-repeat center;
 	background-size: cover;
 	background-position-y: 60%;
 }
 .bg2::after {
   	left: -1%;
-    background: url('/dist/assets/img/bq4.jpg') no-repeat center;
-    background: cover;
+    background: url('/bom2/front_end/dist/assets/img/bg_2.jpg') no-repeat center;
+	background-size: cover;
 }
 .bg3::after {
   	left: -1%;
-    background: url('/dist/assets/img/bq2.jpg') no-repeat center;
-    background: cover;
+    background: url('/bom2/front_end/dist/assets/img/bg_3.jpg') no-repeat center;
+    background-size: cover;
 }
 .bg4::after {
   	left: -1%;
-    background: url('/dist/assets/img/bq3.jpg') no-repeat center;
-    background: cover;
+    background: url('/bom2/front_end/dist/assets/img/bg_4.jpg') no-repeat center;
+    background-size: cover;
 }
+.bg5::after {
+  	left: -1%;
+    background: url('/bom2/front_end/dist/assets/img/bg_5.jpg') no-repeat center;
+    background-size: cover;
+}
+.bg6::after {
+  	left: -1%;
+    background: url('/bom2/front_end/dist/assets/img/bg_6.jpg') no-repeat center;
+    background-size: cover;
+}
+.bg7::after {
+  	left: -1%;
+    background: url('/bom2/front_end/dist/assets/img/bg_7.jpg') no-repeat center;
+    background-size: cover;
+}
+
 /* instagram feed */
 #instafeed{
 	margin-top: 50px;
