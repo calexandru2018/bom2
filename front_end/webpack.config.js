@@ -7,7 +7,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     entry: {
         index: './src/js/index.js',
-        alternate: './src/js/alternate.js',
         dashboard: './src/js/dashboard.js',
         login: './src/js/login.js'
     },
@@ -76,15 +75,7 @@ module.exports = {
             template: './src/index.html',
             hash: true,
             cache: true,
-            excludeChunks: ['alternate', 'dashboard', 'login']
-        }),
-        new HtmlWebpackPlugin({
-            title: 'Abrimos Brevemente',
-            filename: 'abrimos-breve.html',
-            template: './src/abrimos-breve.html',
-            hash: true,
-            cache: true,
-            excludeChunks: ['index', 'dashboard', 'login']
+            excludeChunks: ['dashboard', 'login']
         }),
         new HtmlWebpackPlugin({
             title: 'Dashboard',
@@ -92,7 +83,7 @@ module.exports = {
             template: './src/dashboard.html',
             hash: true,
             cache: true,
-            excludeChunks: ['index', 'alternate', 'login']
+            excludeChunks: ['index', 'login']
         }),
         new HtmlWebpackPlugin({
             title: 'Login',
