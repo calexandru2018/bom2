@@ -159,35 +159,8 @@
         <!-- Produtos -->
         <section class="section static card-background-dark" id="products">
             <h1><?php echo $langArray['productsTitle']; ?></h1>
-            <div class="flip-card-grid">
-                <?php 
-                    //print("<pre>".print_r($allProducts,true)."</pre>");
-                    for($i = 0; $i < sizeof($allProducts); $i++){
-                        echo "
-                            <div class='col' ontouchstart='this.classList.toggle('hover');'>
-                                <div class='container'>
-                                    <div class='front'>
-                                        <div class='inner'>
-                                            <p>".$allProducts[$i]['name'.strtoupper($LANG)]."</p>
-                                        </div>
-                                    </div>
-                                    <div class='back'>
-                                        <div class='inner back-inner-padding product-grid'>";
-                                    for($c = 0; $c < sizeof($allProducts[$i]['flavours']); $c++){
-                                        echo "
-                                            <div>
-                                                ".$allProducts[$i]['flavours'][$c]['name'.strtoupper($LANG)]."
-                                            </div>
-                                        ";
-                                    }
-                                    echo "
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ";
-                    }
-                ?>
+            <div style="text-align: center; padding: 1em;">
+                <img src="assets/img/menu.jpg" />
             </div>
         </section>
         <section class="section parallax bg3">
